@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Simulado — Filosofia do Direito I</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cardo:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+
+<script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+<style>
+  :root {
+    --bg: #121212;
+    --bg-card: #1e1e1e;
+    --bg-opt: #2c2c2c;
+    --text: #e0e0e0;
+    --text-muted: #9e9e9e;
+    --border: #333;
+    --border-hover: #555;
+    
+    /* Cores das bolinhas e feedback */
+    --dot-unanswered: #3a3a3a;
+    --dot-current: #2196f3; /* Azul */
+    --dot-correct: #4caf50; /* Verde */
+    --dot-wrong: #f44336;   /* Vermelho */
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  
+  body { 
+    background-color: var(--bg); 
+    color: var(--text); 
+    padding: 20px; 
+    font-family: 'Cardo', Georgia, serif; /* Aplicação da fonte Cardo */
+  }
+  
+  .container {
+    max-width: 800px; margin: 0 auto; background: var(--bg-card);
+    border: 1px solid var(--border); border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.5); overflow: hidden;
+  }
+
+  /* Estilização do Header Bonitinho */
+  .header {
+    padding: 25px 30px 20px 30px;
+    background: #171717;
+    border-bottom: 1px solid var(--border);
+    text-align: center;
+  }
+  .header h1 {
+    font-size: 26px;
+    color: #ffffff;
+    margin-bottom: 8px;
+    font-weight: 700;
+  }
+
+  /* Barra superior das bolinhas */
+  .dots-nav {
+    display: flex; flex-wrap: wrap; gap: 6px; padding: 15px 20px;
+    background: #141414; border-bottom: 1px solid var(--border);
+    justify-content: center;
+  }
+  .dot {
+    width: 14px; height: 14px; border-radius: 50%;
+    background: var(--dot-unanswered); transition: all 0.3s;
+    cursor: pointer;
+  }
+  .dot.active { background: var(--dot-current); box-shadow: 0 0 6px var(--dot-current); transform: scale(1.2); }
+  .dot.correct { background: var(--dot-correct); }
+  .dot.wrong { background: var(--dot-wrong); }
+
+  .content { padding: 30px; }
+  
+  .q-meta { margin-bottom: 20px; color: var(--text-muted); font-size: 14px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; }
+  .q-text { font-size: 18px; margin-bottom: 25px; line-height: 1.6; }
+
+  .options { display: flex; flex-direction: column; gap: 12px; }
+  .option {
+    display: flex; align-items: flex-start; padding: 15px; background: var(--bg-opt);
+    border: 1px solid var(--border); border-radius: 6px; cursor: pointer; transition: 0.2s;
+    font-size: 16.5px; line-height: 1.5;
+  }
+  .option:hover:not(.disabled) { border-color: var(--border-hover); background: #353535; }
+  .option input { margin-right: 12px; margin-top: 5px; accent-color: var(--dot-current); cursor: pointer; }
+  
+  .option.disabled { cursor: default; opacity: 0.8; }
+  .option.correct-ans { border-color: var(--dot-correct); background: rgba(76, 175, 80, 0.1); }
+  .option.wrong-ans { border-color: var(--dot-wrong); background: rgba(244, 67, 54, 0.1); }
+
+  .feedback-box {
+    display: none; margin-top: 20px; padding: 15px; border-radius: 6px;
+    background: #252525; border-left: 4px solid var(--dot-current);
+    font-size: 15.5px; line-height: 1.6;
+  }
+
+  .btn-action {
+    margin-top: 25px; width: 100%; padding: 14px; font-size: 16px; font-weight: 600;
+    background: #333; color: #fff; border: 1px solid #444; border-radius: 6px;
+    cursor: pointer; transition: 0.2s; font-family: 'Cardo', Georgia, serif;
+  }
+  .btn-action:hover:not(:disabled) { background: #444; border-color: #555; }
+  .btn-action:disabled { background: #222; color: #555; border-color: #222; cursor: not-allowed; }
+
+  /* Tela de resultados */
+  .result-screen { display: none; text-align: center; }
+  .score-val { font-size: 46px; margin: 20px 0; color: var(--dot-current); font-weight: bold; }
+  
+  .stats-row { display: flex; justify-content: center; gap: 30px; margin-bottom: 20px; }
+  .stats-row div { font-size: 19px; }
+  .stats-row span { font-weight: bold; }
+</style>
+</head>
+<body>
+
+<div class="container">
+  <div class="header">
+    <h1>Simulado de Filosofia do Direito I</h1>
+    <p style="color: var(--text-muted); font-size: 13px;">Questões baseadas nas aulas do prof. dr. Lucas Fucci Amato | Por: Millena Miranda Franco</p>
+  </div>
+
+  <div class="dots-nav" id="dots-container"></div>
+  
+  <div class="content" id="quiz-screen">
+    <div class="q-meta" id="q-counter">Questão 1</div>
+    <div class="q-text" id="q-text"></div>
+    <div class="options" id="opts"></div>
+    <div class="feedback-box" id="feedback"></div>
+    <button class="btn-action" id="btn-action" onclick="handleAction()" disabled>Confirmar resposta</button>
+  </div>
+
+  <div class="content result-screen" id="result-screen">
+    <h2>Simulado concluído</h2>
+    <div class="score-val" id="score-val">0%</div>
+    <div class="stats-row">
+      <div style="color: var(--dot-correct);">Acertos: <span id="val-correct">0</span></div>
+      <div style="color: var(--dot-wrong);">Erros: <span id="val-wrong">0</span></div>
+    </div>
+    <p style="color: var(--text-muted); font-size: 15px; margin-bottom: 30px;">O registro das suas respostas ficou colorido nas bolinhas acima.</p>
+    <button class="btn-action" onclick="location.reload()" style="background: var(--dot-current); color: #fff; border: none;">Refazer simulado</button>
+  </div>
+</div>
+
+<script>
+  // O banco de dados de questões (as 10 primeiras mantêm o gabarito oficial fornecido)
+  const rawQuestions = [
+    {
+        "q": "1. É errado afirmar que:",
+        "opts": [
+            "A teoria da propriedade de Locke associa o direito de propriedade privada ao trabalho humano individual empregado sobre a matéria comum.",
+            "Locke apresenta uma concepção de liberdade como não interferência.",
+            "Há uma leitura libertária ou neoliberal da teoria da propriedade de Locke: com o advento da economia monetária, não haveria mais limites para a acumulação de propriedade e riqueza.",
+            "Locke jamais colocou como condição para a apropriação individual dos bens coletivos deixar recursos em quantidade proporcional e qualidade equivalente para os demais."
+        ],
+        "ans": 3,
+        "exp": "Gabarito: D. Locke estabeleceu a chamada 'cláusula lockeana', exigindo que a apropriação deixasse bens suficientes e de mesma qualidade para os demais indivíduos."
+    },
+    {
+        "q": "2. É errado afirmar que:",
+        "opts": [
+            "A ontologia é o estudo filosófico de como o mundo é, dos seres ou entes que o compõem.",
+            "A epistemologia é o estudo filosófico de como conhecer o mundo, a filosofia do conhecimento.",
+            "A ética não é um ramo da razão prática.",
+            "Um marco importante da epistemologia moderna é a Crítica da Razão Pura de Kant."
+        ],
+        "ans": 2,
+        "exp": "Gabarito: C. A ética é fundamentalmente um ramo da razão prática, pois trata do agir humano, das condutas e das escolhas morais."
+    },
+    {
+        "q": "3. É correto afirmar que:",
+        "opts": [
+            "O imperativo categórico kantiano não tem nenhuma repercussão sobre o direito, apenas sobre a ética.",
+            "Kant apresenta uma concepção utilitarista de justiça: correto é o que maximiza a felicidade coletiva.",
+            "Para Kant, o contrato social é uma ficção que obriga o legislador a decidir como se cada cidadão houvesse consentido com essa vontade geral; dessa forma, o imperativo categórico não serve como parâmetro para criticar as decisões políticas.",
+            "Para Kant, a dignidade exige considerar todos os seres humanos como fins em si mesmos, nunca como meros instrumentos para a satisfação das necessidades coletivas."
+        ],
+        "ans": 3,
+        "exp": "Gabarito: D. Esta é a célebre fórmula da humanidade de Kant: indivíduos possuem dignidade e valor absoluto, não podendo ser instrumentalizados."
+    },
+    {
+        "q": "4. É errado afirmar que:",
+        "opts": [
+            "Aristóteles apresenta em Política um paralelo entre a construção da alma e a construção da cidade: assim como a razão deve prevalecer sobre os sentimentos e os desejos, os sábios devem governar os guerreiros e os produtores.",
+            "Para Aristóteles, a justiça distributiva diz respeito à distribuição de honras, riqueza e outros bens divisíveis da comunidade que podem ser distribuídos entre seus membros em partes iguais ou desiguais.",
+            "Aristóteles apresenta uma ética das virtudes (eudaimonia), que visa ao desenvolvimento das potencialidades humanas, com a busca da excelência nas virtudes morais (como a coragem) e intelectuais (como a prudência).",
+            "Para Aristóteles, podemos entender a justiça in sentido geral (justiça como legalidade) não apenas como conformidade àquelas leis que encontramos em códigos ou constituições, mas também em relação àquelas normas que provêm de nossa própria natureza."
+        ],
+        "ans": 0,
+        "exp": "Gabarito: A. Esse paralelo exato entre a estrutura tripartite da alma e as classes da cidade pertence à teoria de Platão na 'República', não à 'Política' de Aristóteles."
+    },
+    {
+        "q": "5. É correto afirmar que:",
+        "opts": [
+            "Para Aristóteles, a justiça distributiva obedece a uma proporção aritmética e resulta em uma igualdade – entre dano e reparação (indenização, como hoje entendemos na responsabilidade civil), prestação e contraprestação (a equivalência nas transações), o mal causado e a punição atribuída (na responsabilidade penal).",
+            "Para Hobbes, o principal direito natural a ser garantido pela instituição da sociedade civil é a preservação da propriedade.",
+            "Para Rousseau, a república é o governo em que fortuna e virtù estão alinhados em uma forma mista, como em Roma: o senado patrício, os comícios plebeus e a administração dos cônsules.",
+            "Aristóteles é um expoente da visão de liberdade positiva."
+        ],
+        "ans": 3,
+        "exp": "Gabarito: D. Aristóteles vincula a liberdade cívica ao direito ativo de participar nas deliberações e magistraturas da pólis (autodeterminação/liberdade positiva)."
+    },
+    {
+        "q": "6. É correto afirmar que:",
+        "opts": [
+            "Aristóteles apresenta o conhecimento sensível, dado pela aplicação da razão a nossas percepções sensoriais, como subordinado ao conhecimento inteligível, o contato racional com as formas ideais puras.",
+            "A assembleia ateniense foi tomada ao longo da história do pensamento político como modelo de governo misto.",
+            "Republicanos como Maquiavel e Rousseau apresentam uma concepção de liberdade como não-dominação (não sujeição à vontade alheia, pública ou privada, oposta à escravidão), além de participar das decisões públicas, o cidadão precisa ter certa independência econômica.",
+            "A teoria dos direitos naturais de Platão é um antecedente direto dos direitos humanos."
+        ],
+        "ans": 2,
+        "exp": "Gabarito: C. A vertente republicana clássica exige ausência de dominação arbitrária e defende que o cidadão necessita de estabilidade material para evitar a corrupção de seu voto."
+    },
+    {
+        "q": "7. É correto afirmar que:",
+        "opts": [
+            "Para Bentham, não é necessário haver um governo centralizado, pois cada ser humano já tem o impulso natural a evitar a dor e buscar o prazer, daí resultando uma maximização natural da felicidade do maior número, seu grande critério de justiça.",
+            "Locke pregava uma igualdade plena entre os poderes do Estado, sem supremacia do Legislativo sobre o rei.",
+            "Para Kelsen, Platão acabava por pregar uma obediência incondicional ao direito positivo: se bem que não seja a justiça absoluta, as leis da cidade têm uma presunção absoluta de contemplarem uma justiça relativa – as opções de concretização do direito natural feitas por uma elite dirigente sábia.",
+            "Locke é um racionalista, pois, para além da mera empiria, busca a certeza do conhecimento nas 'leis eternas e imutáveis' da própria faculdade da razão, independentes e anteriores a toda experiência."
+        ],
+        "ans": 2,
+        "exp": "Gabarito: C. Em suas críticas juspositivistas, Hans Kelsen sustenta que teorias de direito natural (como a leitura interpretada de Platão) operam legitimando o direito positivo de quem governa."
+    },
+    {
+        "q": "8. É errado afirmar que:",
+        "opts": [
+            "Para Hobbes, pelo contrato social, Estado assume o direito (natural) e não restam direitos aos súditos senão os direitos reconhecidos pelo soberano (direito positivo): sobretudo, o direito à vida, garantido pela proibição da autotutela.",
+            "A Teoria Pura do Direito de Kelsen se baseia sobretudo na Crítica da Razão Pura de Kant, e não em sua Crítica da Razão Prática.",
+            "Para Bentham, o dever moral, seja ético (do ser humano com sua própria consciência), seja jurídico (apoiado por ameaças externas de uso da força), é definido independentemente dos resultados e das consequências práticas e se resume à adesão àquelas normas ou preceitos de conduta que possam ser universalizados: corretos para todo sujeito em toda situação.",
+            "Para Kant, para o cumprimento do dever jurídico, basta a conformidade exterior da conduta à norma – a desconformidade é ameaçada por uma sanção igualmente externa (física); o indivíduo é responsável perante os outros. Já a obrigação moral tem que ser ela mesma o motivo da conduta; afinal, seu descumprimento só é punido por uma sanção interna, da consciência."
+        ],
+        "ans": 2,
+        "exp": "Gabarito: C. Bentham rejeita imperativos universais a priori. Ele é utilitarista; portanto, os deveres dependem estritamente do cálculo empírico de consequências, prazer e dor."
+    },
+    {
+        "q": "9. É errado afirmar que:",
+        "opts": [
+            "Para Rousseau, todo ser humano nasce dotado de direitos que independem de qualquer instituição política ou lei positiva. Esses direitos (vida, liberdade e a propriedade) decorrem da lei da natureza, entendida como uma lei moral racional anterior e superior ao Estado. Portanto, os direitos naturais vinculam o Estado civil.",
+            "Para Locke, Deus entregou a terra à humanidade em comum, mas a natureza não poderia ser útil a nenhum homem específico enquanto permanecesse em estado coletivo. A apropriação individual, mediada pelo trabalho, é o mecanismo pelo qual o bem comum cumpre a finalidade de preservar a vida.",
+            "Para poder proceder ao cálculo utilitarista ou felicífico, Bentham lista sete variáveis da experiência ou sensação de prazer (ou dor): (i) intensidade; (ii) duração; (iii) certeza ou incerteza; (iv) proximidade ou afastamento; (v) fecundidade; (vi) pureza; (vii) medida ou extensão.",
+            "Maquiavel considerava que república era apenas o governo de assembleias democráticas ou aristocráticas."
+        ],
+        "ans": 0,
+        "exp": "Gabarito: A. A descrição clássica dos direitos naturais invioláveis à vida, liberdade e propriedade limitando o poder civil pertence ao modelo contratualista de John Locke, não ao de Rousseau."
+    },
+    {
+        "q": "10. É errado afirmar que:",
+        "opts": [
+            "Para Hobbes, a ordem, a paz civil é o objetivo do Estado, e não a justiça. Além disso, é a autoridade, não a verdade, que faz a lei. Portanto, Hobbes é um precursor filosófico do positivismo jurídico.",
+            "Para Platão, o conhecimento repousaria em princípios anteriores a qualquer experiência, em pressupostos racionais, a priori. A verdade sobre o mundo não é simplesmente um dado inscrito na ordem das coisas; é produto de uma construção.",
+            "Kant coloca o observador, o sujeito cognoscente, como centro da construção do conhecimento, tornando-se o representante máximo da filosofia da consciência.",
+            "Para Maquiavel, apenas a liberdade é capaz de propulsionar expansão e garantir a manutenção do domínio e das riquezas de uma comunidade política."
+        ],
+        "ans": 1,
+        "exp": "Gabarito: B. Para Platão, a verdade das Formas/Ideias tem realidade metafísica objetiva fora da mente humana. Nós a descobrimos via dialética, ela não é uma construção arbitrária ou subjetiva."
+    },
+    // Questões complementares para consolidar o simulado
+    {
+        "q": "No livro I de 'A república', qual é a objeção lógica que Sócrates faz à definição de justiça proposta por Céfalo (falar a verdade e devolver o que se deve)?",
+        "opts": [
+            "Diz que devolver armas a um amigo que enlouqueceu não seria um ato justo, demonstrando que a regra falha no caso concreto.",
+            "Afirma que os deuses não se importam com transações financeiras de mortais.",
+            "Argumenta que a mentira é sempre benéfica na política da cidade.",
+            "Sustenta que as propriedades devem ser integralmente coletivas."
+        ],
+        "ans": 0,
+        "exp": "Sócrates desconstrói a definição rígida mostrando que o contexto e as consequências determinam se a devolução de um item é correta."
+    },
+    {
+        "q": "Na obra de Aristóteles, qual critério matemático define a justiça corretiva nas transações involuntárias (crimes)?",
+        "opts": [
+            "A proporção aritmética pura, onde o juiz busca o meio-termo exato para tirar o ganho ilícito do agressor e reparar a perda da vítima.",
+            "A proporção geométrica baseada no mérito pessoal do cidadão na pólis.",
+            "O cálculo logarítmico da felicidade coletiva.",
+            "A igualdade absoluta por sorteio público."
+        ],
+        "ans": 0,
+        "exp": "A justiça corretiva ignora o mérito das partes e trata os indivíduos como estritamente iguais sob uma igualdade/proporção aritmética."
+    },
+    {
+        "q": "Como Thomas Hobbes define as leis da natureza no 'Leviatã'?",
+        "opts": [
+            "Como teoremas ou ditames da razão que proíbem o homem de fazer o que destrói sua vida.",
+            "Como mandamentos divinos revelados por escrito aos soberanos legítimos.",
+            "Como direitos inalienáveis à acumulação ilimitada de bens imóveis.",
+            "Como os costumes tradicionais passados de geração em geração pelas tribos."
+        ],
+        "ans": 0,
+        "exp": "Para Hobbes, as leis da natureza são conclusões racionais (regras de prudência) que servem para garantir a sobrevivência."
+    }
+  ];
+  
+  let currentQ = 0;
+  let score = 0;
+  let state = 'answering'; 
+  let currentShuffledOpts = [];
+
+  const elDots = document.getElementById('dots-container');
+  const elQText = document.getElementById('q-text');
+  const elOpts = document.getElementById('opts');
+  const elBtn = document.getElementById('btn-action');
+  const elFeedback = document.getElementById('feedback');
+  const elCounter = document.getElementById('q-counter');
+
+  function init() {
+    for(let i=0; i < rawQuestions.length; i++) {
+      const d = document.createElement('div');
+      d.className = 'dot';
+      d.id = 'dot-' + i;
+      elDots.appendChild(d);
+    }
+    loadQuestion();
+  }
+
+  function shuffleArray(array) {
+    const arr = [...array];
+    for (let i = arr.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [arr[i], arr[j]] = [arr[j], arr[i]];
+    }
+    return arr;
+  }
+
+  function loadQuestion() {
+    if (currentQ >= rawQuestions.length) { showResults(); return; }
+    
+    state = 'answering';
+    const q = rawQuestions[currentQ];
+    
+    document.querySelectorAll('.dot').forEach(d => d.classList.remove('active'));
+    document.getElementById('dot-' + currentQ).classList.add('active');
+
+    elCounter.textContent = `Questão ${currentQ + 1} de ${rawQuestions.length}`;
+    elQText.textContent = q.q;
+    
+    elFeedback.style.display = 'none';
+    elBtn.textContent = 'Confirmar resposta';
+    elBtn.disabled = true;
+    elOpts.innerHTML = '';
+    
+    const mappedOpts = q.opts.map((text, idx) => ({ text: text, isCorrect: idx === q.ans }));
+    currentShuffledOpts = shuffleArray(mappedOpts);
+
+    currentShuffledOpts.forEach((optObj, idx) => {
+      const lbl = document.createElement('label');
+      lbl.className = 'option';
+      lbl.id = 'opt-lbl-' + idx;
+      
+      const inp = document.createElement('input');
+      inp.type = 'radio';
+      inp.name = 'option';
+      inp.value = idx;
+      inp.onclick = () => { if(state === 'answering') elBtn.disabled = false; };
+      
+      lbl.appendChild(inp);
+      lbl.appendChild(document.createTextNode(' ' + optObj.text));
+      elOpts.appendChild(lbl);
+    });
+  }
+
+  function handleAction() {
+    if (state === 'answering') {
+      checkAnswer();
+    } else {
+      currentQ++;
+      loadQuestion();
+    }
+  }
+
+  function checkAnswer() {
+    const selected = document.querySelector('input[name="option"]:checked');
+    if (!selected) return;
+    
+    state = 'reviewing';
+    const ansIdx = parseInt(selected.value);
+    const q = rawQuestions[currentQ];
+    const isCorrect = currentShuffledOpts[ansIdx].isCorrect;
+    
+    const correctRenderIdx = currentShuffledOpts.findIndex(o => o.isCorrect);
+
+    document.querySelectorAll('input[name="option"]').forEach(i => i.disabled = true);
+    document.querySelectorAll('.option').forEach(l => l.classList.add('disabled'));
+    
+    document.getElementById('opt-lbl-' + correctRenderIdx).classList.add('correct-ans');
+    if (!isCorrect) {
+      document.getElementById('opt-lbl-' + ansIdx).classList.add('wrong-ans');
+    } else {
+      score++;
+      confetti({ particleCount: 40, spread: 50, origin: { y: 0.75 }, colors: ['#4caf50', '#ffffff', '#2196f3'] });
+    }
+    
+    const dot = document.getElementById('dot-' + currentQ);
+    dot.classList.remove('active');
+    dot.classList.add(isCorrect ? 'correct' : 'wrong');
+    
+    elFeedback.innerHTML = `<strong>${isCorrect ? 'Correto.' : 'Incorreto.'}</strong><br> ${q.exp}`;
+    elFeedback.style.borderLeftColor = isCorrect ? 'var(--dot-correct)' : 'var(--dot-wrong)';
+    elFeedback.style.display = 'block';
+    
+    elBtn.textContent = 'Próxima questão';
+  }
+
+  function showResults() {
+    document.getElementById('quiz-screen').style.display = 'none';
+    document.getElementById('result-screen').style.display = 'block';
+    
+    document.querySelectorAll('.dot').forEach(d => d.classList.remove('active'));
+    
+    const pct = Math.round((score / rawQuestions.length) * 100);
+    document.getElementById('score-val').textContent = pct + '%';
+    document.getElementById('val-correct').textContent = score;
+    document.getElementById('val-wrong').textContent = rawQuestions.length - score;
+  }
+
+  init();
+</script>
+</body>
+</html>
