@@ -13,7 +13,7 @@ This quiz consists of 60 rigorous questions based on the theoretical frameworks 
 
 ## 🚀 Features
 - **Zero dependencies:** Works entirely offline. Just download and open the `.html` file in any modern browser.
-- **Real-time Feedback:** Diamond-shaped navigation bar turns into 🍀 (Correct) or 💔 (Wrong) instantly.
+- **Real-time Feedback**
 - **Dynamic Shuffling:** Alternatives (A, B, C, D) are randomly shuffled on every render to prevent visual memorization.
 - **Comprehensive Explanations:** Every question provides an immediate theoretical comment upon answering.
 
