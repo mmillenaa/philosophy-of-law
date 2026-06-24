@@ -7,15 +7,15 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cardo:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
-<script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
 <style>
   :root {
     --bg: #0f0f10; --bg-card: #16161a; --bg-opt: #222227;
     --text: #e4e4ed; --text-muted: #9494a1;
     --border: #2d2d38; --border-hover: #444456;
-    --accent-blue: #3b82f6; --color-correct: #10b981; --color-wrong: #ef4444;
+    --accent-blue: #3b82f6; --color-correct: #2e7d32; --color-wrong: #c62828;
   }
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
   body { background-color: var(--bg); color: var(--text); padding: 30px 15px; font-family: 'Cardo', Georgia, serif; }
   .container { max-width: 850px; margin: 0 auto; background: var(--bg-card); border: 1px solid var(--border); border-radius: 12px; box-shadow: 0 10px 30px rgba(0,0,0,0.7); overflow: hidden; display: flex; flex-direction: column; }
   
@@ -24,66 +24,58 @@
   .sub-header-text { color: var(--text-muted); font-size: 14px; margin-bottom: 6px; }
   .added-info-text { color: var(--accent-blue); font-size: 13px; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; margin-top: 4px; }
   
-  /* Grid Navegador de Diamantes e Ícones */
-  .nav-container { padding: 20px; background: #0d0d10; border-bottom: 1px solid var(--border); display: flex; flex-wrap: wrap; gap: 8px; justify-content: center; }
+  /* Grid Navegador Compacto e Minimalista (Opção F adaptada) */
+  .nav-container { padding: 15px 20px; background: #0d0d10; border-bottom: 1px solid var(--border); display: flex; flex-wrap: wrap; gap: 4px; justify-content: center; }
   
   .nav-item { 
-    width: 26px; height: 26px; 
-    display: flex; align-items: center; justify-content: center; 
-    cursor: pointer; position: relative; font-size: 11px; font-weight: bold; transition: all 0.25s ease;
+    width: 28px; height: 28px; 
+    display: inline-flex; align-items: center; justify-content: center; 
+    cursor: pointer; font-size: 12px; font-weight: bold; transition: all 0.2s ease;
+    border-radius: 4px; color: #fff; text-decoration: none;
+    font-family: system-ui, sans-serif;
   }
   
-  /* Formato Diamante Padrão / Azul Ativo */
-  .nav-item.unanswered {
-    background: #25252e; border: 1px solid var(--border);
-    transform: rotate(45deg); width: 18px; height: 18px; margin: 4px;
-  }
-  .nav-item.unanswered:hover { border-color: #555566; background: #31313d; }
+  /* Cores discretas para o tracker */
+  .nav-item.unanswered { background: #25252e; border: 1px solid var(--border); color: #888; }
+  .nav-item.unanswered:hover { background: #31313d; color: #fff; }
   
-  .nav-item.active-blue {
-    background: var(--accent-blue) !important; border: none !important;
-    transform: rotate(45deg) scale(1.25); width: 18px; height: 18px; margin: 4px;
-    box-shadow: 0 0 10px var(--accent-blue); z-index: 5;
-  }
-  
-  /* Ícones de Status Substituindo Formato */
-  .nav-item.status-correct { background: none !important; transform: none !important; width: 26px; height: 26px; font-size: 20px; color: var(--color-correct); }
-  .nav-item.status-correct::before { content: "🍀"; }
-  
-  .nav-item.status-wrong { background: none !important; transform: none !important; width: 26px; height: 26px; font-size: 20px; color: var(--color-wrong); }
-  .nav-item.status-wrong::before { content: "💔"; }
+  .nav-item.active-blue { background: var(--accent-blue); border: none; box-shadow: 0 0 8px var(--accent-blue); }
+  .nav-item.status-correct { background: var(--color-correct); border: none; opacity: 0.8; }
+  .nav-item.status-correct:hover { opacity: 1; }
+  .nav-item.status-wrong { background: var(--color-wrong); border: none; opacity: 0.8; }
+  .nav-item.status-wrong:hover { opacity: 1; }
 
-  .content { padding: 35px; flex-grow: 1; }
-  .q-meta { margin-bottom: 15px; color: var(--text-muted); font-size: 13px; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; }
+  .content { padding: 35px; flex-grow: 1; scroll-margin-top: 30px; }
+  .q-meta { margin-bottom: 15px; color: var(--text-muted); font-size: 13px; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; display: flex; justify-content: space-between; align-items: center; }
   .q-text { font-size: 19px; margin-bottom: 25px; line-height: 1.6; color: #ffffff; }
   
-  .options { display: flex; flex-direction: column; gap: 14px; }
-  .option { display: flex; align-items: flex-start; padding: 16px; background: var(--bg-opt); border: 1px solid var(--border); border-radius: 8px; cursor: pointer; transition: background 0.2s, border-color 0.2s; font-size: 16px; line-height: 1.5; }
+  .options { display: flex; flex-direction: column; gap: 10px; }
+  .option { display: flex; align-items: flex-start; padding: 14px 16px; background: var(--bg-opt); border: 1px solid var(--border); border-radius: 6px; cursor: pointer; transition: background 0.2s, border-color 0.2s; font-size: 16px; line-height: 1.5; }
   .option:hover:not(.disabled) { border-color: var(--border-hover); background: #2b2b33; }
   .option input { margin-right: 14px; margin-top: 4px; accent-color: var(--accent-blue); cursor: pointer; width: 17px; height: 17px; }
   .option.disabled { cursor: default; opacity: 0.75; }
-  .option.correct-ans { border-color: var(--color-correct); background: rgba(16, 185, 129, 0.08); color: #a7f3d0; }
-  .option.wrong-ans { border-color: var(--color-wrong); background: rgba(239, 68, 68, 0.08); color: #fca5a5; }
+  .option.correct-ans { border-color: #4caf50; background: rgba(76, 175, 80, 0.1); color: #a7f3d0; }
+  .option.wrong-ans { border-color: #ef4444; background: rgba(239, 68, 68, 0.1); color: #fca5a5; }
   
-  .feedback-box { display: none; margin-top: 25px; padding: 18px; border-radius: 8px; background: #1c1c24; border-left: 4px solid var(--accent-blue); font-size: 15.5px; line-height: 1.6; }
+  .feedback-box { display: none; margin-top: 20px; padding: 16px; border-radius: 6px; background: #1c1c24; border-left: 4px solid var(--accent-blue); font-size: 15.5px; line-height: 1.6; }
   
   /* Painel de Controle de Fluxo - Avançar, Voltar e Confirmar */
-  .control-panel { margin-top: 30px; display: flex; gap: 15px; justify-content: space-between; align-items: center; }
-  .btn-nav { padding: 12px 20px; font-size: 15px; font-weight: 600; background: #222227; color: var(--text); border: 1px solid var(--border); border-radius: 6px; cursor: pointer; transition: 0.2s; font-family: 'Cardo', Georgia, serif; display: flex; align-items: center; gap: 8px; }
+  .control-panel { margin-top: 25px; display: flex; gap: 12px; justify-content: space-between; align-items: center; }
+  .btn-nav { padding: 12px 18px; font-size: 15px; font-weight: 600; background: #222227; color: var(--text); border: 1px solid var(--border); border-radius: 6px; cursor: pointer; transition: 0.2s; font-family: 'Cardo', Georgia, serif; }
   .btn-nav:hover:not(:disabled) { background: #2d2d35; border-color: #555566; }
   .btn-nav:disabled { opacity: 0.3; cursor: not-allowed; }
   
-  .btn-primary { flex-grow: 1; max-width: 400px; padding: 14px; font-size: 16px; font-weight: 700; background: var(--accent-blue); color: #fff; border: none; border-radius: 6px; cursor: pointer; transition: background 0.2s; font-family: 'Cardo', Georgia, serif; box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3); }
+  .btn-primary { flex-grow: 1; max-width: 350px; padding: 14px; font-size: 16px; font-weight: 700; background: var(--accent-blue); color: #fff; border: none; border-radius: 6px; cursor: pointer; transition: background 0.2s; font-family: 'Cardo', Georgia, serif; }
   .btn-primary:hover:not(:disabled) { background: #2563eb; }
-  .btn-primary:disabled { background: #222227; color: #555566; border: 1px solid var(--border); box-shadow: none; cursor: not-allowed; }
+  .btn-primary:disabled { background: #222227; color: #555566; border: 1px solid var(--border); cursor: not-allowed; }
   
   .result-screen { display: none; text-align: center; padding: 40px 20px; }
   .score-val { font-size: 52px; margin: 15px 0; color: var(--accent-blue); font-weight: bold; }
   .stats-row { display: flex; justify-content: center; gap: 40px; margin-bottom: 25px; }
-  .stats-row div { font-size: 18px; display: flex; align-items: center; gap: 6px; }
+  .stats-row div { font-size: 18px; display: flex; align-items: center; gap: 6px; font-family: system-ui, sans-serif; font-weight: 500; }
   
   /* Rodapé Jurídico de Proteção */
-  .footer-disclaimer { padding: 20px 35px; background: #0c0c0e; border-top: 1px solid var(--border); font-size: 11.5px; color: #575766; text-align: justify; line-height: 1.5; }
+  .footer-disclaimer { padding: 20px 35px; background: #0c0c0e; border-top: 1px solid var(--border); font-size: 11.5px; color: #575766; text-align: justify; line-height: 1.5; font-family: system-ui, sans-serif; }
 </style>
 </head>
 <body>
@@ -94,10 +86,14 @@
     <div class="added-info-text">Turma 24 - Simulado elaborado em 24/06/2026</div>
   </div>
   
+  <!-- Tracker Grid Minimalista (Sem vãos longos, quadrados simples) -->
   <div class="nav-container" id="nav-container"></div>
   
   <div class="content" id="quiz-screen">
-    <div class="q-meta" id="q-counter">Questão 1 de 60</div>
+    <div class="q-meta">
+        <span id="q-counter">Questão 1 de 60</span>
+        <span style="color: var(--accent-blue); cursor: pointer;" onclick="showResults(true)">Finalizar ➔</span>
+    </div>
     <div class="q-text" id="q-text">Carregando questão...</div>
     <div class="options" id="opts"></div>
     <div class="feedback-box" id="feedback"></div>
@@ -110,16 +106,16 @@
   </div>
   
   <div class="content result-screen" id="result-screen">
-    <h2>Avaliação do Simulado Concluída</h2>
+    <h2>Avaliação concluída</h2>
     <div class="score-val" id="score-val">0%</div>
     <div class="stats-row">
-      <div style="color: var(--color-correct);">Acertos (🍀): <span id="val-correct">0</span></div>
-      <div style="color: var(--color-wrong);">Erros (💔): <span id="val-wrong">0</span></div>
+      <div style="color: #4caf50;">Acertos: <span id="val-correct">0</span></div>
+      <div style="color: #ef4444;">Erros: <span id="val-wrong">0</span></div>
     </div>
-    <p style="color: var(--text-muted); font-size: 15px; margin-bottom: 30px; max-width: 500px; margin-left: auto; margin-right: auto;">
-      A revisão detalhada das respostas salvas pode ser feita navegando diretamente através dos símbolos de diamantes e ícones no topo da tela.
+    <p style="color: var(--text-muted); font-size: 15px; margin-bottom: 20px; max-width: 600px; margin-left: auto; margin-right: auto; line-height: 1.5;">
+      Clique nos blocos vermelhos na barra de navegação superior para voltar diretamente à questão que você errou e ler o comentário explicativo.
     </p>
-    <button class="btn-primary" onclick="location.reload()" style="max-width: 250px;">Reiniciar Simulado</button>
+    <button class="btn-primary" onclick="location.reload()" style="max-width: 250px; margin-bottom: 20px;">Reiniciar Simulado</button>
   </div>
   
   <div class="footer-disclaimer">
@@ -144,12 +140,21 @@
   function init() {
     elNav.innerHTML = '';
     for(let i=0; i < rawQuestions.length; i++) {
-      const d = document.createElement('div');
-      d.id = 'nav-item-' + i;
-      d.className = 'nav-item unanswered';
-      d.title = `Ir para Questão ${i + 1}`;
-      d.onclick = () => { jumpToQuestion(i); };
-      elNav.appendChild(d);
+      const a = document.createElement('a');
+      a.id = 'nav-item-' + i;
+      a.className = 'nav-item unanswered';
+      a.textContent = i + 1;
+      a.title = `Ir para Questão ${i + 1}`;
+      
+      // Clique rola para a tela de questão se tiver vindo do resultado
+      a.onclick = (e) => {
+          e.preventDefault();
+          document.getElementById('result-screen').style.display = 'none';
+          document.getElementById('quiz-screen').style.display = 'block';
+          jumpToQuestion(i);
+          document.getElementById('quiz-screen').scrollIntoView({behavior: "smooth"});
+      };
+      elNav.appendChild(a);
     }
     loadQuestion();
   }
@@ -169,11 +174,11 @@
     elFeedback.style.display = 'none';
     elOpts.innerHTML = '';
     
-    // Atualizar botões laterais de controle de navegação comum
+    // Atualizar botões laterais de controle
     elPrev.disabled = (currentQ === 0);
     elNext.textContent = (currentQ === rawQuestions.length - 1) ? "Finalizar 🏁" : "Avançar →";
     
-    // Resetar classes visuais da barra de diamantes respeitando as respostas
+    // Resetar classes visuais da barra de blocos numéricos
     for(let i=0; i < rawQuestions.length; i++) {
       const item = document.getElementById('nav-item-' + i);
       item.className = 'nav-item';
@@ -183,14 +188,21 @@
         item.classList.add('unanswered');
       }
     }
-    // Adicionar destaque de posição atual ativa (diamante azul por cima se ainda não respondida)
+    // Destaque de posição atual (azul) se ainda não respondida ou se está sendo visualizada agora
     const currentItem = document.getElementById('nav-item-' + currentQ);
     if (userAnswers[currentQ] === null) {
       currentItem.classList.remove('unanswered');
       currentItem.classList.add('active-blue');
+    } else {
+      // Mesmo respondida, damos um leve box-shadow branco para indicar onde estamos lendo
+      currentItem.style.boxShadow = "0 0 0 2px #fff";
     }
 
-    // Se já foi respondida, renderizar em modo revisão bloqueado
+    // Remove box-shadow branco dos outros
+    for(let i=0; i < rawQuestions.length; i++) {
+        if (i !== currentQ) document.getElementById('nav-item-' + i).style.boxShadow = "none";
+    }
+
     if (userAnswers[currentQ] !== null) {
       renderReviewMode();
     } else {
@@ -203,11 +215,9 @@
     elBtn.textContent = 'Confirmar Resposta';
     elBtn.disabled = true;
     
-    // Gerar novas alternativas embaralhadas para esta tentativa fresca
     const mappedOpts = q.opts.map((text, idx) => ({ text: text, isCorrect: idx === q.ans }));
     const shuffled = shuffleArray(mappedOpts);
     
-    // Guardar temporariamente a estrutura gerada nas opções
     this.currentShuffledOpts = shuffled;
 
     shuffled.forEach((optObj, idx) => {
@@ -240,12 +250,12 @@
     });
 
     elFeedback.innerHTML = `<strong>${ansData.isCorrect ? 'Você acertou.' : 'Você errou.'}</strong><br> ${q.exp}`;
-    elFeedback.style.borderLeftColor = ansData.isCorrect ? 'var(--color-correct)' : 'var(--color-wrong)';
+    elFeedback.style.borderLeftColor = ansData.isCorrect ? '#4caf50' : '#ef4444';
     elFeedback.style.display = 'block';
   }
 
   function handleAction() {
-    if (userAnswers[currentQ] !== null) return; // segurança
+    if (userAnswers[currentQ] !== null) return; 
     const selected = document.querySelector('input[name="option"]:checked');
     if (!selected) return;
     
@@ -253,28 +263,26 @@
     const chosenOpt = this.currentShuffledOpts[ansIdx];
     const isCorrect = chosenOpt.isCorrect;
     
-    // Salvar resposta definitivamente no array de estado
     userAnswers[currentQ] = {
       selectedShuffledIdx: ansIdx,
       isCorrect: isCorrect,
       shuffledOptsArray: this.currentShuffledOpts
     };
     
-    // Efeito visual imediato
     const correctRenderIdx = this.currentShuffledOpts.findIndex(o => o.isCorrect);
     document.querySelectorAll('input[name="option"]').forEach(i => i.disabled = true);
     document.querySelectorAll('.option').forEach(l => l.classList.add('disabled'));
     
     document.getElementById('opt-lbl-' + correctRenderIdx).classList.add('correct-ans');
     if (!isCorrect) { document.getElementById('opt-lbl-' + ansIdx).classList.add('wrong-ans'); } 
-    else { confetti({ particleCount: 45, spread: 60, origin: { y: 0.8 }, colors: ['#10b981', '#ffffff', '#3b82f6'] }); }
     
     const item = document.getElementById('nav-item-' + currentQ);
     item.className = 'nav-item ' + (isCorrect ? 'status-correct' : 'status-wrong');
+    item.style.boxShadow = "0 0 0 2px #fff";
     
     const q = rawQuestions[currentQ];
     elFeedback.innerHTML = `<strong>${isCorrect ? 'Correto!' : 'Incorreto.'}</strong><br> ${q.exp}`;
-    elFeedback.style.borderLeftColor = isCorrect ? 'var(--color-correct)' : 'var(--color-wrong)';
+    elFeedback.style.borderLeftColor = isCorrect ? '#4caf50' : '#ef4444';
     elFeedback.style.display = 'block';
     
     elBtn.textContent = 'Registrado';
@@ -283,7 +291,6 @@
 
   function navigateQ(step) {
     if (step === 1 && currentQ === rawQuestions.length - 1) {
-      // Validar encerramento
       showResults();
       return;
     }
@@ -298,19 +305,13 @@
     loadQuestion();
   }
 
-  function showResults() {
+  function showResults(force = false) {
     document.getElementById('quiz-screen').style.display = 'none';
     document.getElementById('result-screen').style.display = 'block';
     
-    // Forçar render final correto de todos os ícones da barra superior
+    // Tirar a borda branca de seleção ativa do topo
     for(let i=0; i < rawQuestions.length; i++) {
-      const item = document.getElementById('nav-item-' + i);
-      item.className = 'nav-item';
-      if (userAnswers[i] !== null) {
-        item.classList.add(userAnswers[i].isCorrect ? 'status-correct' : 'status-wrong');
-      } else {
-        item.classList.add('unanswered');
-      }
+        document.getElementById('nav-item-' + i).style.boxShadow = "none";
     }
     
     let totalCorrect = 0;
@@ -322,14 +323,10 @@
       }
     });
     
-    const pct = Math.round((totalCorrect / rawQuestions.length) * 100);
+    let pct = answeredCount > 0 ? Math.round((totalCorrect / rawQuestions.length) * 100) : 0;
     document.getElementById('score-val').textContent = pct + '%';
     document.getElementById('val-correct').textContent = totalCorrect;
-    document.getElementById('val-wrong').textContent = rawQuestions.length - totalCorrect;
-    
-    if (pct >= 70) {
-      confetti({ particleCount: 150, spread: 80, origin: { y: 0.6 } });
-    }
+    document.getElementById('val-wrong').textContent = answeredCount - totalCorrect;
   }
 
   init();
