@@ -3,293 +3,398 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Simulado Avançado — Filosofia do Direito I (60 Questões)</title>
+<title>Simulado Avançado — Filosofia do Direito I</title>
 <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
- — Filosofia do Direito I (60 Questões)</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cardo:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
 <style>
   :root {
-    --bg: #0f0f10; --bg-card: #16161a; --bg-opt: #222227;
-    --text: #e4e4ed; --text-muted: #9494a1;
-    --border: #2d2d38; --border-hover: #444456;
-    --accent-blue: #3b82f6; --color-correct: #2e7d32; --color-wrong: #c62828;
+    --bg: #0f0f10; 
+    --bg-card: #16161a; 
+    --bg-opt: #222227;
+    --text: #e4e4ed; 
+    --text-muted: #9494a1;
+    --border: #2d2d38; 
+    --border-hover: #444456;
+    --accent-blue: #3b82f6; 
+    --color-correct: #2e7d32; 
+    --color-wrong: #c62828;
   }
+  
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-  html { scroll-behavior: smooth; }
-  body { background-color: var(--bg); color: var(--text); padding: 30px 15px; font-family: 'Cardo', Georgia, serif; }
-  .container { max-width: 850px; margin: 0 auto; background: var(--bg-card); border: 1px solid var(--border); border-radius: 12px; box-shadow: 0 10px 30px rgba(0,0,0,0.7); overflow: hidden; display: flex; flex-direction: column; }
   
-  .header { padding: 30px 35px 25px 35px; background: #111114; border-bottom: 1px solid var(--border); text-align: center; }
-  .header h1 { font-size: 28px; color: #ffffff; margin-bottom: 8px; font-weight: 700; letter-spacing: -0.5px; }
-  .sub-header-text { color: var(--text-muted); font-size: 14px; margin-bottom: 6px; }
-  .added-info-text { color: var(--accent-blue); font-size: 13px; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; margin-top: 4px; }
-  
-  /* Grid Navegador Compacto e Minimalista (Opção F adaptada) */
-  .nav-container { padding: 15px 20px; background: #0d0d10; border-bottom: 1px solid var(--border); display: flex; flex-wrap: wrap; gap: 4px; justify-content: center; }
-  
-  .nav-item { 
-    width: 28px; height: 28px; 
-    display: inline-flex; align-items: center; justify-content: center; 
-    cursor: pointer; font-size: 12px; font-weight: bold; transition: all 0.2s ease;
-    border-radius: 4px; color: #fff; text-decoration: none;
-    font-family: system-ui, sans-serif;
+  body { 
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; 
+    background-color: var(--bg); 
+    color: var(--text); 
+    /* Reduzido para compactar as linhas */
+    line-height: 1.4; 
+    padding: 15px; 
   }
-  
-  /* Cores discretas para o tracker */
-  .nav-item.unanswered { background: #25252e; border: 1px solid var(--border); color: #888; }
-  .nav-item.unanswered:hover { background: #31313d; color: #fff; }
-  
-  .nav-item.active-blue { background: var(--accent-blue); border: none; box-shadow: 0 0 8px var(--accent-blue); }
-  .nav-item.status-correct { background: var(--color-correct); border: none; opacity: 0.8; }
-  .nav-item.status-correct:hover { opacity: 1; }
-  .nav-item.status-wrong { background: var(--color-wrong); border: none; opacity: 0.8; }
-  .nav-item.status-wrong:hover { opacity: 1; }
 
-  .content { padding: 35px; flex-grow: 1; scroll-margin-top: 30px; }
-  .q-meta { margin-bottom: 15px; color: var(--text-muted); font-size: 13px; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; display: flex; justify-content: space-between; align-items: center; }
-  .q-text { font-size: 19px; margin-bottom: 25px; line-height: 1.6; color: #ffffff; }
+  .container {
+    max-width: 900px; 
+    margin: 0 auto; 
+    background: var(--bg-card); 
+    padding: 20px 25px; 
+    border-radius: 8px; 
+    box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+  }
+
+  /* --- CABEÇALHO COMPACTO LADO A LADO --- */
+  .header-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid var(--border);
+    padding-bottom: 12px;
+    margin-bottom: 15px;
+    flex-wrap: wrap; /* Permite quebrar em telas de celular */
+    gap: 15px;
+  }
+
+  .header-container h1 {
+    font-family: 'Cardo', serif; 
+    font-size: 24px; 
+    color: var(--accent-blue); 
+    margin: 0;
+    flex: 1;
+    min-width: 300px;
+  }
+
+  .header-container .subtitle {
+    font-size: 11px; 
+    color: var(--text-muted); 
+    text-align: right;
+    line-height: 1.3;
+  }
+
+  /* --- GRID DE QUESTÕES (MÁX 2 OU 3 LINHAS) --- */
+  .nav-grid { 
+    display: grid; 
+    /* 2 linhas de 30 para monitores */
+    grid-template-columns: repeat(30, 1fr); 
+    gap: 4px; 
+    margin-bottom: 15px; 
+  }
+  @media (max-width: 800px) {
+    .nav-grid { grid-template-columns: repeat(20, 1fr); } /* 3 linhas de 20 para tablets */
+  }
+  @media (max-width: 500px) {
+    .nav-grid { grid-template-columns: repeat(12, 1fr); } /* Celulares (adaptável) */
+    .header-container .subtitle { text-align: left; }
+  }
+
+  .nav-item { 
+    background-color: var(--bg-opt); 
+    border: 1px solid var(--border); 
+    border-radius: 4px; 
+    color: var(--text-muted); 
+    cursor: pointer; 
+    font-size: 11px; 
+    font-weight: bold; 
+    text-align: center; 
+    padding: 3px 0; 
+    transition: all 0.2s ease; 
+  }
+  .nav-item:hover { background-color: var(--border-hover); color: var(--text); }
+  .nav-item.active { border-color: var(--text); color: var(--text); background-color: #333; }
+  .nav-item.correct { background-color: var(--color-correct); color: #fff; border-color: var(--color-correct); }
+  .nav-item.wrong { background-color: var(--color-wrong); color: #fff; border-color: var(--color-wrong); }
+
+  /* --- ESTRUTURA DO QUIZ --- */
+  .q-header { display: flex; justify-content: space-between; margin-bottom: 10px; font-weight: bold; font-size: 14px; }
+  .q-text { font-size: 15px; margin-bottom: 15px; font-family: 'Cardo', serif; text-align: justify; }
   
-  .options { display: flex; flex-direction: column; gap: 10px; }
-  .option { display: flex; align-items: flex-start; padding: 14px 16px; background: var(--bg-opt); border: 1px solid var(--border); border-radius: 6px; cursor: pointer; transition: background 0.2s, border-color 0.2s; font-size: 16px; line-height: 1.5; }
-  .option:hover:not(.disabled) { border-color: var(--border-hover); background: #2b2b33; }
-  .option input { margin-right: 14px; margin-top: 4px; accent-color: var(--accent-blue); cursor: pointer; width: 17px; height: 17px; }
-  .option.disabled { cursor: default; opacity: 0.75; }
-  .option.correct-ans { border-color: #4caf50; background: rgba(76, 175, 80, 0.1); color: #a7f3d0; }
-  .option.wrong-ans { border-color: #ef4444; background: rgba(239, 68, 68, 0.1); color: #fca5a5; }
+  .options { display: flex; flex-direction: column; gap: 6px; margin-bottom: 15px; }
+  .option { 
+    background: var(--bg-opt); 
+    border: 1px solid var(--border); 
+    border-radius: 6px; 
+    padding: 10px 12px; 
+    cursor: pointer; 
+    transition: 0.2s; 
+    display: flex; 
+    gap: 10px; 
+    font-size: 14px;
+    align-items: flex-start;
+  }
+  .option:hover:not(.disabled) { border-color: var(--accent-blue); background: #2a2a35; }
+  .option.selected { border-color: var(--accent-blue); background: rgba(59, 130, 246, 0.1); }
+  .option.disabled { cursor: default; opacity: 0.8; }
   
-  .feedback-box { display: none; margin-top: 20px; padding: 16px; border-radius: 6px; background: #1c1c24; border-left: 4px solid var(--accent-blue); font-size: 15.5px; line-height: 1.6; }
+  .option.correct-ans { border-color: var(--color-correct); background: rgba(46, 125, 50, 0.15); box-shadow: 0 0 5px rgba(46,125,50,0.3); }
+  .option.wrong-ans { border-color: var(--color-wrong); background: rgba(198, 40, 40, 0.15); }
   
-  /* Painel de Controle de Fluxo - Avançar, Voltar e Confirmar */
-  .control-panel { margin-top: 25px; display: flex; gap: 12px; justify-content: space-between; align-items: center; }
-  .btn-nav { padding: 12px 18px; font-size: 15px; font-weight: 600; background: #222227; color: var(--text); border: 1px solid var(--border); border-radius: 6px; cursor: pointer; transition: 0.2s; font-family: 'Cardo', Georgia, serif; }
-  .btn-nav:hover:not(:disabled) { background: #2d2d35; border-color: #555566; }
-  .btn-nav:disabled { opacity: 0.3; cursor: not-allowed; }
+  .opt-letter { font-weight: bold; color: var(--accent-blue); min-width: 20px; }
+
+  .actions { display: flex; gap: 10px; justify-content: flex-end; margin-top: 15px; border-top: 1px solid var(--border); padding-top: 15px; }
+  button { 
+    background: var(--bg-opt); 
+    color: var(--text); 
+    border: 1px solid var(--border); 
+    padding: 8px 16px; 
+    border-radius: 6px; 
+    cursor: pointer; 
+    font-weight: bold; 
+    transition: 0.2s; 
+    font-size: 13px;
+  }
+  button:hover:not(:disabled) { border-color: var(--accent-blue); background: #2a2a35; }
+  button:disabled { opacity: 0.5; cursor: not-allowed; }
+  button.primary { background: var(--accent-blue); color: #fff; border: none; }
+  button.primary:hover:not(:disabled) { background: #2563eb; }
+
+  .explanation {
+    display: none;
+    background: rgba(59, 130, 246, 0.05);
+    border-left: 3px solid var(--accent-blue);
+    padding: 12px 15px;
+    margin-top: 15px;
+    border-radius: 0 6px 6px 0;
+    font-size: 13px;
+    color: #cbd5e1;
+  }
+
+  /* --- ÁREA DE RESULTADOS & ADD-ON INTERATIVO --- */
+  #result-screen { display: none; text-align: center; }
+  .score-box { font-size: 42px; font-weight: bold; color: var(--accent-blue); margin: 15px 0; font-family: 'Cardo', serif; }
   
-  .btn-primary { flex-grow: 1; max-width: 350px; padding: 14px; font-size: 16px; font-weight: 700; background: var(--accent-blue); color: #fff; border: none; border-radius: 6px; cursor: pointer; transition: background 0.2s; font-family: 'Cardo', Georgia, serif; }
-  .btn-primary:hover:not(:disabled) { background: #2563eb; }
-  .btn-primary:disabled { background: #222227; color: #555566; border: 1px solid var(--border); cursor: not-allowed; }
+  .interactive-addon { margin-top: 30px; border-top: 1px dashed var(--border); padding-top: 25px; text-align: left; }
+  .essay-section { background: #1a1a24; padding: 20px; border-radius: 8px; margin-bottom: 25px; border-left: 4px solid var(--accent-blue); }
+  .essay-section h2 { color: #fff; margin-bottom: 10px; font-size: 18px; }
+  .essay-section p { margin-bottom: 10px; line-height: 1.4; color: #d1d1d6; font-size: 14px; }
   
-  .result-screen { display: none; text-align: center; padding: 40px 20px; }
-  .score-val { font-size: 52px; margin: 15px 0; color: var(--accent-blue); font-weight: bold; }
-  .stats-row { display: flex; justify-content: center; gap: 40px; margin-bottom: 25px; }
-  .stats-row div { font-size: 18px; display: flex; align-items: center; gap: 6px; font-family: system-ui, sans-serif; font-weight: 500; }
+  /* Joguinho de pares */
+  .match-game-container { background: #16161a; padding: 20px; border-radius: 8px; border: 1px solid var(--border); }
+  .match-game-title { text-align: center; color: var(--accent-blue); margin-bottom: 15px; font-size: 18px; font-weight: bold; }
   
-  /* Rodapé Jurídico de Proteção */
-  .footer-disclaimer { padding: 20px 35px; background: #0c0c0e; border-top: 1px solid var(--border); font-size: 11.5px; color: #575766; text-align: justify; line-height: 1.5; font-family: system-ui, sans-serif; }
+  .game-columns { display: flex; gap: 20px; flex-wrap: wrap; }
+  .game-column { flex: 1; min-width: 250px; display: flex; flex-direction: column; gap: 8px; }
+  .game-column h3 { font-size: 14px; color: var(--text-muted); margin-bottom: 5px; text-transform: uppercase; letter-spacing: 1px; text-align: center; }
+  
+  .match-card {
+    background: var(--bg-opt);
+    border: 2px solid var(--border);
+    border-radius: 6px;
+    padding: 10px;
+    cursor: pointer;
+    font-size: 13px;
+    text-align: center;
+    transition: all 0.2s;
+    user-select: none;
+    color: var(--text);
+  }
+  .match-card:hover { border-color: var(--accent-blue); }
+  .match-card.selected { border-color: #f59e0b; background: rgba(245, 158, 11, 0.1); color: #fff; transform: scale(1.02); }
+  .match-card.matched { border-color: var(--color-correct); background: rgba(46, 125, 50, 0.2); color: #4ade80; cursor: default; pointer-events: none; }
+  .match-card.error { border-color: var(--color-wrong); background: rgba(198, 40, 40, 0.2); color: #f87171; animation: shake 0.4s; }
+  
+  @keyframes shake {
+    0% { transform: translateX(0); }
+    25% { transform: translateX(-5px); }
+    50% { transform: translateX(5px); }
+    75% { transform: translateX(-5px); }
+    100% { transform: translateX(0); }
+  }
 </style>
 </head>
 <body>
+
 <div class="container">
-  <div class="header">
-    <h1>Simulado de Filosofia do Direito I</h1>
-    <div class="sub-header-text">Material acadêmico de apoio às aulas do prof. dr. Lucas Fucci Amato | Organizado por Millena Miranda Franco</div>
-    <div class="added-info-text">Turma 24 - Simulado elaborado em 24/06/2026</div>
-  </div>
-  
-  <!-- Tracker Grid Minimalista (Sem vãos longos, quadrados simples) -->
-  <div class="nav-container" id="nav-container"></div>
-  
-  <div class="content" id="quiz-screen">
-    <div class="q-meta">
-        <span id="q-counter">Questão 1 de 60</span>
-        <span style="color: var(--accent-blue); cursor: pointer;" onclick="showResults(true)">Finalizar ➔</span>
+  <header class="header-container">
+    <h1>Simulado Avançado — Filosofia do Direito I</h1>
+    <div class="subtitle">
+      Material acadêmico de apoio às aulas do prof. dr. Lucas Fucci Amato | Organizado por Millena Miranda Franco<br>
+      Turma 24 - Simulado elaborado em 24/06/2026
     </div>
-    <div class="q-text" id="q-text">Carregando questão...</div>
-    <div class="options" id="opts"></div>
-    <div class="feedback-box" id="feedback"></div>
+  </header>
+
+  <div id="quiz-screen">
+    <div class="nav-grid" id="nav-grid"></div>
+
+    <div class="q-header">
+      <span id="q-counter">Questão 1 de 60</span>
+      <span style="color: var(--accent-blue); cursor: pointer;" onclick="showResults(true)">Encerrar Simulado</span>
+    </div>
+
+    <div class="q-text" id="q-text">Carregando...</div>
     
-    <div class="control-panel">
-      <button class="btn-nav" id="btn-prev" onclick="navigateQ(-1)" disabled>← Voltar</button>
-      <button class="btn-primary" id="btn-action" onclick="handleAction()" disabled>Confirmar Resposta</button>
-      <button class="btn-nav" id="btn-next" onclick="navigateQ(1)">Avançar →</button>
+    <div class="options" id="options-container"></div>
+    
+    <div class="explanation" id="explanation"></div>
+
+    <div class="actions">
+      <button id="btn-prev" onclick="navigateQ(-1)" disabled>Anterior</button>
+      <button id="btn-confirm" onclick="confirmAnswer()" class="primary">Confirmar Resposta</button>
+      <button id="btn-next" onclick="navigateQ(1)">Próxima</button>
     </div>
   </div>
-  
-  <div class="content result-screen" id="result-screen">
-    <h2>Avaliação concluída</h2>
-    <div class="score-val" id="score-val">0%</div>
-    <div class="stats-row">
-      <div style="color: #4caf50;">Acertos: <span id="val-correct">0</span></div>
-      <div style="color: #ef4444;">Erros: <span id="val-wrong">0</span></div>
+
+  <div id="result-screen">
+    <h2>Resultado do Simulado</h2>
+    <div class="score-box" id="score-val">0%</div>
+    <p style="color: var(--text-muted); font-size: 15px; margin-bottom: 20px;">Você acertou <span id="val-correct" style="color:var(--color-correct); font-weight:bold;">0</span> de <span id="val-total">60</span> questões.</p>
+    <button onclick="location.reload()" class="primary">Refazer Simulado</button>
+
+    <div class="interactive-addon">
+      
+      <div class="essay-section">
+        <h2>Mini-Redação: A Democracia Moderna, o Pragmatismo e os Críticos de Hobbes</h2>
+        <p>Para dominar os autores em exames de Filosofia do Direito, é fundamental entender qual "problema" ou "inimigo" cada um tentava enfrentar em sua época.</p>
+        <p><strong>1. O Paradigma Hobbesiano e seus Críticos:</strong> <b>Thomas Hobbes</b> via o Estado de Natureza como guerra perpétua e considerava a democracia apenas um estágio temporário (uma perigosa "aristocracia de oradores") até a formação do soberano absoluto. Em resposta, <b>Baruch Espinosa</b> o contraria, afirmando que a democracia é a forma superior e definitiva, pois usa a razão coletiva para conter apetites. <b>Samuel Pufendorf</b> também rebate Hobbes, afirmando que o homem possui sociabilidade natural (e não apenas o medo recíproco).</p>
+      </div>
+
+      <div class="match-game-container" id="match-game-block">
+        <div class="match-game-title">Fixação Rápida: Ligue o Autor à Ideia</div>
+        <p style="text-align: center; color: var(--text-muted); font-size: 12px; margin-bottom: 15px;">Clique em um conceito à esquerda e depois no autor correspondente à direita.</p>
+        
+        <div class="game-columns">
+          <div class="game-column" id="col-concepts">
+            <h3>Conceitos Clave</h3>
+            </div>
+          <div class="game-column" id="col-authors">
+            <h3>Autores</h3>
+            </div>
+        </div>
+      </div>
+      
     </div>
-    <p style="color: var(--text-muted); font-size: 15px; margin-bottom: 20px; max-width: 600px; margin-left: auto; margin-right: auto; line-height: 1.5;">
-      Clique nos blocos vermelhos na barra de navegação superior para voltar diretamente à questão que você errou e ler o comentário explicativo.
-    </p>
-    <button class="btn-primary" onclick="location.reload()" style="max-width: 250px; margin-bottom: 20px;">Reiniciar</button>
-  </div>
-  
-  <div class="footer-disclaimer">
-    <strong>AVISO DE ISENÇÃO DE RESPONSABILIDADE JURÍDICA (DISCLAIMER):</strong> Este simulado interativo constitui uma ferramenta desenvolvida de forma autônoma e independente para fins estritamente privados, de estudo complementar, revisão acadêmica e fixação de conteúdo pessoal de seus usuários. Todo o banco de dados de questões e comentários foi livremente parafraseado, adaptado e reformulado com base em anotações de aulas e resumos de leitura de materiais acadêmicos referentes à disciplina DFD0313 (Filosofia do Direito I), não guardando qualquer relação de cópia literal, reprodução não autorizada, vínculo institucional oficial ou aprovação formal com o corpo docente regente, departamentos ou com a instituição de ensino de origem. A idealizadora e desenvolvedora não fornecem garantias expressas ou implícitas acerca da exatidão absoluta, infalibilidade pedagógica ou correspondência idêntica com exames e avaliações institucionais presentes ou futuros, eximindo-se integralmente de qualquer responsabilidade civil, administrativa ou jurídica por eventuais insucessos acadêmicos, reprovações, omissões ou interpretações divergentes efetuadas em exames oficiais. O uso do software dá-se sob conta e risco exclusivo do estudante.
-  </div>
+    </div>
 </div>
 
 <script>
-  const rawQuestions = [{"q": "1. Assinale a alternativa que apresenta uma proposi\u00e7\u00e3o incorreta sobre os autores contratualistas e modernos:", "opts": ["A formula\u00e7\u00e3o de propriedade em John Locke estabelece uma conex\u00e3o direta entre o direito de apropria\u00e7\u00e3o privada e o esfor\u00e7o do trabalho individual sobre os recursos comuns.", "A liberdade sob a perspectiva lockeana pode ser compreendida fundamentalmente sob o prisma da n\u00e3o-interfer\u00eancia.", "De acordo com vertentes libert\u00e1rias e neoliberais da tese de Locke, o surgimento da moeda teria superado os limites naturais de acumula\u00e7\u00e3o patrimonial.", "Locke desconsiderou completamente a necessidade de deixar bens em volume e qualidade equivalentes para assegurar a subsist\u00eancia dos demais membros da coletividade."], "ans": 3, "exp": "Gabarito: D. Locke formulou explicitamente a 'cl\u00e1usula lockeana' (Lockean proviso), exigindo que a apropria\u00e7\u00e3o individual deixasse recursos suficientes e de igual qualidade para os outros."}, {"q": "2. No campo das divis\u00f5es fundamentais da filosofia, assinale a op\u00e7\u00e3o errada:", "opts": ["A ontologia dedica-se ao exame filos\u00f3fico da estrutura da realidade e dos entes que constituem o mundo.", "A epistemologia constitui o campo de investiga\u00e7\u00e3o voltado \u00e0s condi\u00e7\u00f5es de possibilidade e limites do conhecimento humano.", "A \u00e9tica desvincula-se dos ramos da raz\u00e3o pr\u00e1tica, voltando-se unicamente \u00e0 contempla\u00e7\u00e3o te\u00f3rica.", "A obra 'Cr\u00edtica da Raz\u00e3o Pura' de Immanuel Kant representa um divisor de \u00e1guas para a epistemologia na modernidade."], "ans": 2, "exp": "Gabarito: C. A \u00e9tica \u00e9, por excel\u00eancia, um dos pilares da raz\u00e3o pr\u00e1tica, uma vez que se ocupa normativamente das a\u00e7\u00f5es e do comportamento humano volunt\u00e1rio."}, {"q": "3. Em rela\u00e7\u00e3o ao pensamento \u00e9tico-jur\u00eddico de Immanuel Kant, \u00e9 correto afirmar:", "opts": ["O imperativo categ\u00f3rico kantiano restringe-se ao foro \u00edntimo da moral, carecendo de proje\u00e7\u00e3o ou utilidade no campo do Direito.", "Kant adota premissas utilitaristas ao estruturar sua vis\u00e3o de justi\u00e7a, priorizando o bem-estar e a felicidade da maioria.", "O contrato social em Kant opera como um dogma hist\u00f3rico imut\u00e1vel que impede o cidad\u00e3o de questionar ou avaliar criticamente as leis criadas pelo legislador soberano.", "A dignidade humana pressup\u00f5e, na arquitetura kantiana, que todo indiv\u00edduo deve ser tratado sempre como um fim em si mesmo, e jamais reduzido a mero instrumento de interesses coletivos."], "ans": 3, "exp": "Gabarito: D. Esta \u00e9 a segunda formula\u00e7\u00e3o cl\u00e1ssica do Imperativo Categ\u00f3rico (f\u00f3rmula da humanidade como fim em si mesma)."}, {"q": "4. No que diz respeito \u00e0 filosofia cl\u00e1ssica grega (Plat\u00e3o e Arist\u00f3teles), identifique a proposi\u00e7\u00e3o incorreta:", "opts": ["Arist\u00f3teles estrutura na obra 'A Pol\u00edtica' um modelo tripartite id\u00eantico ao da alma humana, defendendo que os fil\u00f3sofos governem os guerreiros e produtores.", "A justi\u00e7a distributiva aristot\u00e9lica orienta a partilha de honrarias, cargos e riquezas comuns entre os integrantes da p\u00f3lis jur\u00eddica.", "A eudaimonia em Arist\u00f3teles fundamenta uma \u00e9tica das virtudes voltada ao pleno desenvolvimento das capacidades racionais e morais do ser humano.", "A no\u00e7\u00e3o de justi\u00e7a geral ou legal em Arist\u00f3teles pode abranger preceitos normativos que decorrem tanto da legisla\u00e7\u00e3o positiva quanto da pr\u00f3pria ordem natural das coisas."], "ans": 0, "exp": "Gabarito: A. O modelo tripartite da alma projetado na cidade (magistrados-fil\u00f3sofos, guardi\u00f5es e artes\u00e3os) \u00e9 a tese central da 'Rep\u00fablica' de Plat\u00e3o, e n\u00e3o de Arist\u00f3teles."}, {"q": "5. Avalie as afirma\u00e7\u00f5es sobre os fil\u00f3sofos pol\u00edticos cl\u00e1ssicos e modernos e selecione a correta:", "opts": ["A justi\u00e7a distributiva em Arist\u00f3teles pauta-se por uma igualdade estritamente aritm\u00e9tica, aplic\u00e1vel \u00e0s repara\u00e7\u00f5es de danos contratuais.", "Thomas Hobbes defende que a salvaguarda absoluta da propriedade privada preexistente \u00e9 a principal raz\u00e3o para a ren\u00fancia ao estado de natureza.", "Jean-Jacques Rousseau aponta a Rep\u00fablica Romana \u2014 com seus c\u00f4nsules, senado e com\u00edcios \u2014 como o exemplo supremo de governo misto absolutista.", "Arist\u00f3teles figura teoricamente como um dos precursores da linhagem da liberdade positiva."], "ans": 3, "exp": "Gabarito: D. Arist\u00f3teles vincula a aut\u00eantica liberdade humana \u00e0 participa\u00e7\u00e3o c\u00edvica ativa e ao autogoverno coletivo no espa\u00e7o da p\u00f3lis (liberdade dos antigos ou positiva)."}, {"q": "6. Assinale a alternativa que expressa uma conclus\u00e3o correta sobre a hist\u00f3ria das ideias pol\u00edticas:", "opts": ["Arist\u00f3teles qualifica o conhecimento emp\u00edrico sens\u00edvel como uma mera ilus\u00e3o subordinada ao contato m\u00edstico com as Formas puras do mundo intelig\u00edvel.", "A assembleia democr\u00e1tica ateniense cl\u00e1ssica serviu historicamente como o paradigma ideal de um governo misto equilibrado.", "Pensadores da tradi\u00e7\u00e3o republicana, como Maquiavel e Rousseau, concebem a liberdade como n\u00e3o-domina\u00e7\u00e3o, defendendo que a autonomia pol\u00edtica requer autonomia econ\u00f4mica dos cidad\u00e3os.", "A formula\u00e7\u00e3o idealista de Plat\u00e3o a respeito dos reis fil\u00f3sofos estabelece as bases t\u00e9cnicas dos modernos direitos humanos individuais."], "ans": 2, "exp": "Gabarito: C. O republicanismo cl\u00e1ssico associa a liberdade c\u00edvica \u00e0 aus\u00eancia de submiss\u00e3o a vontades arbitr\u00e1rias e \u00e0 sufici\u00eancia material do cidad\u00e3o para evitar a corrup\u00e7\u00e3o."}, {"q": "7. Escolha a proposi\u00e7\u00e3o que est\u00e1 em perfeita conson\u00e2ncia com os autores estudados:", "opts": ["Jeremy Bentham rejeita a necessidade de um arranjo estatal centralizado, crendo que o c\u00e1lculo mec\u00e2nico individual harmoniza espontaneamente a sociedade.", "John Locke preconizava uma equival\u00eancia absoluta de fun\u00e7\u00f5es, sem admitir qualquer primazia do Poder Legislativo sobre a Coroa.", "Hans Kelsen aponta que a constru\u00e7\u00e3o idealista de Plat\u00e3o conduz implicitamente ao dever de obedi\u00eancia irrestrita \u00e0s leis positivadas, respaldadas na sabedoria dos governantes.", "Locke adota uma postura epistemol\u00f3gica racionalista pura, situando a origem de todas as certezas em ideias inatas da mente."], "ans": 2, "exp": "Gabarito: C. Kelsen argumenta criticamente que o modelo absolutista/jusnaturalista de Plat\u00e3o funciona como ferramenta ideol\u00f3gica para impor submiss\u00e3o \u00e0s leis do Estado."}, {"q": "8. Identifique a asser\u00e7\u00e3o conceitualmente incorreta:", "opts": ["Na doutrina hobbesiana, o pacto de uni\u00e3o transfere os direitos naturais ao Soberano, restando aos s\u00faditos os espa\u00e7os de liberdade consentidos pela lei.", "O arcabou\u00e7o metodol\u00f3gico da Teoria Pura do Direito de Hans Kelsen guarda forte influ\u00eancia da Cr\u00edtica da Raz\u00e3o Pura de Kant (gnoseologia).", "Jeremy Bentham prega que o dever \u00e9tico-jur\u00eddico independe do impacto concreto das condutas, vinculando-se a imperativos abstratos categ\u00f3ricos.", "O dever jur\u00eddico em Kant exige unicamente a conformidade externa da conduta com a legisla\u00e7\u00e3o, enquanto a moralidade pressup\u00f5e a ades\u00e3o interna ao dever."], "ans": 2, "exp": "Gabarito: C. Bentham repele o abstracionismo deontol\u00f3gico e fundamenta o dever exclusivamente nas consequ\u00eancias pr\u00e1ticas das a\u00e7\u00f5es (maximiza\u00e7\u00e3o da utilidade)."}, {"q": "9. Aponte a afirma\u00e7\u00e3o que incorre em erro te\u00f3rico:", "opts": ["Jean-Jacques Rousseau defende que o homem ingressa na sociedade civil portando direitos individuais inalien\u00e1veis e preexistentes de cunho estritamente lockeano.", "Para John Locke, embora Deus tenha concedido os recursos da terra de forma comum \u00e0 humanidade, o trabalho leg\u00edtimo atua como crit\u00e9rio de individua\u00e7\u00e3o e posse.", "O c\u00e1lculo utilitarista proposto por Bentham avalia o prazer por meio de propriedades como intensidade, dura\u00e7\u00e3o, certeza, proximidade, fecundidade, pureza e extens\u00e3o.", "Niccol\u00f2 Machiavelli n\u00e3o limitava o conceito de regime republicano a assembleias populares puras, admitindo arranjos institucionais complexos."], "ans": 0, "exp": "Gabarito: A. A primazia de direitos individuais intoc\u00e1veis limitando o Estado civil \u00e9 a tese de John Locke, n\u00e3o a de Rousseau (que defende a submiss\u00e3o total \u00e0 Vontade Geral)."}, {"q": "10. Assinale a op\u00e7\u00e3o que apresenta um erro de interpreta\u00e7\u00e3o hist\u00f3rica ou conceitual:", "opts": ["Thomas Hobbes prioriza a estabilidade e a paz civil em detrimento de ideais metaf\u00edsicos de justi\u00e7a, operando como um dos precursores te\u00f3ricos do positivismo.", "A teoria do conhecimento de Plat\u00e3o estabelece que as verdades cient\u00edficas s\u00e3o meras constru\u00e7\u00f5es subjetivas e lingu\u00edsticas sem realidade ontol\u00f3gica.", "A revolu\u00e7\u00e3o copernicana de Kant na filosofia desloca o eixo de an\u00e1lise para as estruturas a priori do sujeito cognoscente.", "Maquiavel sustenta em suas an\u00e1lises que a preserva\u00e7\u00e3o da liberdade c\u00edvica funciona como o motor vital para o enriquecimento e expans\u00e3o de uma rep\u00fablica."], "ans": 1, "exp": "Gabarito: B. Para Plat\u00e3o, a verdade repousa no Mundo das Ideias, dotado de realidade objetiva e independente das conven\u00e7\u00f5es e percep\u00e7\u00f5es humanas (antirrelativismo)."}, {"q": "11. No livro I de 'A Rep\u00fablica', como C\u00e9falo define a justi\u00e7a inicialmente?", "opts": ["A conveni\u00eancia do mais forte.", "Falar a verdade e devolver o que se tomou de empr\u00e9stimo.", "Fazer o bem aos amigos e o mal aos inimigos.", "O equil\u00edbrio entre as virtudes da alma."], "ans": 1, "exp": "C\u00e9falo associa a justi\u00e7a \u00e0 honestidade nos neg\u00f3cios e ao pagamento de d\u00edvidas materiais."}, {"q": "12. Qual \u00e9 a c\u00e9lebre obje\u00e7\u00e3o de S\u00f3crates \u00e0 defini\u00e7\u00e3o de justi\u00e7a proposta por C\u00e9falo?", "opts": ["Devolver uma arma a um amigo que enlouqueceu n\u00e3o seria justo.", "A justi\u00e7a s\u00f3 se aplica aos cidad\u00e3os de Atenas.", "Os deuses n\u00e3o se importam com d\u00edvidas financeiras.", "A verdade \u00e9 uma ilus\u00e3o dos sentidos."], "ans": 0, "exp": "S\u00f3crates usa o contraexemplo das armas devolvidas a algu\u00e9m fora de si para mostrar que a rigidez literal da regra pode causar injusti\u00e7a."}, {"q": "13. Como Polemarco reformula a defini\u00e7\u00e3o de justi\u00e7a ap\u00f3s a refuta\u00e7\u00e3o de C\u00e9falo?", "opts": ["A justi\u00e7a \u00e9 a vontade dos deuses.", "A justi\u00e7a \u00e9 dar a cada um o que lhe \u00e9 devido: bem aos amigos e mal aos inimigos.", "A justi\u00e7a \u00e9 o lucro do homem superior.", "A justi\u00e7a \u00e9 a obedi\u00eancia cega \u00e0s leis da cidade."], "ans": 1, "exp": "Polemarco herda o debate e conceitua a justi\u00e7a como fazer o bem aos aliados e o mal aos advers\u00e1rios."}, {"q": "14. Qual argumento S\u00f3crates usa para desconstruir a tese de Polemarco?", "opts": ["Os inimigos sempre se tornam amigos com o tempo.", "\u00c9 imposs\u00edvel distinguir quem s\u00e3o os verdadeiros amigos.", "Aquele que \u00e9 justo n\u00e3o deve causar danos a ningu\u00e9m, pois prejudicar algu\u00e9m a torna pior na sua pr\u00f3pria virtude.", "A guerra \u00e9 o estado natural do homem."], "ans": 2, "exp": "S\u00f3crates demonstra que a justi\u00e7a, sendo uma virtude, n\u00e3o pode produzir o enfraquecimento moral de outrem (causar o mal)."}, {"q": "15. A famosa tese defendida pelo sofista Tras\u00edmaco no livro I afirma que:", "opts": ["A justi\u00e7a \u00e9 a conveni\u00eancia do mais forte.", "A justi\u00e7a \u00e9 uma virtude inata da alma.", "A justi\u00e7a \u00e9 um pacto de n\u00e3o agress\u00e3o entre os fracos.", "A justi\u00e7a \u00e9 o respeito irrestrito \u00e0s leis divinas."], "ans": 0, "exp": "Tras\u00edmaco defende um realismo pol\u00edtico radical: a justi\u00e7a \u00e9 aquilo que beneficia quem det\u00e9m o poder pol\u00edtico e militar."}, {"q": "16. Segundo a \u00f3tica realista de Tras\u00edmaco, quem elabora as leis nas cidades e comunidades?", "opts": ["Os fil\u00f3sofos, buscando o bem comum.", "Os deuses, inspirando os legisladores.", "O grupo ou indiv\u00edduo governante, instituindo-as em benef\u00edcio pr\u00f3prio.", "A assembleia do povo, de forma democr\u00e1tica e igualit\u00e1ria."], "ans": 2, "exp": "Tras\u00edmaco alega que as leis s\u00e3o prescritas pelos detentores do poder para salvaguardar seus pr\u00f3prios interesses particulares."}, {"q": "17. Para Tras\u00edmaco, por que a vida do homem perfeitamente injusto seria prefer\u00edvel \u00e0 do justo?", "opts": ["O injusto vive de forma mais moderada.", "A suprema injusti\u00e7a (como a tirania) confere felicidade, poder e imunidade, enquanto o justo \u00e9 explorado.", "Os deuses perdoam os injustos com mais facilidade.", "O justo sofre de t\u00e9dio e melancolia."], "ans": 1, "exp": "O sofista argumenta que a injusti\u00e7a em larga escala liberta o indiv\u00edduo das amarras e o torna soberano sobre os justos."}, {"q": "18. Qual \u00e9 a analogia t\u00e9cnica que S\u00f3crates op\u00f5e a Tras\u00edmaco sobre a verdadeira fun\u00e7\u00e3o de uma arte (techne)?", "opts": ["Compara o governante ao m\u00e9dico ou piloto, cuja arte atende ao interesse do objeto governado (paciente/tripula\u00e7\u00e3o), n\u00e3o ao seu pr\u00f3prio.", "Compara o governante a um pastor que engorda o rebanho estritamente para o abate.", "Compara o governante a um guerreiro destrutivo.", "Compara o governante a um mercador."], "ans": 0, "exp": "S\u00f3crates afirma que toda arte aut\u00eantica visa o bem daquilo que ela cuida, logo, o verdadeiro governante governa para o bem dos s\u00faditos."}, {"q": "19. Como S\u00f3crates encerra o debate do Livro I da Rep\u00fablica?", "opts": ["Encontra a defini\u00e7\u00e3o perfeita.", "A justi\u00e7a \u00e9 definida como a igualdade absoluta.", "O di\u00e1logo termina em aporia, admitindo que ainda n\u00e3o conhecem a ess\u00eancia da justi\u00e7a.", "S\u00f3crates capitula diante de Tras\u00edmaco."], "ans": 2, "exp": "O Livro I encerra-se de forma apor\u00e9tica: as falsas defini\u00e7\u00f5es ca\u00edram, mas a ess\u00eancia do justo ainda precisa ser buscada nos livros seguintes."}, {"q": "20. Na alegoria plat\u00f4nica da Caverna, o retorno do fil\u00f3sofo libertado \u00e0 caverna simboliza:", "opts": ["O dever pol\u00edtico e pedag\u00f3gico de orientar os cidad\u00e3os, mesmo sob risco de incompreens\u00e3o e morte.", "O arrependimento por ter abandonado as ilus\u00f5es confort\u00e1veis.", "A busca por riquezas escondidas no subterr\u00e2neo.", "A submiss\u00e3o volunt\u00e1ria \u00e0 tirania."], "ans": 0, "exp": "O fil\u00f3sofo tem o compromisso \u00e9tico de descer novamente para tentar educar e libertar seus concidad\u00e3os da ilus\u00e3o."}, {"q": "21. No livro V da '\u00c9tica a Nic\u00f4maco', como Arist\u00f3teles define a justi\u00e7a universal?", "opts": ["Como obedi\u00eancia irrestrita aos tiranos.", "Como a virtude total ou perfeita exercida em rela\u00e7\u00e3o ao pr\u00f3ximo, manifestada no cumprimento das leis voltadas ao bem comum.", "Como a puni\u00e7\u00e3o pura dos criminosos.", "Como a igualdade absoluta de posses."], "ans": 1, "exp": "A justi\u00e7a universal \u00e9 a conformidade com a lei moral e positiva que ordena comportamentos virtuosos voltados \u00e0 comunidade."}, {"q": "22. Qual a caracter\u00edstica basilar da justi\u00e7a distributiva aristot\u00e9lica?", "opts": ["Distribui\u00e7\u00e3o id\u00eantica para todos, abolindo privil\u00e9gios.", "Reparti\u00e7\u00e3o de bens coletivos, riquezas e honrarias de forma proporcional ao m\u00e9rito de cada cidad\u00e3o.", "O perd\u00e3o de d\u00edvidas financeiras em momentos de crise.", "A imposi\u00e7\u00e3o de penas id\u00eanticas para crimes de naturezas distintas."], "ans": 1, "exp": "A justi\u00e7a distributiva rege-se pela meritocracia proporcional, tratando os iguais igualmente e os desiguais desigualmente."}, {"q": "23. A justi\u00e7a distributiva em Arist\u00f3teles adota qual modelo de propor\u00e7\u00e3o matem\u00e1tica?", "opts": ["Propor\u00e7\u00e3o aritm\u00e9tica.", "Propor\u00e7\u00e3o geom\u00e9trica.", "Propor\u00e7\u00e3o exponencial.", "Propor\u00e7\u00e3o aleat\u00f3ria."], "ans": 1, "exp": "A propor\u00e7\u00e3o geom\u00e9trica pondera a rela\u00e7\u00e3o entre os bens distribu\u00eddos e o m\u00e9rito individual dos sujeitos."}, {"q": "24. O que qualifica a chamada justi\u00e7a corretiva (ou comutativa) para Arist\u00f3teles?", "opts": ["A avalia\u00e7\u00e3o do valor c\u00edvico dos soldados.", "A retifica\u00e7\u00e3o de desequil\u00edbrios nas transa\u00e7\u00f5es, aplicando uma igualdade estritamente aritm\u00e9tica para sanar perdas e ganhos.", "A elabora\u00e7\u00e3o de constitui\u00e7\u00f5es federais.", "O banimento de estrangeiros."], "ans": 1, "exp": "A justi\u00e7a corretiva busca o reequil\u00edbrio nas rela\u00e7\u00f5es de troca ou ap\u00f3s il\u00edcitos, sem considerar o status social das partes."}, {"q": "25. No \u00e2mbito da justi\u00e7a corretiva, como Arist\u00f3teles subdivide as transa\u00e7\u00f5es humanas?", "opts": ["Em transa\u00e7\u00f5es divinas e profanas.", "Em transa\u00e7\u00f5es volunt\u00e1rias (como os contratos civis) e involunt\u00e1rias (como os delitos penais ocultos ou violentos).", "Em nacionais e internacionais.", "Em comerciais e agr\u00e1rias."], "ans": 1, "exp": "As volunt\u00e1rias nascem do acordo m\u00fatuo (com\u00e9rcio); as involunt\u00e1rias decorrem de atos il\u00edcitos (furtos, agress\u00f5es)."}, {"q": "26. Quem Arist\u00f3teles aponta como a representa\u00e7\u00e3o viva da justi\u00e7a corretiva?", "opts": ["O legislador constituinte.", "O general de ex\u00e9rcito.", "O juiz, atuando como uma justi\u00e7a animada capaz de restabelecer o ponto m\u00e9dio entre o ganho e a perda.", "O monarca absolutista."], "ans": 2, "exp": "Recorrer ao juiz \u00e9 recorrer \u00e0 justi\u00e7a personificada para repor a linha m\u00e9dia rompida pela ofensa."}, {"q": "27. Como Arist\u00f3teles resolve o dilema gerado pela rigidez e generalidade abstrata da lei?", "opts": ["Sugerindo a desobedi\u00eancia civil generalizada.", "Por meio da equidade, que funciona como a retifica\u00e7\u00e3o da lei escrita quando esta se mostra lacunosa ou excessivamente gen\u00e9rica para o caso.", "Recomendando a aplica\u00e7\u00e3o literal mesmo que injusta.", "Transferindo a decis\u00e3o aos sacerdotes."], "ans": 1, "exp": "A equidade adapta a norma gen\u00e9rica \u00e0s peculiaridades concretas da realidade, evitando injusti\u00e7as formais."}, {"q": "28. Qual met\u00e1fora pr\u00e1tica Arist\u00f3teles emprega para esclarecer a maleabilidade da equidade?", "opts": ["A b\u00fassola de navega\u00e7\u00e3o do capit\u00e3o.", "A r\u00e9gua flex\u00edvel de chumbo utilizada pelos construtores de Lesbos, que se amolda ao contorno das pedras.", "O escudo r\u00edgido do soldado hoplita.", "A balan\u00e7a comercial de precis\u00e3o."], "ans": 1, "exp": "A r\u00e9gua de Lesbos se moldava \u00e0 pedra irregular, assim como a decis\u00e3o equitativa se molda ao caso concreto."}, {"q": "29. De que modo Arist\u00f3teles subdivide a justi\u00e7a pol\u00edtica?", "opts": ["Em justi\u00e7a natural (v\u00e1lida universalmente) e justi\u00e7a legal ou convencional (estatu\u00edda por conven\u00e7\u00e3o humana).", "Em militar e parlamentar.", "Em corporativa e sindical.", "Em urbana e r\u00fastica."], "ans": 0, "exp": "A justi\u00e7a pol\u00edtica divide-se no componente natural (imut\u00e1vel) e no componente legal (determinado por conven\u00e7\u00e3o e arb\u00edtrio humano)."}, {"q": "30. A excel\u00eancia moral ou virtude, segundo o pensamento aristot\u00e9lico, situa-se sempre:", "opts": ["Na erradica\u00e7\u00e3o absoluta de todo e qualquer desejo.", "No sacrif\u00edcio pessoal levado \u00e0s \u00faltimas consequ\u00eancias.", "No meio-termo ou justa medida (mes\u00f3tes) localizado entre dois extremos viciosos (o excesso e a escassez).", "Na agressividade competitiva."], "ans": 2, "exp": "A virtude \u00e9 o equil\u00edbrio racional, como a coragem que se situa entre a covardia (falta) e a temeridade (excesso)."}, {"q": "31. Na obra 'Leviat\u00e3', como Thomas Hobbes caracteriza teoricamente o estado de natureza?", "opts": ["Um id\u00edlio de harmonia m\u00fatua e paz perp\u00e9tua.", "Um estado de beliger\u00e2ncia generalizada ('guerra de todos contra todos'), sob o imp\u00e9rio do medo constante e da viol\u00eancia fatal.", "Um arranjo econ\u00f4mico mercantil estruturado.", "Uma teocracia pac\u00edfica."], "ans": 1, "exp": "Para Hobbes, a aus\u00eancia de um poder coercitivo central lan\u00e7a a humanidade num caos de inseguran\u00e7a e desconfian\u00e7a rec\u00edproca."}, {"q": "32. Quais os fatores desencadeadores da disc\u00f3rdia no estado de natureza para Hobbes?", "opts": ["A escassez de espa\u00e7o geogr\u00e1fico e o \u00f3dio religioso.", "A tr\u00edade baseada na competi\u00e7\u00e3o, na desconfian\u00e7a cr\u00f4nica e na busca pela gl\u00f3ria, potencializadas pela igualdade de capacidades.", "A heran\u00e7a gen\u00e9tica e o pecado teol\u00f3gico.", "A aus\u00eancia de moeda de troca."], "ans": 1, "exp": "Sendo os indiv\u00edduos aproximadamente iguais em pot\u00eancia, disputam os mesmos fins e atacam preventivamente por desconfian\u00e7a."}, {"q": "33. Como se conceitua o direito de natureza (jus naturale) em Thomas Hobbes?", "opts": ["A prerrogativa inata de exigir amparo assistencial do Estado.", "A liberdade irrestrita de usar o pr\u00f3prio poder de acordo com o arb\u00edtrio individual para preservar a pr\u00f3pria vida.", "O direito sagrado de heran\u00e7a imobili\u00e1ria.", "A submiss\u00e3o integral \u00e0s escrituras sagradas."], "ans": 1, "exp": "O direito natural hobbesiano resume-se \u00e0 liberdade de autopreserva\u00e7\u00e3o por todos os meios execut\u00e1veis."}, {"q": "34. Qual a distin\u00e7\u00e3o anal\u00edtica entre direito natural (jus) e lei natural (lex) na doutrina hobbesiana?", "opts": ["O direito \u00e9 de origem divina; a lei \u00e9 fruto da raz\u00e3o secular.", "O direito traduz-se na liberdade de agir ou abster-se, ao passo que a lei determina e vincula a uma obriga\u00e7\u00e3o espec\u00edfica.", "N\u00e3o h\u00e1 qualquer distin\u00e7\u00e3o na obra.", "O direito ampara os nobres; a lei obriga a plebe."], "ans": 1, "exp": "O direito denota liberdade de a\u00e7\u00e3o; a lei (lex) imp\u00f5e uma obriga\u00e7\u00e3o ou restri\u00e7\u00e3o ditada pela raz\u00e3o para autopreserva\u00e7\u00e3o."}, {"q": "35. A primeira e fundamental lei da natureza estipulada por Hobbes preconiza:", "opts": ["Buscar a paz e segui-la; mas, caso seja inalcan\u00e7\u00e1vel, utilizar todas as vantagens e aux\u00edlios da guerra.", "A proibi\u00e7\u00e3o do com\u00e9rcio internacional.", "A obrigatoriedade do culto religioso p\u00fablico.", "O direito de insurrei\u00e7\u00e3o peri\u00f3dica."], "ans": 0, "exp": "O primeiro ditame da raz\u00e3o manda tentar a paz; se invi\u00e1vel, resta o direito de defesa pela guerra."}, {"q": "36. A segunda lei da natureza de Thomas Hobbes imp\u00f5e como imperativo racional:", "opts": ["A manuten\u00e7\u00e3o de armas pesadas em ambiente dom\u00e9stico.", "A ren\u00fancia rec\u00edproca ao direito sobre todas as coisas, na mesma medida em que os demais o fa\u00e7am, visando a paz.", "A divis\u00e3o igualit\u00e1ria da propriedade imobili\u00e1ria.", "A institui\u00e7\u00e3o do sufr\u00e1gio universal direto."], "ans": 1, "exp": "Para sair do estado de guerra, a raz\u00e3o exige que os homens aceitem limitar mutuamente suas liberdades selvagens."}, {"q": "37. Por que Hobbes assevera que pactos desprovidos da espada (covenants without the sword) s\u00e3o ineficazes?", "opts": ["Porque a escrita em pergaminho se deteriora.", "Porque palavras carecem de for\u00e7a f\u00edsica para constranger as paix\u00f5es humanas sem o temor de uma puni\u00e7\u00e3o estatal.", "Porque os contratos exigem registro p\u00fablico cartorial.", "Porque os homens s\u00e3o naturalmente mudos no estado selvagem."], "ans": 1, "exp": "Sem um poder vis\u00edvel e armado para impor san\u00e7\u00f5es, as leis da natureza s\u00e3o violadas pelas paix\u00f5es individuais."}, {"q": "38. Como se opera a institui\u00e7\u00e3o leg\u00edtima do Estado Soberano na constru\u00e7\u00e3o hobbesiana?", "opts": ["Por meio de uma un\u00e7\u00e3o m\u00edstica e heredit\u00e1ria.", "Pela conven\u00e7\u00e3o coletiva onde cada indiv\u00edduo autoriza e cede seu direito de autogoverno a um homem ou assembleia, sob condi\u00e7\u00e3o id\u00eantica dos demais.", "Atrav\u00e9s de uma invas\u00e3o estrangeira vitoriosa.", "Por vota\u00e7\u00e3o parlamentar de representantes eleitos."], "ans": 1, "exp": "O contrato hobbesiano \u00e9 firmado entre os indiv\u00edduos (e n\u00e3o com o soberano), instituindo um terceiro com poder supremo absoluto."}, {"q": "39. Qual \u00e9 o limite ou extens\u00e3o do poder pol\u00edtico concentrado pelo Leviat\u00e3 de Hobbes?", "opts": ["\u00c9 um poder limitado e fiscalizado pelo judici\u00e1rio aut\u00f4nomo.", "\u00c9 soberano, absoluto e indivis\u00edvel; o governante n\u00e3o est\u00e1 vinculado ao pacto e n\u00e3o pode sofrer puni\u00e7\u00e3o dos s\u00faditos.", "Trata-se de uma magistratura tempor\u00e1ria renov\u00e1vel.", "\u00c9 subordinado \u00e0 autoridade papal."], "ans": 1, "exp": "Para evitar o retorno \u00e0 guerra civil, o poder soberano precisa ser concentrado, inquestion\u00e1vel e livre de amarras contratuais."}, {"q": "40. A situa\u00e7\u00e3o jur\u00eddica da propriedade privada no estado de natureza descrito por Hobbes \u00e9 de:", "opts": ["Absoluta intangibilidade assegurada por direitos humanos.", "Inexist\u00eancia de seguran\u00e7a jur\u00eddica; h\u00e1 apenas a posse prec\u00e1ria mantida pela for\u00e7a f\u00edsica do detentor enquanto durar.", "Prote\u00e7\u00e3o por tribunais arbitrais internacionais.", "Origem comunista solid\u00e1ria."], "ans": 1, "exp": "Sem leis estatais e coer\u00e7\u00e3o, inexiste distin\u00e7\u00e3o est\u00e1vel entre o meu e o teu; vigora a usurpa\u00e7\u00e3o cont\u00ednua."}, {"q": "41. Em contraposi\u00e7\u00e3o direta a Hobbes, como John Locke concebe originariamente o estado de natureza?", "opts": ["Como uma antec\u00e2mara inevit\u00e1vel do inferno civil.", "Como uma situa\u00e7\u00e3o de relativa paz, liberdade e igualdade, orientada pelos ditames da lei da raz\u00e3o natural.", "Como uma monarquia patriarcal primitiva.", "Como uma fic\u00e7\u00e3o l\u00f3gica desprovida de relev\u00e2ncia moral."], "ans": 1, "exp": "Para Locke, a aus\u00eancia de governo n\u00e3o implica aus\u00eancia de moralidade; os homens s\u00e3o livres sob o imp\u00e9rio da lei natural."}, {"q": "42. Conforme a matriz te\u00f3rica de John Locke, o fundamento legitimador da propriedade privada reside:", "opts": ["Na chancela discricion\u00e1ria outorgada pelo Soberano absoluto.", "Na incorpora\u00e7\u00e3o do trabalho e do esfor\u00e7o individual sobre os bens originalmente dados em comum pela natureza.", "No direito de conquista marcial.", "No mero decurso do tempo possess\u00f3rio (usucapi\u00e3o primitivo)."], "ans": 1, "exp": "O trabalho do corpo e as obras das m\u00e3os do indiv\u00edduo s\u00e3o seus; logo, ao retirar algo do estado comum, acopla-se a propriedade."}, {"q": "43. Sendo o estado de natureza lockeano dotado de direitos e raz\u00e3o, o que motiva a cria\u00e7\u00e3o do Estado Civil?", "opts": ["A necessidade de organizar ex\u00e9rcitos de invas\u00e3o ultramarina.", "A car\u00eancia de leis positivadas claras, de ju\u00edzes imparciais e de uma for\u00e7a executiva est\u00e1vel para tutelar as propriedades.", "A ordem expressa de autoridades clericais.", "O t\u00e9dio existencial decorrente da paz agr\u00e1ria."], "ans": 1, "exp": "A aus\u00eancia de um terceiro neutro faz com que cada um seja juiz em causa pr\u00f3pria, gerando riscos de vingan\u00e7a e desordem."}, {"q": "44. Se o magistrado supremo violar a confian\u00e7a e agredir os direitos b\u00e1sicos dos cidad\u00e3os, Locke admite:", "opts": ["O dever de submiss\u00e3o passiva aguardando o julgamento divino.", "O Direito de Resist\u00eancia ou Rebeli\u00e3o c\u00edvica para destituir os governantes tiranos.", "O suic\u00eddio coletivo ritual.", "A dissolu\u00e7\u00e3o definitiva de toda e qualquer sociedade humana."], "ans": 2, "exp": "O poder pol\u00edtico \u00e9 um dep\u00f3sito de confian\u00e7a (trust); quebrado o pacto pelo governante, o poder retorna ao povo para se defender."}, {"q": "45. O voc\u00e1bulo 'propriedade' (property), empregado por Locke em sua acep\u00e7\u00e3o ampla e sist\u00eamica, compreende:", "opts": ["Apenas os latif\u00fandios e im\u00f3veis rurais.", "O estoque monet\u00e1rio de ouro e prata circulante.", "A preserva\u00e7\u00e3o rec\u00edproca da Vida, da Liberdade e dos Bens (patrim\u00f4nio).", "As patentes comerciais ultramarinas."], "ans": 2, "exp": "Locke sumariza sob a etiqueta de 'propriedade' o conjunto dos direitos fundamentais da personalidade e posses do ser humano."}, {"q": "46. Segundo os postulados \u00e9ticos de Immanuel Kant, a pedra de toque da dignidade humana consiste em:", "opts": ["Agir sempre como instrumento utilit\u00e1rio para a estabilidade econ\u00f4mica.", "Tratar a humanidade, seja na sua pessoa ou na de outrem, sempre como um fim em si mesma, nunca meramente como um meio.", "Submeter os preceitos racionais aos desejos e paix\u00f5es afetivas.", "Acumular m\u00e9ritos civis por meio da obedi\u00eancia religiosa."], "ans": 1, "exp": "A dignidade impede a instrumentaliza\u00e7\u00e3o ou coisifica\u00e7\u00e3o do ser humano para quaisquer prop\u00f3sitos utilit\u00e1rios de terceiros."}, {"q": "47. Em seu ensaio '\u00c0 Paz Perp\u00e9tua', como Kant define e circunscreve o chamado Direito Cosmopolita?", "opts": ["O direito ilimitado de coloniza\u00e7\u00e3o global por na\u00e7\u00f5es ilustradas.", "As condi\u00e7\u00f5es de hospitalidade universal, garantindo ao estrangeiro o direito de n\u00e3o ser tratado com hostilidade ao ingressar em terras alheias.", "A fus\u00e3o de todos os Estados sob um \u00fanico governo mundial tir\u00e2nico.", "O dever de aboli\u00e7\u00e3o imediata de todas as fronteiras alfandeg\u00e1rias."], "ans": 1, "exp": "O direito cosmopolita baseia-se na esfericidade da terra e na coexist\u00eancia necess\u00e1ria, regulando o acolhimento digno do viajante."}, {"q": "48. Qual a linha divis\u00f3ria estrutural entre um Imperativo Hipot\u00e9tico e um Imperativo Categ\u00f3rico na filosofia kantiana?", "opts": ["O hipot\u00e9tico vincula-se \u00e0 moralidade; o categ\u00f3rico \u00e0 pol\u00edtica partid\u00e1ria.", "O hipot\u00e9tico dita uma a\u00e7\u00e3o necess\u00e1ria para alcan\u00e7ar um fim condicionado (prud\u00eancia), enquanto o categ\u00f3rico ordena de forma absoluta e incondicional.", "Inexiste distin\u00e7\u00e3o pr\u00e1tica entre os dois.", "O hipot\u00e9tico rege os animais; o categ\u00f3rico os seres humanos."], "ans": 1, "exp": "O imperativo categ\u00f3rico vale por si mesmo (dever moral puro); o hipot\u00e9tico depende do desejo do agente ('se queres X, fa\u00e7a Y')."}, {"q": "49. Kant desfere duras cr\u00edticas morais e jur\u00eddicas \u00e0s pot\u00eancias coloniais de sua \u00e9poca sob o fundamento de que:", "opts": ["Elas n\u00e3o foram eficientes na extra\u00e7\u00e3o de riquezas minerais.", "Elas violaram o direito cosmopolita da hospitalidade ao tratarem regi\u00f5es habitadas como terras de ningu\u00e9m (res nullius), escravizando e espoliando povos.", "Elas n\u00e3o difundiram adequadamente o cristianismo dogm\u00e1tico.", "Elas evitaram o livre com\u00e9rcio de manufaturados europeus."], "ans": 1, "exp": "Kant denunciou o expansionismo colonial violento e o tr\u00e1fico de escravizados como graves rupturas do direito natural e cosmopolita."}, {"q": "50. Na dogm\u00e1tica de Kant, a san\u00e7\u00e3o correlata \u00e0 infra\u00e7\u00e3o de um dever estritamente moral localiza-se:", "opts": ["Na puni\u00e7\u00e3o f\u00edsica imposta pelo aparato carcer\u00e1rio do Estado.", "No confisco de patrim\u00f4nio e multas pecuni\u00e1rias.", "No foro interno, manifestada por meio do arrependimento e tribunal da pr\u00f3pria consci\u00eancia racional.", "Na suspens\u00e3o de direitos pol\u00edticos pelo parlamento."], "ans": 2, "exp": "O Direito opera via coer\u00e7\u00e3o externa; a Moralidade exige autonomia e sua san\u00e7\u00e3o \u00e9 puramente \u00edntima e consciencial."}, {"q": "51. O axioma central do Princ\u00edpio da Utilidade formulado pelo jurista Jeremy Bentham preconiza:", "opts": ["A fidelidade imut\u00e1vel aos costumes medievais do direito consuetudin\u00e1rio.", "A aprova\u00e7\u00e3o ou rejei\u00e7\u00e3o de qualquer conduta com base na sua aptid\u00e3o demonstrada para maximizar o prazer ou mitigar a dor da parte afetada.", "A concess\u00e3o de privil\u00e9gios heredit\u00e1rios.", "A primazia dos deveres morais abstratos kantianos."], "ans": 1, "exp": "O utilitarismo benthamiano assenta-se na busca da maior felicidade/prazer e menor sofrimento para o maior n\u00famero de indiv\u00edduos."}, {"q": "52. Conforme o empirismo de Bentham, a natureza governou soberanamente o homem sob dois mestres. Quais s\u00e3o?", "opts": ["A Raz\u00e3o Pura e a Raz\u00e3o Pr\u00e1tica.", "A Dor e o Prazer.", "A Coroa e o Parlamento.", "A Vida e a Transcend\u00eancia."], "ans": 1, "exp": "Estes dois vetores (dor e prazer) determinam o que fazemos, o que dizemos e o que pensamos na exist\u00eancia concreta."}, {"q": "53. A corrente te\u00f3rica do Utilitarismo capitaneada por Bentham assume uma postura classificada como:", "opts": ["Deontol\u00f3gica (pautada no dever intr\u00ednseco imune a resultados).", "Consequencialista ou Teleol\u00f3gica (pautada no exame cr\u00edtico dos efeitos e resultados pr\u00e1ticos das a\u00e7\u00f5es).", "Fide\u00edsta dogm\u00e1tica.", "Solipsista niilista."], "ans": 1, "exp": "O consequencialismo afasta no\u00e7\u00f5es abstratas de pecado ou virtude em si, julgando o ato pelo saldo de bem-estar que ele gera."}, {"q": "54. Qual a principal diverg\u00eancia metodol\u00f3gica sobre a justifica\u00e7\u00e3o da san\u00e7\u00e3o penal entre Kant e Bentham?", "opts": ["Kant repudia as puni\u00e7\u00f5es corporais; Bentham as defende integralmente.", "Kant teoriza a pena como retribui\u00e7\u00e3o moral estrita ao crime cometido; Bentham defende a utilidade da pena focada na preven\u00e7\u00e3o geral e dissuas\u00e3o de delitos futuros.", "Ambos rejeitam o poder de punir do Estado.", "Kant foca na repara\u00e7\u00e3o civil financeira; Bentham na pris\u00e3o perp\u00e9tua universal."], "ans": 1, "exp": "Para o retributivista Kant, pune-se porque o crime foi praticado (olhar para o passado); para o utilitarista Bentham, pune-se para que n\u00e3o ocorram novos crimes (olhar para o futuro)."}, {"q": "55. A respeito do instituto jur\u00eddico da propriedade na modelagem utilitarista de Jeremy Bentham, \u00e9 correto concluir:", "opts": ["\u00c9 tida como um direito natural m\u00edstico e inalien\u00e1vel intang\u00edvel ao Estado.", "\u00c9 concebida como uma cria\u00e7\u00e3o e garantia estatal leg\u00edtima apenas na exata medida em que cumpre uma fun\u00e7\u00e3o de utilidade social e bem-estar comum.", "Deve ser sumariamente extinta para dar lugar ao comunismo de bens.", "Constitui uma extens\u00e3o f\u00edsica indispens\u00e1vel do Imperativo Categ\u00f3rico."], "ans": 1, "exp": "Para Bentham, inexiste propriedade natural; ela \u00e9 um artif\u00edcio legal justificado pela seguran\u00e7a econ\u00f4mica e utilidade social que fomenta."}, {"q": "56. Na tradi\u00e7\u00e3o republicana esposada por Nicolau Maquiavel e Jean-Jacques Rousseau, a liberdade define-se essencialmente como:", "opts": ["Aus\u00eancia absoluta de regulamenta\u00e7\u00f5es estatais sobre o mercado financeiro (n\u00e3o-interfer\u00eancia pura).", "Condi\u00e7\u00e3o de n\u00e3o-domina\u00e7\u00e3o, exigindo imunidade ao arb\u00edtrio de um senhor e certa independ\u00eancia civil e material do cidad\u00e3o.", "O poder selvagem do mais forte no estado anterior ao pacto.", "A prerrogativa aristocr\u00e1tica de escravizar advers\u00e1rios derrotados."], "ans": 1, "exp": "Ser livre no republicanismo \u00e9 n\u00e3o estar sob a depend\u00eancia ou capricho de outrem, o que demanda institui\u00e7\u00f5es livres e autonomia c\u00edvica."}, {"q": "57. No arranjo constitucional proposto pelo 'Contrato Social' de Rousseau, a soberania leg\u00edtima reside de forma inalien\u00e1vel:", "opts": ["Na figura sagrada e centralizada do monarca heredit\u00e1rio.", "Na Vontade Geral do povo unificado em corpo pol\u00edtico, voltada categoricamente ao interesse p\u00fablico comum.", "No col\u00e9gio ministerial dos ju\u00edzes togados.", "Nas for\u00e7as armadas da na\u00e7\u00e3o."], "ans": 1, "exp": "O pacto rousseauista d\u00e1 \u00e0 luz um corpo moral coletivo dotado de soberania popular indivis\u00edvel e inalien\u00e1vel."}, {"q": "58. Conforme discutido na apresenta\u00e7\u00e3o do curso (Aula 01 de DFD0313), qual o papel atribu\u00eddo por H.L.A. Hart \u00e0 Filosofia do Direito?", "opts": ["Substituir os c\u00f3digos normativos por manuais de l\u00f3gica pura.", "Auxiliar na clarifica\u00e7\u00e3o e an\u00e1lise cr\u00edtica dos conceitos jur\u00eddicos fundamentais, sobretudo nas denominadas 'zonas de penumbra' da linguagem.", "Impor dogmas morais imut\u00e1veis aos magistrados de carreira.", "Demonstrar a inutilidade pr\u00e1tica das discuss\u00f5es te\u00f3ricas nos tribunais."], "ans": 1, "exp": "Hart ressalta a import\u00e2ncia da an\u00e1lise conceitual para desatar n\u00f3s lingu\u00edsticos e interpretar casos de alta complexidade hermen\u00eautica."}, {"q": "59. Qual a leitura cr\u00edtica formulada por Hans Kelsen a respeito do jusnaturalismo de cariz idealista plat\u00f4nico?", "opts": ["Elogia Plat\u00e3o por lan\u00e7ar as bases do relativismo axiol\u00f3gico democr\u00e1tico.", "Aponta que o modelo de justi\u00e7a metaf\u00edsica absoluta em Plat\u00e3o opera ideologicamente para exigir obedi\u00eancia incondicional \u00e0s normas vigentes impostas pelos 's\u00e1bios'.", "Equipara a Rep\u00fablica plat\u00f4nica ao utilitarismo brit\u00e2nico moderno.", "Considera que Plat\u00e3o defendia a revolu\u00e7\u00e3o armada cont\u00ednua contra as institui\u00e7\u00f5es sociais."], "ans": 1, "exp": "Kelsen sustenta que teorias de justi\u00e7a absoluta frequentemente prestam-se a blindar regimes dogm\u00e1ticos contra contesta\u00e7\u00f5es racionais."}, {"q": "60. De acordo com o tratado '\u00c0 Paz Perp\u00e9tua' de Kant, qual a estrutura pol\u00edtico-institucional interna necess\u00e1ria para coibir a guerra estatal?", "opts": ["O despotismo esclarecido centralizador.", "A democracia direta e demag\u00f3gica de matiz hel\u00eanico.", "A Constitui\u00e7\u00e3o Republicana, edificada sobre a divis\u00e3o de poderes, representa\u00e7\u00e3o, liberdade e igualdade formal.", "O regime imperial absolutista unificado."], "ans": 2, "exp": "Em um regime republicano, os cidad\u00e3os que votam dividem os custos materiais e humanos da guerra, gerando um freio natural \u00e0s aventuras belicistas."}];
-  
+  // ==========================================
+  // INSIRA AQUI O SEU ARRAY DE QUESTÕES
+  // ==========================================
+  const rawQuestions = [
+    {
+      text: "Exemplo de Questão 1 (Substitua por sua lista completa de 60 questões).",
+      options: ["Alternativa A", "Alternativa B", "Alternativa C", "Alternativa D"],
+      answer: 0,
+      explanation: "Explicação da questão 1."
+    },
+    {
+      text: "Exemplo de Questão 2.",
+      options: ["A", "B", "C", "D"],
+      answer: 1,
+      explanation: "Explicação da questão 2."
+    }
+    // ... cole o resto aqui
+  ];
+
+  // ==========================================
+  // LÓGICA DO SIMULADO
+  // ==========================================
   let currentQ = 0;
-  let userAnswers = new Array(rawQuestions.length).fill(null); // Armazena { selectedShuffledIdx, isCorrect, shuffledOptsArray }
-  const elNav = document.getElementById('nav-container');
-  const elQText = document.getElementById('q-text');
-  const elOpts = document.getElementById('opts');
-  const elBtn = document.getElementById('btn-action');
-  const elFeedback = document.getElementById('feedback');
-  const elCounter = document.getElementById('q-counter');
-  const elPrev = document.getElementById('btn-prev');
-  const elNext = document.getElementById('btn-next');
+  const userAnswers = new Array(rawQuestions.length).fill(null);
 
-  function init() {
-    elNav.innerHTML = '';
-    for(let i=0; i < rawQuestions.length; i++) {
-      const a = document.createElement('a');
-      a.id = 'nav-item-' + i;
-      a.className = 'nav-item unanswered';
-      a.textContent = i + 1;
-      a.title = `Ir para Questão ${i + 1}`;
-      
-      // Clique rola para a tela de questão se tiver vindo do resultado
-      a.onclick = (e) => {
-          e.preventDefault();
-          document.getElementById('result-screen').style.display = 'none';
-          document.getElementById('quiz-screen').style.display = 'block';
-          jumpToQuestion(i);
-          document.getElementById('quiz-screen').scrollIntoView({behavior: "smooth"});
-      };
-      elNav.appendChild(a);
-    }
-    loadQuestion();
-  }
-
-  function shuffleArray(array) {
-    const arr = [...array];
-    for (let i = arr.length - 1; i > 0; i--) {
-      const j = Math.floor(Math.random() * (i + 1));
-      [arr[i], arr[j]] = [arr[j], arr[i]];
-    }
-    return arr;
+  function initGrid() {
+    const grid = document.getElementById('nav-grid');
+    grid.innerHTML = '';
+    rawQuestions.forEach((_, i) => {
+      const div = document.createElement('div');
+      div.className = 'nav-item';
+      div.id = 'nav-item-' + i;
+      div.textContent = i + 1;
+      div.onclick = () => jumpToQuestion(i);
+      grid.appendChild(div);
+    });
   }
 
   function loadQuestion() {
-    elCounter.textContent = `Questão ${currentQ + 1} de ${rawQuestions.length}`;
-    elQText.textContent = rawQuestions[currentQ].q;
-    elFeedback.style.display = 'none';
-    elOpts.innerHTML = '';
+    const q = rawQuestions[currentQ];
+    document.getElementById('q-counter').textContent = `Questão ${currentQ + 1} de ${rawQuestions.length}`;
+    document.getElementById('q-text').textContent = q.text;
     
-    // Atualizar botões laterais de controle
-    elPrev.disabled = (currentQ === 0);
-    elNext.textContent = (currentQ === rawQuestions.length - 1) ? "Finalizar 🏁" : "Avançar →";
+    // Atualiza marcação no grid
+    document.querySelectorAll('.nav-item').forEach(el => el.classList.remove('active'));
+    document.getElementById('nav-item-' + currentQ).classList.add('active');
+
+    const optContainer = document.getElementById('options-container');
+    optContainer.innerHTML = '';
+    const letters = ['A', 'B', 'C', 'D', 'E'];
     
-    // Resetar classes visuais da barra de blocos numéricos
-    for(let i=0; i < rawQuestions.length; i++) {
-      const item = document.getElementById('nav-item-' + i);
-      item.className = 'nav-item';
-      if (userAnswers[i] !== null) {
-        item.classList.add(userAnswers[i].isCorrect ? 'status-correct' : 'status-wrong');
+    const isAnswered = userAnswers[currentQ] !== null;
+
+    q.options.forEach((optText, index) => {
+      const div = document.createElement('div');
+      div.className = 'option';
+      if (isAnswered) div.classList.add('disabled');
+      
+      div.innerHTML = `<span class="opt-letter">${letters[index]})</span> <span>${optText}</span>`;
+      
+      if (!isAnswered) {
+        div.onclick = () => selectOption(index);
       } else {
-        item.classList.add('unanswered');
+        const userAns = userAnswers[currentQ].selected;
+        if (index === q.answer) {
+          div.classList.add('correct-ans');
+        } else if (index === userAns) {
+          div.classList.add('wrong-ans');
+        }
       }
-    }
-    // Destaque de posição atual (azul) se ainda não respondida ou se está sendo visualizada agora
-    const currentItem = document.getElementById('nav-item-' + currentQ);
-    if (userAnswers[currentQ] === null) {
-      currentItem.classList.remove('unanswered');
-      currentItem.classList.add('active-blue');
-    } else {
-      // Mesmo respondida, damos um leve box-shadow branco para indicar onde estamos lendo
-      currentItem.style.boxShadow = "0 0 0 2px #fff";
-    }
-
-    // Remove box-shadow branco dos outros
-    for(let i=0; i < rawQuestions.length; i++) {
-        if (i !== currentQ) document.getElementById('nav-item-' + i).style.boxShadow = "none";
-    }
-
-    if (userAnswers[currentQ] !== null) {
-      renderReviewMode();
-    } else {
-      renderAnsweringMode();
-    }
-  }
-
-  function renderAnsweringMode() {
-    const q = rawQuestions[currentQ];
-    elBtn.textContent = 'Confirmar Resposta';
-    elBtn.disabled = true;
-    
-    const mappedOpts = q.opts.map((text, idx) => ({ text: text, isCorrect: idx === q.ans }));
-    const shuffled = shuffleArray(mappedOpts);
-    
-    this.currentShuffledOpts = shuffled;
-
-    shuffled.forEach((optObj, idx) => {
-      const lbl = document.createElement('label'); lbl.className = 'option'; lbl.id = 'opt-lbl-' + idx;
-      const inp = document.createElement('input'); inp.type = 'radio'; inp.name = 'option'; inp.value = idx;
-      inp.onclick = () => { elBtn.disabled = false; };
-      lbl.appendChild(inp); lbl.appendChild(document.createTextNode(' ' + optObj.text));
-      elOpts.appendChild(lbl);
-    });
-  }
-
-  function renderReviewMode() {
-    const ansData = userAnswers[currentQ];
-    const q = rawQuestions[currentQ];
-    elBtn.textContent = 'Questão respondida';
-    elBtn.disabled = true;
-
-    ansData.shuffledOptsArray.forEach((optObj, idx) => {
-      const lbl = document.createElement('label'); lbl.className = 'option disabled'; lbl.id = 'opt-lbl-' + idx;
-      const inp = document.createElement('input'); inp.type = 'radio'; inp.name = 'option'; inp.value = idx;
-      inp.disabled = true;
-      if (idx === ansData.selectedShuffledIdx) inp.checked = true;
       
-      lbl.appendChild(inp); lbl.appendChild(document.createTextNode(' ' + optObj.text));
-      
-      if (optObj.isCorrect) lbl.classList.add('correct-ans');
-      if (idx === ansData.selectedShuffledIdx && !optObj.isCorrect) lbl.classList.add('wrong-ans');
-      
-      elOpts.appendChild(lbl);
+      div.id = 'opt-' + index;
+      optContainer.appendChild(div);
     });
 
-    elFeedback.innerHTML = `<strong>${ansData.isCorrect ? 'Você acertou.' : 'Você errou.'}</strong><br> ${q.exp}`;
-    elFeedback.style.borderLeftColor = ansData.isCorrect ? '#4caf50' : '#ef4444';
-    elFeedback.style.display = 'block';
+    const expl = document.getElementById('explanation');
+    if (isAnswered) {
+      expl.style.display = 'block';
+      expl.innerHTML = '<strong>Comentário:</strong> ' + q.explanation;
+    } else {
+      expl.style.display = 'none';
+    }
+
+    const btnConf = document.getElementById('btn-confirm');
+    if (isAnswered) {
+      btnConf.textContent = 'Registrado';
+      btnConf.disabled = true;
+    } else {
+      btnConf.textContent = 'Confirmar Resposta';
+      btnConf.disabled = true; 
+    }
+
+    document.getElementById('btn-prev').disabled = currentQ === 0;
+    
+    // Altera o botão Próxima na última questão para Encerrar
+    const btnNext = document.getElementById('btn-next');
+    if (currentQ === rawQuestions.length - 1) {
+      btnNext.textContent = 'Ver Resultados';
+      btnNext.classList.add('primary');
+    } else {
+      btnNext.textContent = 'Próxima';
+      btnNext.classList.remove('primary');
+    }
   }
 
-  function handleAction() {
-    if (userAnswers[currentQ] !== null) return; 
-    const selected = document.querySelector('input[name="option"]:checked');
-    if (!selected) return;
-    
-    const ansIdx = parseInt(selected.value);
-    const chosenOpt = this.currentShuffledOpts[ansIdx];
-    const isCorrect = chosenOpt.isCorrect;
-    
-    userAnswers[currentQ] = {
-      selectedShuffledIdx: ansIdx,
-      isCorrect: isCorrect,
-      shuffledOptsArray: this.currentShuffledOpts
-    };
-    
-    const correctRenderIdx = this.currentShuffledOpts.findIndex(o => o.isCorrect);
-    document.querySelectorAll('input[name="option"]').forEach(i => i.disabled = true);
-    document.querySelectorAll('.option').forEach(l => l.classList.add('disabled'));
-    
-    document.getElementById('opt-lbl-' + correctRenderIdx).classList.add('correct-ans');
-    if (!isCorrect) { document.getElementById('opt-lbl-' + ansIdx).classList.add('wrong-ans'); } 
-    else { confetti({ particleCount: 45, spread: 60, origin: { y: 0.8 }, colors: ['#4caf50', '#ffffff', '#3b82f6'] }); } 
-    
-    const item = document.getElementById('nav-item-' + currentQ);
-    item.className = 'nav-item ' + (isCorrect ? 'status-correct' : 'status-wrong');
-    item.style.boxShadow = "0 0 0 2px #fff";
-    
+  let tempSelection = null;
+  function selectOption(index) {
+    if (userAnswers[currentQ] !== null) return;
+    tempSelection = index;
+    document.querySelectorAll('.option').forEach(el => el.classList.remove('selected'));
+    document.getElementById('opt-' + index).classList.add('selected');
+    document.getElementById('btn-confirm').disabled = false;
+  }
+
+  function confirmAnswer() {
+    if (tempSelection === null) return;
     const q = rawQuestions[currentQ];
-    elFeedback.innerHTML = `<strong>${isCorrect ? 'Correto!' : 'Incorreto.'}</strong><br> ${q.exp}`;
-    elFeedback.style.borderLeftColor = isCorrect ? '#4caf50' : '#ef4444';
-    elFeedback.style.display = 'block';
+    const isCorrect = tempSelection === q.answer;
     
-    elBtn.textContent = 'Registrado';
-    elBtn.disabled = true;
+    userAnswers[currentQ] = { selected: tempSelection, isCorrect: isCorrect };
+    
+    const navItem = document.getElementById('nav-item-' + currentQ);
+    navItem.classList.add(isCorrect ? 'correct' : 'wrong');
+
+    if (isCorrect && typeof confetti === 'function') {
+      confetti({ particleCount: 50, spread: 60, origin: { y: 0.8 } });
+    }
+    
+    tempSelection = null;
+    loadQuestion(); // recarrega a vista para exibir correções
   }
 
   function navigateQ(step) {
@@ -300,11 +405,13 @@
     currentQ += step;
     if (currentQ < 0) currentQ = 0;
     if (currentQ >= rawQuestions.length) currentQ = rawQuestions.length - 1;
+    tempSelection = null;
     loadQuestion();
   }
 
   function jumpToQuestion(idx) {
     currentQ = idx;
+    tempSelection = null;
     loadQuestion();
   }
 
@@ -312,30 +419,116 @@
     document.getElementById('quiz-screen').style.display = 'none';
     document.getElementById('result-screen').style.display = 'block';
     
-    // Tirar a borda branca de seleção ativa do topo
-    for(let i=0; i < rawQuestions.length; i++) {
-        document.getElementById('nav-item-' + i).style.boxShadow = "none";
-    }
-    
     let totalCorrect = 0;
-    let answeredCount = 0;
     userAnswers.forEach(ans => {
-      if (ans !== null) {
-        answeredCount++;
-        if (ans.isCorrect) totalCorrect++;
-      }
+      if (ans !== null && ans.isCorrect) totalCorrect++;
     });
     
-    let pct = answeredCount > 0 ? Math.round((totalCorrect / rawQuestions.length) * 100) : 0;
+    let pct = Math.round((totalCorrect / rawQuestions.length) * 100) || 0;
     document.getElementById('score-val').textContent = pct + '%';
     document.getElementById('val-correct').textContent = totalCorrect;
-    document.getElementById('val-wrong').textContent = answeredCount - totalCorrect;
+    document.getElementById('val-total').textContent = rawQuestions.length;
     
-    if (pct >= 70) {
+    if (pct >= 70 && typeof confetti === 'function') {
       confetti({ particleCount: 150, spread: 80, origin: { y: 0.6 } });
     }
   }
 
-  init();
+  // ==========================================
+  // LÓGICA DO JOGO DE PARES (ADD-ON)
+  // ==========================================
+  const matchData = {
+    concepts: [
+      { id: 'c1', text: 'O Estado de Natureza é guerra perpétua' },
+      { id: 'c2', text: 'A Democracia é a forma definitiva, contida pela razão coletiva' },
+      { id: 'c3', text: 'O homem possui sociabilidade natural e não apenas medo recíproco' }
+    ],
+    authors: [
+      { id: 'a1', text: 'Baruch Espinosa' },
+      { id: 'a2', text: 'Thomas Hobbes' },
+      { id: 'a3', text: 'Samuel Pufendorf' }
+    ],
+    matches: { 'c1': 'a2', 'c2': 'a1', 'c3': 'a3' }
+  };
+
+  let activeConcept = null;
+  let activeAuthor = null;
+
+  function initMatchGame() {
+    const colC = document.getElementById('col-concepts');
+    const colA = document.getElementById('col-authors');
+    
+    // Embaralhar para o jogo
+    const shuffledConcepts = [...matchData.concepts].sort(() => Math.random() - 0.5);
+    const shuffledAuthors = [...matchData.authors].sort(() => Math.random() - 0.5);
+
+    shuffledConcepts.forEach(c => {
+      const div = document.createElement('div');
+      div.className = 'match-card';
+      div.id = 'card-' + c.id;
+      div.textContent = c.text;
+      div.onclick = () => handleCardClick('concept', c.id);
+      colC.appendChild(div);
+    });
+
+    shuffledAuthors.forEach(a => {
+      const div = document.createElement('div');
+      div.className = 'match-card';
+      div.id = 'card-' + a.id;
+      div.textContent = a.text;
+      div.onclick = () => handleCardClick('author', a.id);
+      colA.appendChild(div);
+    });
+  }
+
+  function handleCardClick(type, id) {
+    const card = document.getElementById('card-' + id);
+    if (card.classList.contains('matched')) return;
+
+    if (type === 'concept') {
+      if (activeConcept) document.getElementById('card-' + activeConcept).classList.remove('selected');
+      activeConcept = id;
+    } else {
+      if (activeAuthor) document.getElementById('card-' + activeAuthor).classList.remove('selected');
+      activeAuthor = id;
+    }
+    
+    card.classList.add('selected');
+
+    if (activeConcept && activeAuthor) checkMatch();
+  }
+
+  function checkMatch() {
+    const correctAuthorId = matchData.matches[activeConcept];
+    const cCard = document.getElementById('card-' + activeConcept);
+    const aCard = document.getElementById('card-' + activeAuthor);
+
+    if (correctAuthorId === activeAuthor) {
+      cCard.classList.remove('selected');
+      aCard.classList.remove('selected');
+      cCard.classList.add('matched');
+      aCard.classList.add('matched');
+      
+      if(typeof confetti === 'function') confetti({ particleCount: 30, spread: 40, origin: { y: 0.8 } });
+    } else {
+      cCard.classList.add('error');
+      aCard.classList.add('error');
+      
+      setTimeout(() => {
+        cCard.classList.remove('error', 'selected');
+        aCard.classList.remove('error', 'selected');
+      }, 600);
+    }
+
+    activeConcept = null;
+    activeAuthor = null;
+  }
+
+  // Inicializações
+  initGrid();
+  loadQuestion();
+  initMatchGame();
+
 </script>
-</body></html>
+</body>
+</html>
