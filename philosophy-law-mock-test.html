@@ -234,7 +234,7 @@
   function renderReviewMode() {
     const ansData = userAnswers[currentQ];
     const q = rawQuestions[currentQ];
-    elBtn.textContent = 'Questão já Respondida';
+    elBtn.textContent = 'Questão respondida';
     elBtn.disabled = true;
 
     ansData.shuffledOptsArray.forEach((optObj, idx) => {
