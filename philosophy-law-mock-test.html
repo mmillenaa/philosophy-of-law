@@ -4,6 +4,8 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Simulado Avançado — Filosofia do Direito I (60 Questões)</title>
+<script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+ — Filosofia do Direito I (60 Questões)</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cardo:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
@@ -106,7 +108,7 @@
   </div>
   
   <div class="content result-screen" id="result-screen">
-    <h2>Avaliação concluída</h2>
+    <h2>Avaliação do Simulado Concluída</h2>
     <div class="score-val" id="score-val">0%</div>
     <div class="stats-row">
       <div style="color: #4caf50;">Acertos: <span id="val-correct">0</span></div>
@@ -275,6 +277,7 @@
     
     document.getElementById('opt-lbl-' + correctRenderIdx).classList.add('correct-ans');
     if (!isCorrect) { document.getElementById('opt-lbl-' + ansIdx).classList.add('wrong-ans'); } 
+    else { confetti({ particleCount: 45, spread: 60, origin: { y: 0.8 }, colors: ['#4caf50', '#ffffff', '#3b82f6'] }); } 
     
     const item = document.getElementById('nav-item-' + currentQ);
     item.className = 'nav-item ' + (isCorrect ? 'status-correct' : 'status-wrong');
@@ -327,6 +330,10 @@
     document.getElementById('score-val').textContent = pct + '%';
     document.getElementById('val-correct').textContent = totalCorrect;
     document.getElementById('val-wrong').textContent = answeredCount - totalCorrect;
+    
+    if (pct >= 70) {
+      confetti({ particleCount: 150, spread: 80, origin: { y: 0.6 } });
+    }
   }
 
   init();
