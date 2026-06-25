@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Simulado Avançado — Filosofia do Direito I (60 Questões)</title>
+<title>Simulado Avançado — Filosofia do Direito I (100 Questões)</title>
 <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -134,7 +134,7 @@
   
   <div class="content" id="quiz-screen">
     <div class="q-meta">
-        <span id="q-counter">Questão 1 de 60</span>
+        <span id="q-counter">Questão 1 de 100</span>
         <span style="color: var(--accent-blue); cursor: pointer;" onclick="showResults(true)">Finalizar ➔</span>
     </div>
     <div class="q-text" id="q-text">Carregando questão...</div>
@@ -170,7 +170,7 @@
         <p><strong>4. Pragmatismo e hermenêutica (Dewey, Weber e Dworkin):</strong> <b>John Dewey</b> ataca a "jurisprudência mecânica". Para ele, o método jurídico deve ser experimental e pragmático, focado nas consequências sociais. Na sociologia, <b>Max Weber</b> defende uma atitude de observador externo (apenas "relatar" as crenças sociais). Em oposição frontal, <b>Ronald Dworkin</b> exige a "atitude interpretativa interna",em que o jurista deve mergulhar na prática para encontrar a melhor justificativa moral e jurídica aplicável à comunidade.</p>
       </div>
 
-      <h2 class="match-game-title">Exercício</h2>
+      <h2 class="match-game-title">Desafio 101</h2>
       <p class="match-game-subtitle">
         Teste seus reflexos teóricos: <strong>Clique em uma ideia (à esquerda)</strong> e, em seguida, <strong>clique no autor correspondente (à direita)</strong>.
       </p>
@@ -188,7 +188,1108 @@
   // ==========================================
   // LÓGICA DO SIMULADO PRINCIPAL
   // ==========================================
-  const rawQuestions = [{"q": "1. Assinale a alternativa que apresenta uma proposição incorreta sobre os autores contratualistas e modernos:", "opts": ["A formulação de propriedade em John Locke estabelece uma conexão direta entre o direito de apropriação privada e o esforço do trabalho individual sobre os recursos comuns.", "A liberdade sob a perspectiva lockeana pode ser compreendida fundamentalmente sob o prisma da não-interferência.", "De acordo com vertentes libertárias e neoliberais da tese de Locke, o surgimento da moeda teria superado os limites naturais de acumulação patrimonial.", "Locke desconsiderou completamente a necessidade de deixar bens em volume e qualidade equivalentes para assegurar a subsistência dos demais membros da coletividade."], "ans": 3, "exp": "Gabarito: D. Locke formulou explicitamente a 'cláusula lockeana' (Lockean proviso), exigindo que a apropriação individual deixasse recursos suficientes e de igual qualidade para os outros."}, {"q": "2. No campo das divisões fundamentais da filosofia, assinale a opção errada:", "opts": ["A ontologia dedica-se ao exame filosófico da estrutura da realidade e dos entes que constituem o mundo.", "A epistemologia constitui o campo de investigação voltado às condições de possibilidade e limites do conhecimento humano.", "A ética desvincula-se dos ramos da razão prática, voltando-se unicamente à contemplação teórica.", "A obra 'Crítica da Razão Pura' de Immanuel Kant representa um divisor de águas para a epistemologia na modernidade."], "ans": 2, "exp": "Gabarito: C. A ética é, por excelência, um dos pilares da razão prática, uma vez que se ocupa normativamente das ações e do comportamento humano voluntário."}, {"q": "3. Em relação ao pensamento ético-jurídico de Immanuel Kant, é correto afirmar:", "opts": ["O imperativo categórico kantiano restringe-se ao foro íntimo da moral, carecendo de projeção ou utilidade no campo do Direito.", "Kant adota premissas utilitaristas ao estruturar sua visão de justiça, priorizando o bem-estar e a felicidade da maioria.", "O contrato social em Kant opera como um dogma histórico imutável que impede o cidadão de questionar ou avaliar criticamente as leis criadas pelo legislador soberano.", "A dignidade humana pressupõe, na arquitetura kantiana, que todo indivíduo deve ser tratado sempre como um fim em si mesmo, e jamais reduzido a mero instrumento de interesses coletivos."], "ans": 3, "exp": "Gabarito: D. Esta é a segunda formulação clássica do Imperativo Categórico (fórmula da humanidade como fim em si mesma)."}, {"q": "4. No que diz respeito à filosofia clássica grega (Platão e Aristóteles), identifique a proposição incorreta:", "opts": ["Aristóteles estrutura na obra 'A Política' um modelo tripartite idêntico ao da alma humana, defendendo que os filósofos governem os guerreiros e produtores.", "A justiça distributiva aristotélica orienta a partilha de honrarias, cargos e riquezas comuns entre os integrantes da pólis jurídica.", "A eudaimonia em Aristóteles fundamenta uma ética das virtudes voltada ao pleno desenvolvimento das capacidades racionais e morais do ser humano.", "A noção de justiça geral ou legal em Aristóteles pode abranger preceitos normativos que decorrem tanto da legislação positiva quanto da própria ordem natural das coisas."], "ans": 0, "exp": "Gabarito: A. O modelo tripartite da alma projetado na cidade (magistrados-filósofos, guardiões e artesãos) é a tese central da 'República' de Platão, e não de Aristóteles."}, {"q": "5. Avalie as afirmações sobre os filósofos políticos clássicos e modernos e selecione a correta:", "opts": ["A justiça distributiva em Aristóteles pauta-se por uma igualdade estritamente aritmética, aplicável às reparações de danos contratuais.", "Thomas Hobbes defende que a salvaguarda absoluta da propriedade privada preexistente é a principal razão para a renúncia ao estado de natureza.", "Jean-Jacques Rousseau aponta a República Romana — com seus cônsules, senado e comícios — como o exemplo supremo de governo misto absolutista.", "Aristóteles figura teoricamente como um dos precursores da linhagem da liberdade positiva."], "ans": 3, "exp": "Gabarito: D. Aristóteles vincula a autêntica liberdade humana à participação cívica ativa e ao autogoverno coletivo no espaço da pólis (liberdade dos antigos ou positiva)."}, {"q": "6. Assinale a alternativa que expressa uma conclusão correta sobre a história das ideias políticas:", "opts": ["Aristóteles qualifica o conhecimento empírico sensível como uma mera ilusão subordinada ao contato místico com as Formas puras do mundo inteligível.", "A assembleia democrática ateniense clássica serviu historicamente como o paradigma ideal de um governo misto equilibrado.", "Pensadores da tradição republicana, como Maquiavel e Rousseau, concebem a liberdade como não-dominação, defendendo que a autonomia política requer autonomia econômica dos cidadãos.", "A formulação idealista de Platão a respeito dos reis filósofos estabelece as bases técnicas dos modernos direitos humanos individuais."], "ans": 2, "exp": "Gabarito: C. O republicanismo clássico associa a liberdade cívica à ausência de submissão a vontades arbitrárias e à suficiência material do cidadão para evitar a corrupção."}, {"q": "7. Escolha a proposição que está em perfeita consonância com os autores estudados:", "opts": ["Jeremy Bentham rejeita a necessidade de um arranjo estatal centralizado, crendo que o cálculo mecânico individual harmoniza espontaneamente a sociedade.", "John Locke preconizava uma equivalência absoluta de funções, sem admitir qualquer primazia do Poder Legislativo sobre a Coroa.", "Hans Kelsen aponta que a construção idealista de Platão conduz implicitamente ao dever de obediência irrestrita às leis positivadas, respaldadas na sabedoria dos governantes.", "Locke adota uma postura epistemológica racionalista pura, situando a origem de todas as certezas em ideias inatas da mente."], "ans": 2, "exp": "Gabarito: C. Kelsen argumenta criticamente que o modelo absolutista/jusnaturalista de Platão funciona como ferramenta ideológica para impor submissão às leis do Estado."}, {"q": "8. Identifique a asserção conceitualmente incorreta:", "opts": ["Na doutrina hobbesiana, o pacto de união transfere os direitos naturais ao Soberano, restando aos súditos os espaços de liberdade consentidos pela lei.", "O arcabouço metodológico da Teoria Pura do Direito de Hans Kelsen guarda forte influência da Crítica da Razão Pura de Kant (gnoseologia).", "Jeremy Bentham prega que o dever ético-jurídico independe do impacto concreto das condutas, vinculando-se a imperativos abstratos categóricos.", "O dever jurídico em Kant exige unicamente a conformidade externa da conduta com a legislação, enquanto a moralidade pressupõe a adesão interna ao dever."], "ans": 2, "exp": "Gabarito: C. Bentham repele o abstracionismo deontológico e fundamenta o dever exclusivamente nas consequências práticas das ações (maximização da utilidade)."}, {"q": "9. Aponte a afirmação que incorre em erro teórico:", "opts": ["Jean-Jacques Rousseau defende que o homem ingressa na sociedade civil portando direitos individuais inalienáveis e preexistentes de cunho estritamente lockeano.", "Para John Locke, embora Deus tenha concedido os recursos da terra de forma comum à humanidade, o trabalho legítimo atua como critério de individuação e posse.", "O cálculo utilitarista proposto por Bentham avalia o prazer por meio de propriedades como intensidade, duração, certeza, proximidade, fecundidade, pureza e extensão.", "Niccolò Machiavelli não limitava o conceito de regime republicano a assembleias populares puras, admitindo arranjos institucionais complexos."], "ans": 0, "exp": "Gabarito: A. A primazia de direitos individuais intocáveis limitando o Estado civil é a tese de John Locke, não a de Rousseau (que defende a submissão total à Vontade Geral)."}, {"q": "10. Assinale a opção que apresenta um erro de interpretação histórica ou conceitual:", "opts": ["Thomas Hobbes prioriza a estabilidade e a paz civil em detrimento de ideais metafísicos de justiça, operando como um dos precursores teóricos do positivismo.", "A teoria do conhecimento de Platão estabelece que as verdades científicas são meras construções subjetivas e linguísticas sem realidade ontológica.", "A revolução copernicana de Kant na filosofia desloca o eixo de análise para as estruturas a priori do sujeito cognoscente.", "Maquiavel sustenta em suas análises que a preservação da liberdade cívica funciona como o motor vital para o enriquecimento e expansão de uma república."], "ans": 1, "exp": "Gabarito: B. Para Platão, a verdade repousa no Mundo das Ideias, dotado de realidade objetiva e independente das convenções e percepções humanas (antirrelativismo)."}, {"q": "11. No livro I de 'A República', como Céfalo define a justiça inicialmente?", "opts": ["A conveniência do mais forte.", "Falar a verdade e devolver o que se tomou de empréstimo.", "Fazer o bem aos amigos e o mal aos inimigos.", "O equilíbrio entre as virtudes da alma."], "ans": 1, "exp": "Céfalo associa a justiça à honestidade nos negócios e ao pagamento de dívidas materiais."}, {"q": "12. Qual é a célebre objeção de Sócrates à definição de justiça proposta por Céfalo?", "opts": ["Devolver uma arma a um amigo que enlouqueceu não seria justo.", "A justiça só se aplica aos cidadãos de Atenas.", "Os deuses não se importam com dívidas financeiras.", "A verdade é uma ilusão dos sentidos."], "ans": 0, "exp": "Sócrates usa o contraexemplo das armas devolvidas a alguém fora de si para mostrar que a rigidez literal da regra pode causar injustiça."}, {"q": "13. Como Polemarco reformula a definição de justiça após a refutação de Céfalo?", "opts": ["A justiça é a vontade dos deuses.", "A justiça é dar a cada um o que lhe é devido: bem aos amigos e mal aos inimigos.", "A justiça é o lucro do homem superior.", "A justiça é a obediência cega às leis da cidade."], "ans": 1, "exp": "Polemarco herda o debate e conceitua a justiça como fazer o bem aos aliados e o mal aos adversários."}, {"q": "14. Qual argumento Sócrates usa para desconstruir a tese de Polemarco?", "opts": ["Os inimigos sempre se tornam amigos com o tempo.", "É impossível distinguir quem são os verdadeiros amigos.", "Aquele que é justo não deve causar danos a ninguém, pois prejudicar alguém a torna pior na sua própria virtude.", "A guerra é o estado natural do homem."], "ans": 2, "exp": "Sócrates demonstra que a justiça, sendo uma virtude, não pode produzir o enfraquecimento moral de outrem (causar o mal)."}, {"q": "15. A famosa tese defendida pelo sofista Trasímaco no livro I afirma que:", "opts": ["A justiça é a conveniência do mais forte.", "A justiça é uma virtude inata da alma.", "A justiça é um pacto de não agressão entre os fracos.", "A justiça é o respeito irrestrito às leis divinas."], "ans": 0, "exp": "Trasímaco defende um realismo político radical: a justiça é aquilo que beneficia quem detém o poder político e militar."}, {"q": "16. Segundo a ótica realista de Trasímaco, quem elabora as leis nas cidades e comunidades?", "opts": ["Os filósofos, buscando o bem comum.", "Os deuses, inspirando os legisladores.", "O grupo ou indivíduo governante, instituindo-as em benefício próprio.", "A assembleia do povo, de forma democrática e igualitária."], "ans": 2, "exp": "Trasímaco alega que as leis são prescritas pelos detentores do poder para salvaguardar seus próprios interesses particulares."}, {"q": "17. Para Trasímaco, por que a vida do homem perfeitamente injusto seria preferível à do justo?", "opts": ["O injusto vive de forma mais moderada.", "A suprema injustiça (como a tirania) confere felicidade, poder e imunidade, enquanto o justo é explorado.", "Os deuses perdoam os injustos com mais facilidade.", "O justo sofre de tédio e melancolia."], "ans": 1, "exp": "O sofista argumenta que a injustiça em larga escala liberta o indivíduo das amarras e o torna soberano sobre os justos."}, {"q": "18. Qual é a analogia técnica que Sócrates opõe a Trasímaco sobre a verdadeira função de uma arte (techne)?", "opts": ["Compara o governante ao médico ou piloto, cuja arte atende ao interesse do objeto governado (paciente/tripulação), não ao seu próprio.", "Compara o governante a um pastor que engorda o rebanho estritamente para o abate.", "Compara o governante a um guerreiro destrutivo.", "Compara o governante a um mercador."], "ans": 0, "exp": "Sócrates afirma que toda arte autêntica visa o bem daquilo que ela cuida, logo, o verdadeiro governante governa para o bem dos súditos."}, {"q": "19. Como Sócrates encerra o debate do Livro I da República?", "opts": ["Encontra a definição perfeita.", "A justiça é definida como a igualdade absoluta.", "O diálogo termina em aporia, admitindo que ainda não conhecem a essência da justiça.", "Sócrates capitula diante de Trasímaco."], "ans": 2, "exp": "O Livro I encerra-se de forma aporética: as falsas definições caíram, mas a essência do justo ainda precisa ser buscada nos livros seguintes."}, {"q": "20. Na alegoria platônica da Caverna, o retorno do filósofo libertado à caverna simboliza:", "opts": ["O dever político e pedagógico de orientar os cidadãos, mesmo sob risco de incompreensão e morte.", "O arrependimento por ter abandonado as ilusões confortáveis.", "A busca por riquezas escondidas no subterrâneo.", "A submissão voluntária à tirania."], "ans": 0, "exp": "O filósofo tem o compromisso ético de descer novamente para tentar educar e libertar seus concidadãos da ilusão."}, {"q": "21. No livro V da 'Ética a Nicômaco', como Aristóteles define a justiça universal?", "opts": ["Como obediência irrestrita aos tiranos.", "Como a virtude total ou perfeita exercida em relação ao próximo, manifestada no cumprimento das leis voltadas ao bem comum.", "Como a punição pura dos criminosos.", "Como a igualdade absoluta de posses."], "ans": 1, "exp": "A justiça universal é a conformidade com a lei moral e positiva que ordena comportamentos virtuosos voltados à comunidade."}, {"q": "22. Qual a característica basilar da justiça distributiva aristotélica?", "opts": ["Distribuição idêntica para todos, abolindo privilégios.", "Repartição de bens coletivos, riquezas e honrarias de forma proporcional ao mérito de cada cidadão.", "O perdão de dívidas financeiras em momentos de crise.", "A imposição de penas idênticas para crimes de naturezas distintas."], "ans": 1, "exp": "A justiça distributiva rege-se pela meritocracia proporcional, tratando os iguais igualmente e os desiguais desigualmente."}, {"q": "23. A justiça distributiva em Aristóteles adota qual modelo de proporção matemática?", "opts": ["Proporção aritmética.", "Proporção geométrica.", "Proporção exponencial.", "Proporção aleatória."], "ans": 1, "exp": "A proporção geométrica pondera a relação entre os bens distribuídos e o mérito individual dos sujeitos."}, {"q": "24. O que qualifica a chamada justiça corretiva (ou comutativa) para Aristóteles?", "opts": ["A avaliação do valor cívico dos soldados.", "A retificação de desequilíbrios nas transações, aplicando uma igualdade estritamente aritmética para sanar perdas e ganhos.", "A elaboração de constituições federais.", "O banimento de estrangeiros."], "ans": 1, "exp": "A justiça corretiva busca o reequilíbrio nas relações de troca ou após ilícitos, sem considerar o status social das partes."}, {"q": "25. No âmbito da justiça corretiva, como Aristóteles subdivide as transações humanas?", "opts": ["Em transações divinas e profanas.", "Em transações voluntárias (como os contratos civis) e involuntárias (como os delitos penais ocultos ou violentos).", "Em nacionais e internacionais.", "Em comerciais e agrárias."], "ans": 1, "exp": "As voluntárias nascem do acordo mútuo (comércio); as involuntárias decorrem de atos ilícitos (furtos, agressões)."}, {"q": "26. Quem Aristóteles aponta como a representação viva da justiça corretiva?", "opts": ["O legislador constituinte.", "O general de exército.", "O juiz, atuando como uma justiça animada capaz de restabelecer o ponto médio entre o ganho e a perda.", "O monarca absolutista."], "ans": 2, "exp": "Recorrer ao juiz é recorrer à justiça personificada para repor a linha média rompida pela ofensa."}, {"q": "27. Como Aristóteles resolve o dilema gerado pela rigidez e generalidade abstrata da lei?", "opts": ["Sugerindo a desobediência civil generalizada.", "Por meio da equidade, que funciona como a retificação da lei escrita quando esta se mostra lacunosa ou excessivamente genérica para o caso.", "Recomendando a aplicação literal mesmo que injusta.", "Transferindo a decisão aos sacerdotes."], "ans": 1, "exp": "A equidade adapta a norma genérica às peculiaridades concretas da realidade, evitando injustiças formais."}, {"q": "28. Qual metáfora prática Aristóteles emprega para esclarecer a maleabilidade da equidade?", "opts": ["A bússola de navegação do capitão.", "A régua flexível de chumbo utilizada pelos construtores de Lesbos, que se amolda ao contorno das pedras.", "O escudo rígido do soldado hoplita.", "A balança comercial de precisão."], "ans": 1, "exp": "A régua de Lesbos se moldava à pedra irregular, assim como a decisão equitativa se molda ao caso concreto."}, {"q": "29. De que modo Aristóteles subdivide a justiça política?", "opts": ["Em justiça natural (válida universalmente) e justiça legal ou convencional (estatuída por convenção humana).", "Em militar e parlamentar.", "Em corporativa e sindical.", "Em urbana e rústica."], "ans": 0, "exp": "A justiça política divide-se no componente natural (imutável) e no componente legal (determinado por convenção e arbítrio humano)."}, {"q": "30. A excelência moral ou virtude, segundo o pensamento aristotélico, situa-se sempre:", "opts": ["Na erradicação absoluta de todo e qualquer desejo.", "No sacrifício pessoal levado às últimas consequências.", "No meio-termo ou justa medida (mesótes) localizado entre dois extremos viciosos (o excesso e a escassez).", "Na agressividade competitiva."], "ans": 2, "exp": "A virtude é o equilíbrio racional, como a coragem que se situa entre a covardia (falta) e a temeridade (excesso)."}, {"q": "31. Na obra 'Leviatã', como Thomas Hobbes caracteriza teoricamente o estado de natureza?", "opts": ["Um idílio de harmonia mútua e paz perpétua.", "Um estado de beligerância generalizada ('guerra de todos contra todos'), sob o império do medo constante e da violência fatal.", "Um arranjo econômico mercantil estruturado.", "Uma teocracia pacífica."], "ans": 1, "exp": "Para Hobbes, a ausência de um poder coercitivo central lança a humanidade num caos de insegurança e desconfiança recíproca."}, {"q": "32. Quais os fatores desencadeadores da discórdia no estado de natureza para Hobbes?", "opts": ["A escassez de espaço geográfico e o ódio religioso.", "A tríade baseada na competição, na desconfiança crônica e na busca pela glória, potencializadas pela igualdade de capacidades.", "A herança genética e o pecado teológico.", "A ausência de moeda de troca."], "ans": 1, "exp": "Sendo os indivíduos aproximadamente iguais em potência, disputam os mesmos fins e atacam preventivamente por desconfiança."}, {"q": "33. Como se conceitua o direito de natureza (jus naturale) em Thomas Hobbes?", "opts": ["A prerrogativa inata de exigir amparo assistencial do Estado.", "A liberdade irrestrita de usar o próprio poder de acordo com o arbítrio individual para preservar a própria vida.", "O direito sagrado de herança imobiliária.", "A submissão integral às escrituras sagradas."], "ans": 1, "exp": "O direito natural hobbesiano resume-se à liberdade de autopreservação por todos os meios executáveis."}, {"q": "34. Qual a distinção analítica entre direito natural (jus) e lei natural (lex) na doutrina hobbesiana?", "opts": ["O direito é de origem divina; a lei é fruto da razão secular.", "O direito traduz-se na liberdade de agir ou abster-se, ao passo que a lei determina e vincula a uma obrigação específica.", "Não há qualquer distinção na obra.", "O direito ampara os nobres; a lei obriga a plebe."], "ans": 1, "exp": "O direito denota liberdade de ação; a lei (lex) impõe uma obrigação ou restrição ditada pela razão para autopreservação."}, {"q": "35. A primeira e fundamental lei da natureza estipulada por Hobbes preconiza:", "opts": ["Buscar a paz e segui-la; mas, caso seja inalcançável, utilizar todas as vantagens e auxílios da guerra.", "A proibição do comércio internacional.", "A obrigatoriedade do culto religioso público.", "O direito de insurreição periódica."], "ans": 0, "exp": "O primeiro ditame da razão manda tentar a paz; se inviável, resta o direito de defesa pela guerra."}, {"q": "36. A segunda lei da natureza de Thomas Hobbes impõe como imperativo racional:", "opts": ["A manutenção de armas pesadas em ambiente doméstico.", "A renúncia recíproca ao direito sobre todas as coisas, na mesma medida em que os demais o façam, visando a paz.", "A divisão igualitária da propriedade imobiliária.", "A instituição do sufrágio universal direto."], "ans": 1, "exp": "Para sair do estado de guerra, a razão exige que os homens aceitem limitar mutuamente suas liberdades selvagens."}, {"q": "37. Por que Hobbes assevera que pactos desprovidos da espada (covenants without the sword) são ineficazes?", "opts": ["Porque a escrita em pergaminho se deteriora.", "Porque palavras carecem de força física para constranger as paixões humanas sem o temor de uma punição estatal.", "Porque os contratos exigem registro público cartorial.", "Porque os homens são naturalmente mudos no estado selvagem."], "ans": 1, "exp": "Sem um poder visível e armado para impor sanções, as leis da natureza são violadas pelas paixões individuais."}, {"q": "38. Como se opera a instituição legítima do Estado Soberano na construção hobbesiana?", "opts": ["Por meio de uma unção mística e hereditária.", "Pela convenção coletiva em que cada indivíduo autoriza e cede seu direito de autogoverno a um homem ou assembleia, sob condição idêntica dos demais.", "Através de uma invasão estrangeira vitoriosa.", "Por votação parlamentar de representantes eleitos."], "ans": 1, "exp": "O contrato hobbesiano é firmado entre os indivíduos (e não com o soberano), instituindo um terceiro com poder supremo absoluto."}, {"q": "39. Qual é o limite ou extensão do poder político concentrado pelo Leviatã de Hobbes?", "opts": ["É um poder limitado e fiscalizado pelo judiciário autônomo.", "É soberano, absoluto e indivisível; o governante não está vinculado ao pacto e não pode sofrer punição dos súditos.", "Trata-se de uma magistratura temporária renovável.", "É subordinado à authority papal."], "ans": 1, "exp": "Para evitar o retorno à guerra civil, o poder soberano precisa ser concentrado, inquestionável e livre de amarras contratuais."}, {"q": "40. A situação jurídica da propriedade privada no estado de natureza descrito por Hobbes é de:", "opts": ["Absoluta intangibilidade assegurada por direitos humanos.", "Inexistência de segurança jurídica; há apenas a posse precária mantida pela força física do detentor enquanto durar.", "Proteção por tribunais arbitrais internacionais.", "Origem comunista solidária."], "ans": 1, "exp": "Sem leis estatais e coerção, inexiste distinção estável entre o meu e o teu; vigora a usurpação contínua."}, {"q": "41. Em contraposição direta a Hobbes, como John Locke concebe originariamente o estado de natureza?", "opts": ["Como uma antecâmara inevitável do inferno civil.", "Como uma situação de relativa paz, liberdade e igualdade, orientada pelos ditames da lei da razão natural.", "Como uma monarquia patriarcal primitiva.", "Como uma ficção lógica desprovida de relevância moral."], "ans": 1, "exp": "Para Locke, a ausência de governo não implica ausência de moralidade; os homens são livres sob o império da lei natural."}, {"q": "42. Conforme a matriz teórica de John Locke, o fundamento legitimador da propriedade privada reside:", "opts": ["Na chancela discricionária outorgada pelo Soberano absoluto.", "Na incorporação do trabalho e do esforço individual sobre os bens originalmente dados em comum pela natureza.", "No direito de conquista marcial.", "No mero decurso do tempo possessório (usucapião primitivo)."], "ans": 1, "exp": "O trabalho do corpo e as obras das mãos do indivíduo são seus; logo, ao retirar algo do estado comum, acopla-se a propriedade."}, {"q": "43. Sendo o estado de natureza lockeano dotado de direitos e razão, o que motiva a criação do Estado Civil?", "opts": ["A necessidade de organizar exércitos de invasão ultramarina.", "A carência de leis positivadas claras, de juízes imparciais e de uma força executiva estável para tutelar as propriedades.", "A ordem expressa de autoridades clericais.", "O tédio existencial decorrente da paz agrária."], "ans": 1, "exp": "A ausência de um terceiro neutro faz com que cada um seja juiz em causa própria, gerando riscos de vingança e desordem."}, {"q": "44. Se o magistrado supremo violar a confiança e agredir os direitos básicos dos cidadãos, Locke admite:", "opts": ["O dever de submissão passiva aguardando o julgamento divino.", "O Direito de Resistência ou Rebelião cívica para destituir os governantes tiranos.", "O suicídio coletivo ritual.", "A dissolução definitiva de toda e qualquer sociedade humana."], "ans": 2, "exp": "O poder político é um depósito de confiança (trust); quebrado o pacto pelo governante, o poder retorna ao povo para se defender."}, {"q": "45. O vocábulo 'propriedade' (property), empregado por Locke em sua acepção ampla e sistêmica, compreende:", "opts": ["Apenas os latifúndios e imóveis rurais.", "O estoque monetário de ouro e prata circulante.", "A preservação recíproca da Vida, da Liberdade e dos Bens (patrimônio).", "As patentes comerciais ultramarinas."], "ans": 2, "exp": "Locke sumariza sob a etiqueta de 'propriedade' o conjunto dos direitos fundamentais da personalidade e posses do ser humano."}, {"q": "46. Segundo os postulados éticos de Immanuel Kant, a pedra de toque da dignidade humana consiste em:", "opts": ["Agir sempre como instrumento utilitário para a estabilidade econômica.", "Tratar a humanidade, seja na sua pessoa ou na de outrem, sempre como um fim em si mesma, nunca meramente como um meio.", "Submeter os preceitos racionais aos desejos e paixões afetivas.", "Acumular méritos civis por meio da obediência religiosa."], "ans": 1, "exp": "A dignidade impede a instrumentalização ou coisificação do ser humano para quaisquer propósitos utilitários de terceiros."}, {"q": "47. Em seu ensaio 'À Paz Perpétua', como Kant define e circunscreve o chamado Direito Cosmopolita?", "opts": ["O direito ilimitado de colonização global por nações ilustradas.", "As condições de hospitalidade universal, garantindo ao estrangeiro o direito de não ser tratado com hostilidade ao ingressar em terras alheias.", "A fusão de todos Estados sob um único governo mundial tirânico.", "O dever de abolição imediata de todas as fronteiras alfandegárias."], "ans": 1, "exp": "O direito cosmopolita baseia-se na esfericidade da terra e na coexistência necessária, regulando o acolhimento digno do viajante."}, {"q": "48. Qual a linha divisória estrutural entre um Imperativo Hipotético e um Imperativo Categórico na filosofia kantiana?", "opts": ["O hipotético vincula-se à moralidade; o categórico à política partidária.", "O hipotético dita uma ação necessária para alcançar um fim condicionado (prudência), enquanto o categórico ordena de forma absoluta e incondicional.", "Inexiste distinção prática entre os dois.", "O hipotético rege os animais; o categórico os seres humanos."], "ans": 1, "exp": "O imperativo categórico vale por si mesmo (dever moral puro); o hipotético depende do desejo do agente ('se queres X, faça Y')."}, {"q": "49. Kant desfere duras críticas morais e jurídicas às potências coloniais de sua época sob o fundamento de que:", "opts": ["Elas não foram eficientes na extração de riquezas minerais.", "Elas violaram o direito cosmopolita da hospitalidade ao tratarem regiões habitadas como terras de ninguém (res nullius), escravizando e espoliando povos.", "Elas não difundiram adequadamente o cristianismo dogmático.", "Elas evitaram o livre comércio de manufaturados europeus."], "ans": 1, "exp": "Kant denunciou o expansionismo colonial violento e o tráfico de escravizados como graves rupturas do direito natural e cosmopolita."}, {"q": "50. Na dogmática de Kant, a sanção correlata à infração de um dever estritamente moral localiza-se:", "opts": ["Na punição física imposta pelo aparato carcerário do Estado.", "No confisco de patrimônio e multas pecuniárias.", "No foro interno, manifestada por meio do arrependimento e tribunal da própria consciência racional.", "Na suspensão de direitos políticos pelo parlamento."], "ans": 2, "exp": "O Direito opera via coerção externa; a Moralidade exige autonomia e sua sanção é puramente íntima e consciencial."}, {"q": "51. O axioma central do Princípio da Utilidade formulado pelo jurista Jeremy Bentham preconiza:", "opts": ["A fidelidade imutável aos costumes medievais do direito consuetudinário.", "A aprovação ou rejeição de qualquer conduta com base na sua aptidão demonstrada para maximizar o prazer ou mitigar a dor da parte afetada.", "A concessão de privilégios hereditários.", "A primazia dos deveres morais abstratos kantianos."], "ans": 1, "exp": "O utilitarismo benthamiano assenta-se na busca da maior felicidade/prazer e menor sofrimento para o maior número de indivíduos."}, {"q": "52. Conforme o empirismo de Bentham, a natureza governou soberanamente o homem sob dois mestres. Quais são?", "opts": ["A Razão Pura e a Razão Prática.", "A Dor e o Prazer.", "A Coroa e o Parlamento.", "A Vida e a Transcendência."], "ans": 1, "exp": "Estes dois vetores (dor e prazer) determinam o que fazemos, o que dizemos e o que pensamos na existência concreta."}, {"q": "53. A corrente teórica do Utilitarismo capitaneada por Bentham assume uma postura classificada como:", "opts": ["Deontológica (pautada no dever intrínseco imune a resultados).", "Consequencialista ou Teleológica (pautada no exame crítico dos efeitos e resultados práticos das ações).", "Fideísta dogmática.", "Solipsista niilista."], "ans": 1, "exp": "O consequencialismo afasta noções abstratas de pecado ou virtude em si, julgando o ato pelo saldo de bem-estar que ele gera."}, {"q": "54. Qual a principal divergência metodológica sobre a justificação da sanção penal entre Kant e Bentham?", "opts": ["Kant repudia as punições corporais; Bentham as defende integralmente.", "Kant teoriza a pena como retribuição moral estrita ao crime cometido; Bentham defende a utilidade da pena focada na prevenção geral e dissuasão de delitos futuros.", "Ambos rejeitam o poder de punir do Estado.", "Kant foca na reparação civil financeira; Bentham na prisão perpétua universal."], "ans": 1, "exp": "Para o retributivista Kant, pune-se porque o crime foi praticado (olhar para o passado); para o utilitarista Bentham, pune-se para que não ocorram novos crimes (olhar para o futuro)."}, {"q": "55. A respeito do instituto jurídico da propriedade na modelagem utilitarista de Jeremy Bentham, é correto concluir:", "opts": ["É tida como um direito natural místico e inalienável intangível ao Estado.", "É concebida como uma criação e garantia estatal legítima apenas na exata medida em que cumpre uma função de utilidade social e bem-estar comum.", "Deve ser sumariamente extinta para dar lugar ao comunismo de bens.", "Constitui uma extensão física indispensável do Imperativo Categórico."], "ans": 1, "exp": "Para Bentham, inexiste propriedade natural; ela é um artifício legal justificado pela segurança econômica e utilidade social que fomenta."}, {"q": "56. Na tradição republicana esposada por Nicolau Maquiavel e Jean-Jacques Rousseau, a liberdade define-se essencialmente como:", "opts": ["Ausência absoluta de regulamentações estatais sobre o mercado financeiro (não-interferência pura).", "Condição de não-dominação, exigindo imunidade ao arbítrio de um senhor e certa independência civil e material do cidadão.", "O poder selvagem do mais forte no estado anterior ao pacto.", "A prerrogativa aristocrática de escravizar adversários derrotados."], "ans": 1, "exp": "Ser livre no republicanismo é não estar sob a dependência ou capricho de outrem, o que demanda instituições livres e autonomia cívica."}, {"q": "57. No arranjo constitucional proposto pelo 'Contrato Social' de Rousseau, a soberania legítima reside de forma inalienável:", "opts": ["Na figura sagrada e centralizada do monarca hereditário.", "Na Vontade Geral do povo unificado em corpo político, voltada categoricamente ao interesse público comum.", "No colégio ministerial dos juízes togados.", "Nas forças armadas da nação."], "ans": 1, "exp": "O pacto rousseauista dá à luz um corpo moral coletivo dotado de soberania popular indivisível e inalienável."}, {"q": "58. Conforme discutido na apresentação do curso (Aula 01 de DFD0313), qual o papel atribuído por H.L.A. Hart à Filosofia do Direito?", "opts": ["Substituir os códigos normativos por manuais de lógica pura.", "Auxiliar na clarificação e análise crítica dos conceitos jurídicos fundamentais, sobretudo nas denominadas 'zonas de penumbra' da linguagem.", "Impor dogmas morais imutáveis aos magistrados de carreira.", "Demonstrar a inutilidade prática das discussões teóricas nos tribunais."], "ans": 1, "exp": "Hart ressalta a importância da análise conceitual para desatar nós linguísticos e interpretar casos de alta complexidade hermenêutica."}, {"q": "59. Qual a leitura crítica formulada por Hans Kelsen a respeito do jusnaturalismo de cariz idealista platônico?", "opts": ["Elogia Platão por lançar as bases do relativismo axiológico democrático.", "Aponta que o modelo de justiça metafísica absoluta em Platão opera ideologicamente para exigir obediência incondicional às normas vigentes impostas pelos 'sábios'.", "Equipara a República platônica ao utilitarismo britânico moderno.", "Considera que Platão defendia a revolução armada contínua contra as instituições sociais."], "ans": 1, "exp": "Kelsen sustenta que teorias de justiça absoluta frequentemente prestam-se a blindar regimes dogmáticos contra contestações racionais."}, {"q": "60. De acordo com o tratado 'À Paz Perpétua' de Kant, qual a estrutura político-institucional interna necessária para coibir a guerra estatal?", "opts": ["O despotismo esclarecido centralizador.", "A democracia direta e demagógica de matiz helênico.", "A Constituição Republicana, edificada sobre a divisão de poderes, representação, liberdade e igualdade formal.", "O regime imperial absolutista unificado."], "ans": 2, "exp": "Em um regime republicano, os cidadãos que votam dividem os custos materiais e humanos da guerra, gerando um freio natural às aventuras belicistas."}];
+  const rawQuestions = [
+    {
+      "q": "1. Assinale a alternativa que apresenta uma proposição incorreta sobre os autores contratualistas e modernos:",
+      "opts": [
+        "A formulação de propriedade em John Locke estabelece uma conexão direta entre o direito de apropriação privada e o esforço do trabalho individual sobre os recursos comuns.",
+        "A liberdade sob a perspectiva lockeana pode ser compreendida fundamentalmente sob o prisma da não-interferência.",
+        "De acordo com vertentes libertárias e neoliberais da tese de Locke, o surgimento da moeda teria superado os limites naturais de acumulação patrimonial.",
+        "Locke desconsiderou completamente a necessidade de deixar bens em volume e qualidade equivalentes para assegurar a subsistência dos demais membros da coletividade."
+      ],
+      "ans": 3,
+      "exp": "Gabarito: D. Locke formulou explicitamente a 'cláusula lockeana' (Lockean proviso), exigindo que a apropriação individual deixasse recursos suficientes e de igual qualidade para os outros."
+    },
+    {
+      "q": "2. No campo das divisões fundamentais da filosofia, assinale a opção errada:",
+      "opts": [
+        "A ontologia dedica-se ao exame filosófico da estrutura da realidade e dos entes que constituem o mundo.",
+        "A epistemologia constitui o campo de investigação voltado às condições de possibilidade e limites do conhecimento humano.",
+        "A ética desvincula-se dos ramos da razão prática, voltando-se unicamente à contemplação teórica.",
+        "A obra 'Crítica da Razão Pura' de Immanuel Kant representa um divisor de águas para a epistemologia na modernidade."
+      ],
+      "ans": 2,
+      "exp": "Gabarito: C. A ética é, por excelência, um dos pilares da razão prática, uma vez que se ocupa normativamente das ações e do comportamento humano voluntário."
+    },
+    {
+      "q": "3. Em relação ao pensamento ético-jurídico de Immanuel Kant, é correto afirmar:",
+      "opts": [
+        "O imperativo categórico kantiano restringe-se ao foro íntimo da moral, carecendo de projeção ou utilidade no campo do Direito.",
+        "Kant adota premissas utilitaristas ao estruturar sua visão de justiça, priorizando o bem-estar e a felicidade da maioria.",
+        "O contrato social em Kant opera como um dogma histórico imutável que impede o cidadão de questionar ou avaliar criticamente as leis criadas pelo legislador soberano.",
+        "A dignidade humana pressupõe, na arquitetura kantiana, que todo indivíduo deve ser tratado sempre como um fim em si mesmo, e jamais reduzido a mero instrumento de interesses coletivos."
+      ],
+      "ans": 3,
+      "exp": "Gabarito: D. Esta é a segunda formulação clássica do Imperativo Categórico (fórmula da humanidade como fim em si mesma)."
+    },
+    {
+      "q": "4. No que diz respeito à filosofia clássica grega (Platão e Aristóteles), identifique a proposição incorreta:",
+      "opts": [
+        "Aristóteles estrutura na obra 'A Política' um modelo tripartite idêntico ao da alma humana, defendendo que os filósofos governem os guerreiros e produtores.",
+        "A justiça distributiva aristotélica orienta a partilha de honrarias, cargos e riquezas comuns entre os integrantes da pólis jurídica.",
+        "A eudaimonia em Aristóteles fundamenta uma ética das virtudes voltada ao pleno desenvolvimento das capacidades racionais e morais do ser humano.",
+        "A noção de justiça geral ou legal em Aristóteles pode abranger preceitos normativos que decorrem tanto da legislação positiva quanto da própria ordem natural das coisas."
+      ],
+      "ans": 0,
+      "exp": "Gabarito: A. O modelo tripartite da alma projetado na cidade (magistrados-filósofos, guardiões e artesãos) é a tese central da 'República' de Platão, e não de Aristóteles."
+    },
+    {
+      "q": "5. Avalie as afirmações sobre os filósofos políticos clássicos e modernos e selecione a correta:",
+      "opts": [
+        "A justiça distributiva em Aristóteles pauta-se por uma igualdade estritamente aritmética, aplicável às reparações de danos contratuais.",
+        "Thomas Hobbes defende que a salvaguarda absoluta da propriedade privada preexistente é a principal razão para a renúncia ao estado de natureza.",
+        "Jean-Jacques Rousseau aponta a República Romana — com seus cônsules, senado e comícios — como o exemplo supremo de governo misto absolutista.",
+        "Aristóteles figura teoricamente como um dos precursores da linhagem da liberdade positiva."
+      ],
+      "ans": 3,
+      "exp": "Gabarito: D. Aristóteles vincula a autêntica liberdade humana à participação cívica ativa e ao autogoverno coletivo no espaço da pólis (liberdade dos antigos ou positiva)."
+    },
+    {
+      "q": "6. Assinale a alternativa que expressa uma conclusão correta sobre a história das ideias políticas:",
+      "opts": [
+        "Aristóteles qualifica o conhecimento empírico sensível como uma mera ilusão subordinada ao contato místico com as Formas puras do mundo inteligível.",
+        "A assembleia democrática ateniense clássica serviu historicamente como o paradigma ideal de um governo misto equilibrado.",
+        "Pensadores da tradição republicana, como Maquiavel e Rousseau, concebem a liberdade como não-dominação, defendendo que a autonomia política requer autonomia econômica dos cidadãos.",
+        "A formulação idealista de Platão a respeito dos reis filósofos estabelece as bases técnicas dos modernos direitos humanos individuais."
+      ],
+      "ans": 2,
+      "exp": "Gabarito: C. O republicanismo clássico associa a liberdade cívica à ausência de submissão a vontades arbitrárias e à suficiência material do cidadão para evitar a corrupção."
+    },
+    {
+      "q": "7. Escolha a proposição que está em perfeita consonância com os autores estudados:",
+      "opts": [
+        "Jeremy Bentham rejeita a necessidade de um arranjo estatal centralizado, crendo que o cálculo mecânico individual harmoniza espontaneamente a sociedade.",
+        "John Locke preconizava uma equivalência absoluta de funções, sem admitir qualquer primazia do Poder Legislativo sobre a Coroa.",
+        "Hans Kelsen aponta que a construção idealista de Platão conduz implicitamente ao dever de obediência irrestrita às leis positivadas, respaldadas na sabedoria dos governantes.",
+        "Locke adota uma postura epistemológica racionalista pura, situando a origem de todas as certezas em ideias inatas da mente."
+      ],
+      "ans": 2,
+      "exp": "Gabarito: C. Kelsen argumenta criticamente que o modelo absolutista/jusnaturalista de Platão funciona como ferramenta ideológica para impor submissão às leis do Estado."
+    },
+    {
+      "q": "8. Identifique a asserção conceitualmente incorreta:",
+      "opts": [
+        "Na doutrina hobbesiana, o pacto de união transfere os direitos naturais ao Soberano, restando aos súditos os espaços de liberdade consentidos pela lei.",
+        "O arcabouço metodológico da Teoria Pura do Direito de Hans Kelsen guarda forte influência da Crítica da Razão Pura de Kant (gnoseologia).",
+        "Jeremy Bentham prega que o dever ético-jurídico independe do impacto concreto das condutas, vinculando-se a imperativos abstratos categóricos.",
+        "O dever jurídico em Kant exige unicamente a conformidade externa da conduta com a legislação, enquanto a moralidade pressupõe a adesão interna ao dever."
+      ],
+      "ans": 2,
+      "exp": "Gabarito: C. Bentham repele o abstracionismo deontológico e fundamenta o dever exclusivamente nas consequências práticas das ações (maximização da utilidade)."
+    },
+    {
+      "q": "9. Aponte a afirmação que incorre em erro teórico:",
+      "opts": [
+        "Jean-Jacques Rousseau defende que o homem ingressa na sociedade civil portando direitos individuais inalienáveis e preexistentes de cunho estritamente lockeano.",
+        "Para John Locke, embora Deus tenha concedido os recursos da terra de forma comum à humanidade, o trabalho legítimo atua como critério de individuação e posse.",
+        "O cálculo utilitarista proposto por Bentham avalia o prazer por meio de propriedades como intensidade, duração, certeza, proximidade, fecundidade, pureza e extensão.",
+        "Niccolò Machiavelli não limitava o conceito de regime republicano a assembleias populares puras, admitindo arranjos institucionais complexos."
+      ],
+      "ans": 0,
+      "exp": "Gabarito: A. A primazia de direitos individuais intocáveis limitando o Estado civil é a tese de John Locke, não a de Rousseau (que defende a submissão total à Vontade Geral)."
+    },
+    {
+      "q": "10. Assinale a opção que apresenta um erro de interpretação histórica ou conceitual:",
+      "opts": [
+        "Thomas Hobbes prioriza a estabilidade e a paz civil em detrimento de ideais metafísicos de justiça, operando como um dos precursores teóricos do positivismo.",
+        "A teoria do conhecimento de Platão estabelece que as verdades científicas são meras construções subjetivas e linguísticas sem realidade ontológica.",
+        "A revolução copernicana de Kant na filosofia desloca o eixo de análise para as estruturas a priori do sujeito cognoscente.",
+        "Maquiavel sustenta em suas análises que a preservação da liberdade cívica funciona como o motor vital para o enriquecimento e expansão de uma república."
+      ],
+      "ans": 1,
+      "exp": "Gabarito: B. Para Platão, a verdade repousa no Mundo das Ideias, dotado de realidade objetiva e independente das convenções e percepções humanas (antirrelativismo)."
+    },
+    {
+      "q": "11. É errado afirmar que:",
+      "opts": [
+        "O dualismo platônico se notabiliza como oposição entre valores, onde o mundo das ideias (do bem) se choca com a esfera do desvalor (o mal).",
+        "A metáfora da caverna simboliza o caráter absoluto da experiência sensorial (o mal), que só pode ser abandonado em uma virada radical rumo à experiência ideal (o bem).",
+        "O \"devir\" para Platão é originalmente previsto como mero não-ser, mas acaba ganhando uma existência real posteriormente em sua obra, representando o mal no dualismo ontológico.",
+        "A ciência natural, assim como a ética normativa, trabalha primordialmente com polos opostos e absolutos, como a oposição entre o bem e o mal."
+      ],
+      "ans": 3,
+      "exp": "Gabarito: D. O texto afirma que a ciência natural, ao contrário da ética normativa, procura trabalhar não com polos opostos e absolutos, mas com a ideia de evolução gradual."
+    },
+    {
+      "q": "12. É correto afirmar que:",
+      "opts": [
+        "Para Aristóteles, a \"doutrina do meio\" (mesótes) é uma operação matemática exata que determina a virtude como um ponto fixo, igual para todos os indivíduos.",
+        "Hans Kelsen critica a doutrina do meio de Aristóteles, argumentando que a virtude e o vício são definidos pela conformidade ou não com uma norma moral pressuposta, e não por uma gradação quantitativa.",
+        "A fórmula do \"meio relativo a nós\" em Aristóteles resolve o problema da definição da virtude, pois indica precisamente qual é a conduta certa a ser seguida em cada situação.",
+        "O esquema da mesótes cria a aparência de que uma única norma é violada por \"excesso\" ou \"falta\", mas, para Kelsen, o que ocorre é a violação de normas diferentes (pluralidade de normas)."
+      ],
+      "ans": 1,
+      "exp": "Gabarito: B. Kelsen argumenta que a quantificação moral é uma falácia, pois a definição de uma conduta como boa ou má significa que ela está em conformidade ou não com uma norma (o que não comporta gradações)."
+    },
+    {
+      "q": "13. É correto afirmar que:",
+      "opts": [
+        "Baruch Espinosa, em sua leitura de Hobbes, defende que a democracia é apenas um estágio transitório que deve ser superado pela monarquia para garantir a paz.",
+        "Espinosa diverge de Hobbes ao argumentar que a democracia é a forma de governo que mais se aproxima do Estado de Natureza, pois todos os indivíduos continuam iguais e os apetites individuais são contidos pela razão coletiva.",
+        "Para Espinosa, a monarquia absoluta é a forma ideal de governo, pois concentra o poder e evita a ambiguidade das assembleias populares.",
+        "No Tratado Político, Espinosa mantém a defesa da teocracia democrática do povo hebreu como o modelo perfeito de governo."
+      ],
+      "ans": 1,
+      "exp": "Gabarito: B. Espinosa retoma a ideia contratualista, mas diverge de Hobbes ao defender a continuidade da democracia como forma superior, onde a razão coletiva prevalece sobre os apetites individuais."
+    },
+    {
+      "q": "14. É errado afirmar que:",
+      "opts": [
+        "No Leviatã, Hobbes resolve a dificuldade da democracia originária com os conceitos de \"autorização\" e \"representação\", negando à democracia seu papel constitutivo.",
+        "Para Hobbes, a liberdade originária não é uma característica democrática, mas a liberdade de submeter-se ao poder do soberano.",
+        "Hobbes recusa o governo misto e a distinção entre formas positivas e negativas de governo, adotando a estabilidade como critério de avaliação.",
+        "O Behemoth, última obra de Hobbes, demonstra sua crença na possibilidade de uma democracia estável, inspirando-se na Revolução Inglesa de 1640."
+      ],
+      "ans": 3,
+      "exp": "Gabarito: D. No Behemoth, Hobbes descreve a Revolução Inglesa como um período de corrupção popular, obra de sedutores (presbiterianos, papistas), e não como um modelo de estabilidade democrática."
+    },
+    {
+      "q": "15. É correto afirmar que:",
+      "opts": [
+        "Robert Filmer, no Patriarca, defende a tese de que o poder do rei deriva da vontade popular, expressa em um contrato social originário.",
+        "Filmer utiliza autores gregos e latinos (Aristóteles, Tucídides, Cícero) para demonstrar a superioridade da democracia sobre a monarquia.",
+        "A doutrina de Filmer se baseia no patriarcalismo, argumentando que a única forma legítima de governo é a monarquia paterna, absoluta e arbitrária, herdada de Adão.",
+        "Filmer conclui que o povo nasceu livre por natureza, mas optou voluntariamente pela monarquia para garantir a ordem."
+      ],
+      "ans": 2,
+      "exp": "Gabarito: C. Filmer é o grande defensor da monarquia patriarcal, combatendo a ideia de que o povo nasceu livre ou de que a democracia foi a forma originária de governo."
+    },
+    {
+      "q": "16. É errado afirmar que:",
+      "opts": [
+        "James Tyrrell, em resposta a Filmer, utiliza o exemplo dos indígenas da América para descrever um estado de natureza primitivo, comunista e pacífico, validando a tese da democracia originária.",
+        "Algernon Sidney argumenta que Deus concede aos homens a escolha das formas de governo, sendo autor não só da democracia, mas de todas as outras, inclusive a tirania.",
+        "John Locke refuta a tese de Filmer argumentando que a aplicação do critério patriarcal é impraticável, pois é impossível identificar o verdadeiro herdeiro de Adão.",
+        "James Harrington defende a democracia pura como a forma ideal de governo, baseada na participação direta da população na tomada de todas as decisões políticas."
+      ],
+      "ans": 3,
+      "exp": "Gabarito: D. Harrington, em Oceana, defende que \"onde o povo obtém somente o resultado, mas todo o resto é gerido por uma boa aristocracia\". Ele prescinde da participação direta da população, associando-a à anarquia."
+    },
+    {
+      "q": "17. É correto afirmar que:",
+      "opts": [
+        "Para Benjamin Constant, a liberdade dos modernos é caracterizada pela participação direta e constante no poder soberano, enquanto a dos antigos se baseia no gozo pacífico da independência privada.",
+        "Benjamin Constant defende a representação política como o fator que separa a democracia antiga da moderna, mas sugere um retorno aos valores antigos para atenuar o despotismo e a apatia do indivíduo moderno.",
+        "Edmund Burke, observando a Revolução Francesa, elogiou a democracia pura por sua capacidade de promover a igualdade e a fraternidade entre os cidadãos.",
+        "Joseph de Maistre, em sua visão contrarrevolucionária, defendeu a soberania popular como um princípio fundamental para a reconstrução da ordem social na Europa."
+      ],
+      "ans": 1,
+      "exp": "Gabarito: B. Constant estruturou a distinção clássica: liberdade dos antigos (participação) vs. liberdade dos modernos (independência). Ele sugeria que o retorno moderado aos valores antigos, pela educação moral, equilibraria os riscos do despotismo moderno."
+    },
+    {
+      "q": "18. É errado afirmar que:",
+      "opts": [
+        "John Dewey critica a \"jurisprudência mecânica\" que se baseia no silogismo formal, propondo em seu lugar uma lógica experimental orientada pelas consequências concretas das decisões.",
+        "Para Dewey, os princípios jurídicos gerais funcionam como hipóteses de trabalho, instrumentos provisórios de orientação da investigação, cujo valor depende das consequências que produzem na experiência social.",
+        "Dewey concorda com Holmes que a \"vida do direito não foi a lógica, mas a experiência\", reconhecendo que a lógica tradicional é um entrave ao raciocínio jurídico.",
+        "John Dewey acreditava que a aplicação rígida de princípios do século XVIII, como a \"liberdade contratual\", garantia a segurança jurídica e a justiça social em sua época."
+      ],
+      "ans": 3,
+      "exp": "Gabarito: D. Dewey critica a aplicação absoluta de princípios como a \"liberdade contratual\", que nasceram como ferramentas úteis para a indústria, mas se cristalizaram e se tornaram obstrutivos (baluartes da reação)."
+    },
+    {
+      "q": "19. É correto afirmar que:",
+      "opts": [
+        "Para G.W.F. Hegel, a história é o \"curso necessário racional do Espírito do Mundo\", e as ações dos Estados são instrumentos para alcançar esse fim, conferindo racionalidade ao progresso histórico.",
+        "Hans Kelsen elogia a filosofia da história de Hegel, considerando-a um exemplo de método científico rigoroso que supera as contradições do jusnaturalismo.",
+        "Para Hegel, a democracia representativa moderna é a forma final e mais racional de governo, na qual o Estado se dissolve na sociedade civil.",
+        "O método dialético de Hegel justifica o valor do \"ser\" a partir do \"dever ser\", demonstrando que a realidade material é mais importante que a vontade subjetiva."
+      ],
+      "ans": 0,
+      "exp": "Gabarito: A. O material indica que a filosofia da história de Hegel é uma continuação da doutrina jusnaturalista, na qual a história (o Ser) permite extrair normas (o Dever Ser) por ser o palco do \"Espírito do Mundo\"."
+    },
+    {
+      "q": "20. É errado afirmar que:",
+      "opts": [
+        "Immanuel Kant, em \"À Paz Perpétua\", define a democracia como uma \"não forma\" (Unform) e um despotismo, pois nela as funções de legislador e executor se confundem no mesmo sujeito.",
+        "Para Kant, o sistema representativo é o que garante a verdadeira liberdade republicana, enquanto as antigas repúblicas desabavam em tirania por desconhecerem a mediação representativa.",
+        "Kant sustenta que a busca pela origem histórica do contrato social é inútil, argumentando que a sociedade civil teve início pela violência rústica dos \"selvagens\".",
+        "Kant era um entusiasta da deposição do poder constituído pela força, acreditando que o \"espírito do pacto originário\" justifica qualquer amotinamento popular contra um governante injusto."
+      ],
+      "ans": 3,
+      "exp": "Gabarito: D. Kant posicionou-se firmemente contra a utilização do princípio da soberania popular para justificar a deposição do poder pela força, classificando qualquer amotinamento como criminoso."
+    },
+    {
+      "q": "21. É correto afirmar que:",
+      "opts": [
+        "Para John Locke, a \"Commonwealth\" (sociedade política) se confunde com a forma de governo, sendo sinônimo de democracia direta.",
+        "Locke estabelece uma distinção fundamental entre a sociedade política (Commonwealth), formada pelo pacto civil, e a forma de governo escolhida (que pode ser a democracia, aristocracia ou monarquia).",
+        "Para Locke, uma vez escolhida a forma de governo, o povo perde para sempre o poder de alterá-la, fixando-se em uma estrutura imutável.",
+        "A \"democracia perfeita\" para Locke é aquela em que o povo exerce o poder executivo diretamente, sem delegá-lo a representantes."
+      ],
+      "ans": 1,
+      "exp": "Gabarito: B. Locke diferencia a Commonwealth (sociedade política) da forma de governo. Além disso, o povo mantém o poder de mudar a forma de governo (governo democrático) quando necessário."
+    },
+    {
+      "q": "22. É errado afirmar que:",
+      "opts": [
+        "No \"Contrato Social\", Rousseau afirma que a vontade geral é a soma dos interesses particulares, sendo sempre a vontade da maioria, que obriga todo o resto.",
+        "Para Rousseau, a soberania é inalienável e indivisível, e a vontade geral não pode ser representada por deputados.",
+        "O soberano em Rousseau não é o governante, mas o corpo coletivo do povo que delibera sobre o interesse público.",
+        "Rousseau defende que a aristocracia eletiva é a melhor forma de governo, enquanto a democracia pura seria adequada apenas para um \"povo de deuses\"."
+      ],
+      "ans": 0,
+      "exp": "Gabarito: A. Rousseau diferencia a \"vontade geral\" (visa o bem comum) da \"vontade de todos\" (soma dos interesses particulares). A vontade da maioria não é um critério absoluto se não estiver alinhada com o interesse público."
+    },
+    {
+      "q": "23. É correto afirmar que:",
+      "opts": [
+        "Hugo Grócio, em \"O Direito da Guerra e da Paz\", constrói sua teoria do direito natural sobre pressupostos teológicos, vinculando a formação da sociedade a uma imposição divina.",
+        "Para Grócio, a teoria política é dissociada de todo pressuposto teológico, e o consentimento inicial para a formação da sociedade é segundo a natureza, vinculado aos benefícios da vida racional.",
+        "Grócio defende a precedência da democracia como forma de governo, argumentando que o povo nunca renuncia ao direito de governar.",
+        "Grócio foi um dos principais críticos do colonialismo, argumentando que a propriedade privada e a apropriação de terras por conquista são contrárias ao direito natural."
+      ],
+      "ans": 1,
+      "exp": "Gabarito: B. Grócio seculariza o direito natural, dissociando-o da teologia, e fundamenta a sociedade no consentimento racional. O texto menciona que ele justificou a apropriação colonial, e não que a criticou."
+    },
+    {
+      "q": "24. É errado afirmar que:",
+      "opts": [
+        "Hans Kelsen, em sua crítica ao Direito Natural, afirma que a doutrina jusnaturalista confunde as leis científicas (relações causais) com as normas jurídicas (relações normativas).",
+        "Para Kelsen, o valor moral atribuído a uma conduta não pode ser deduzido da realidade, pois depende da pressuposição de uma norma geral.",
+        "Kelsen reconhece que a doutrina do Direito Natural tem um valor científico inquestionável, pois deduz normas objetivas da natureza humana.",
+        "Kelsen aponta que o dualismo entre Direito Positivo e Direito Natural é contraditório, pois o Direito Positivo se torna supérfluo se o Natural já é perfeito."
+      ],
+      "ans": 2,
+      "exp": "Gabarito: C. Kelsen afirma que, \"perante o tribunal da ciência, a doutrina do Direito natural não tem nenhuma chance\", pois a natureza não pode prescrever normas objetivas."
+    },
+    {
+      "q": "25. É correto afirmar que:",
+      "opts": [
+        "Para Jeremy Bentham, a propriedade privada é um direito natural e inato ao homem, que o Estado deve proteger a qualquer custo, mesmo que não sirva à utilidade social.",
+        "Bentham argumenta que o Estado não deve interferir na propriedade privada, pois isso violaria a função social da propriedade.",
+        "Para Bentham, a propriedade é uma criação e garantia estatal legítima apenas na exata medida em que cumpre uma função de utilidade social e bem-estar comum.",
+        "Bentham defende o comunismo de bens, afirmando que a propriedade privada é a origem de todos os males sociais."
+      ],
+      "ans": 2,
+      "exp": "Gabarito: C. Para Bentham, a propriedade é um \"dever\" e um bem produtivo que a sociedade oferece a alguém para que use em função dos interesses coletivos (utilidade)."
+    },
+    {
+      "q": "26. É errado afirmar que:",
+      "opts": [
+        "A paixão política e pedagógica de Platão tem sua fonte no \"eros\" (amor pelos jovens), que ele instrumentaliza racionalizando os impulsos sensoriais para produzir \"filhos imortais\" como a poesia, as leis e a justiça.",
+        "Platão mobilizou grandes esforços para converter Dionísio II, tirano de Siracusa, o que resultou em conflito e na decadência da cidade, demonstrando sua pretensão política.",
+        "A Academia de Platão era uma escola pacífica e devotada à ciência pura, que pregava o isolamento político e a contemplação teórica como fins últimos.",
+        "Platão, por meio da Academia, buscava formar políticos e estadistas, em uma instituição que se voltava para a especulação ética e metafísica."
+      ],
+      "ans": 2,
+      "exp": "Gabarito: C. O texto afirma que a Academia Platônica não se propunha a ser uma escola do saber pacífica, mas sim um \"antro aristocrático e reacionário\" voltado para formar políticos."
+    },
+    {
+      "q": "27. É correto afirmar que:",
+      "opts": [
+        "Joseph-François Lafitau e Pierre de Charlevoix, ao descreverem as sociedades indígenas americanas, defenderam que a democracia era exclusiva do povo europeu.",
+        "As descrições dos \"selvagens\" no século XVIII serviram para reforçar a ideia de que as instituições europeias (Estado, hierarquia, propriedade) são naturais e universais.",
+        "As sociedades indígenas descritas apresentavam formas de organização política baseadas no consenso, prestígio e persuasão, desafiando a ideia de poder centralizado e hierárquico.",
+        "Os autores setecentistas concluíram que os gregos antigos nunca passaram por estágios semelhantes aos dos \"selvagens\", confirmando a exclusividade da civilização europeia."
+      ],
+      "ans": 2,
+      "exp": "Gabarito: C. O uso das sociedades indígenas como espelho crítico demonstrou que a participação política poderia existir fora do contexto europeu, e que a democracia não era exclusiva da Grécia."
+    },
+    {
+      "q": "28. É errado afirmar que:",
+      "opts": [
+        "Na \"República\", Platão estabelece que o exercício da justiça está ligado à ordem da alma e da cidade, onde a razão deve governar os apetites e o ânimo.",
+        "Para Aristóteles, a analogia entre o Estado e o indivíduo revela exatamente a natureza da justiça, demonstrando que a ação justa é o domínio das paixões pela razão.",
+        "Platão postula que a justiça está ligada ao bem comum da pólis, e o indivíduo somente deve ser considerado livre quando está ordenado às virtudes coletivas.",
+        "Na filosofia platônica, a ideia de conhecimento está ligada a um caráter moral de felicidade e ordem, unindo razão teórica e razão prática."
+      ],
+      "ans": 1,
+      "exp": "Gabarito: B. Para Platão, a analogia entre Estado e indivíduo é central, mas o texto afirma que Aristóteles (não Platão) usa essa analogia para mostrar que a ação justa resulta do exercício da razão."
+    },
+    {
+      "q": "29. É correto afirmar que:",
+      "opts": [
+        "Para Hans Kelsen, a ideia de que o Estado expressa a vontade de todos funciona como uma construção ideológica que legitima o poder político, induzindo os cidadãos à obediência.",
+        "Na Teoria Pura do Direito, o Estado é entendido como uma entidade natural e pré-jurídica, que existe independentemente da ordem normativa.",
+        "Kelsen argumenta que interesses comuns são suficientes para explicar a formação de uma comunidade política, pois eliminam os conflitos sociais.",
+        "Para Kelsen, a eficácia de uma ordem jurídica é o elemento essencial do conceito de Direito, sendo mais importante que sua validade formal."
+      ],
+      "ans": 0,
+      "exp": "Gabarito: A. Kelsen critica a ficção do \"consentimento de todos\" e do \"interesse coletivo\" como ideologias que ocultam a realidade dos conflitos sociais e legitimam a coerção estatal."
+    },
+    {
+      "q": "30. É errado afirmar que:",
+      "opts": [
+        "Thomas Hobbes e Robert Filmer concordam em rejeitar a democracia originária, mas por fundamentos distintos: Hobbes pela necessidade de autorização absoluta, Filmer pela herança patriarcal de Adão.",
+        "John Locke e James Tyrrell usaram argumentos históricos e antropológicos para combater o patriarcalismo de Filmer e defender o consentimento popular.",
+        "Os Levellers, na Inglaterra do século XVII, adotaram abertamente o vocabulário democrático em seus panfletos para defender o sufrágio universal e a igualdade política.",
+        "Samuel Pufendorf, ao criticar Hobbes, admitiu a conflituosidade do homem, mas retomou a sociabilidade natural e a ideia de que a democracia é historicamente a forma mais antiga de governo."
+      ],
+      "ans": 2,
+      "exp": "Gabarito: C. O texto afirma que os Levellers evitam o vocabulário democrático, embora propugnassem ações que os contemporâneos reconheciam como democráticas (como o sufrágio universal)."
+    },
+    {
+      "q": "31. É correto afirmar que:",
+      "opts": [
+        "Para Hans Kelsen, o dualismo platônico representa, em última instância, a oposição puramente racional entre o conhecimento empírico científico e o conhecimento lógico-matemático.",
+        "Kelsen aponta que a concepção platônica de verdade justifica o uso da mentira pelo Estado (razão de Estado) em prol do bem comum, implicando a sobreposição da justiça sobre a verdade.",
+        "A filosofia de Platão, segundo Kelsen, abandona totalmente o misticismo nos diálogos sobre a justiça, adotando uma postura estritamente racionalista na obra \"A República\".",
+        "Platão dedicou-se primordialmente à ciência rigorosa e neutra, rejeitando o desejo de formar governantes ou exercer qualquer ambição política com sua obra."
+      ],
+      "ans": 1,
+      "exp": "Gabarito: B."
+    },
+    {
+      "q": "32. É errado afirmar que:",
+      "opts": [
+        "Para Hans Kelsen, a doutrina do meio (mesótes) de Aristóteles cumpre uma função ideológica de justificação da ordem social e moral estabelecida.",
+        "Kelsen argumenta que a quantificação do valor moral em Aristóteles é uma falácia, visto que definir uma conduta como boa significa atestar sua conformidade com uma norma pressuposta, o que não comporta gradações quantitativas de \"muito\" ou \"pouco\".",
+        "A fórmula da mesótes revela, na visão de Kelsen, a essência universal e objetiva do bem moral através de um método geométrico infalível que afasta a necessidade do direito positivo.",
+        "Kelsen conclui que a virtude em Aristóteles acaba se traduzindo, no fundo, na disposição do indivíduo de obedecer à ordem social vigente, aceitando-a acriticamente como o \"justo meio\"."
+      ],
+      "ans": 2,
+      "exp": "Gabarito: C."
+    },
+    {
+      "q": "33. É correto afirmar que:",
+      "opts": [
+        "Guilherme de Ockham e Tomás de Aquino utilizaram a recuperação da Política de Aristóteles para rejeitar expressamente a noção de que a autoridade monárquica deriva do consenso ou poder do povo.",
+        "Marsílio de Pádua concebe o legislador como o povo reunido em assembleia; no entanto, em seu arcabouço, a \"multidão\" não se confunde com o \"vulgo\", abarcando essencialmente a comunidade superior de magistrados e nobres.",
+        "Comentadores medievais como Alberto Magno consideravam que a multidão superava os especialistas de forma absoluta em todas as áreas da vida comunitária e deliberação filosófica.",
+        "As traduções da obra aristotélica nos séculos XIII e XIV suprimiram o uso da palavra \"democracia\", impedindo seu uso nas reflexões políticas da Idade Média."
+      ],
+      "ans": 1,
+      "exp": "Gabarito: B."
+    },
+    {
+      "q": "34. É errado afirmar que:",
+      "opts": [
+        "Hans Kelsen defende a separação rigorosa entre os conceitos de direito e de justiça, apontando que a identificação entre ambos funciona ideologicamente para conferir justificação indevida a qualquer direito positivo existente.",
+        "A eficácia constitui o único elemento essencial para definir e validar toda e qualquer regra do direito positivo, abolindo a necessidade da validade sistêmica.",
+        "Para a Teoria Pura do Direito, o Estado não consiste em uma entidade metafísica ou sociológica autônoma perante o direito, mas tão somente a personificação de uma ordem jurídica centralizada.",
+        "Kelsen critica o \"animismo\" na teoria jurídica tradicional que cria uma duplicação artificial do objeto de conhecimento ao tratar o Estado como algo independente da ordem coercitiva normativa."
+      ],
+      "ans": 1,
+      "exp": "Gabarito: B."
+    },
+    {
+      "q": "35. É correto afirmar que:",
+      "opts": [
+        "Baruch Espinosa concorda com a perspectiva absolutista de Hobbes de que a democracia é inviável, considerando-a prejudicial à preservação civil do povo.",
+        "Samuel Pufendorf postula que o estado de natureza é marcado exclusivamente por uma guerra total idêntica à de Hobbes, sem admitir qualquer traço de convivência social pré-estatal.",
+        "Espinosa retoma a tese da precedência histórica da democracia, mas diverge frontalmente de Hobbes ao defendê-la como a forma de governo superior e contínua, onde os apetites individuais sofrem a contenção da razão coletiva da assembleia.",
+        "Para Baruch Espinosa, a democracia consolida-se apenas como um estágio transitório inferior à aristocracia, pois a multidão invariavelmente impõe ordens absurdas sem uso da deliberação."
+      ],
+      "ans": 2,
+      "exp": "Gabarito: C."
+    },
+    {
+      "q": "36. É errado afirmar que:",
+      "opts": [
+        "John Locke ataca as posições de Robert Filmer ao demonstrar o grave paradoxo lógico de alicerçar o poder político na linhagem hereditária incerta a partir de Adão.",
+        "O contratualista James Tyrrell utiliza os exemplos antropológicos da organização dos indígenas das Américas para reforçar o dogma de Filmer de que a monarquia ditatorial operava como a única vivência originária das sociedades.",
+        "Para John Locke, há uma dicotomia conceitual fundamental entre a comunidade política em si (\"Commonwealth\") e a forma de governo escolhida para administrá-la, mantendo-se o poder originário no povo.",
+        "Em contraposição a teses conservadoras, Tyrrell usa o modelo da Grécia e os indígenas para evidenciar que o estágio primitivo do homem comportava dinâmicas comunitárias comunistas ou democráticas pacíficas."
+      ],
+      "ans": 1,
+      "exp": "Gabarito: B."
+    },
+    {
+      "q": "37. É correto afirmar que:",
+      "opts": [
+        "No século XVIII, Pierre de Charlevoix e Joseph-François Lafitau descreviam as comunidades de indígenas norte-americanos como caóticas, desprovidas de liderança e mergulhadas em barbárie sem lei.",
+        "A observação europeia de povos \"selvagens\" funcionou como uma ferramenta teórica crítica para a história natural da política, evidenciando formas de deliberação coletiva que contestavam o monopólio europeu e grego do ideal de organização participativa.",
+        "A literatura sobre as tribos americanas confirmou a premissa de Hobbes de que as desigualdades hereditárias, a propriedade privada rigorosa e o despotismo monárquico são fenômenos inatos e invariáveis da natureza humana.",
+        "Lafitau encontrou na vida indígena a evidência histórica que sustentava as formas estritas de soberania ilimitada exigidas pelo contratualismo de Rousseau."
+      ],
+      "ans": 1,
+      "exp": "Gabarito: B."
+    },
+    {
+      "q": "38. É errado afirmar que:",
+      "opts": [
+        "Em \"O Espírito das Leis\", de Montesquieu, a representação política torna-se a marca da vida cívica moderna e o grande critério diferenciador entre as repúblicas de seu tempo e a democracia pura da antiguidade.",
+        "Rousseau, no \"Discurso sobre a Origem da Desigualdade\", concebe o estágio intermediário (entre a indolência e a corrupção da propriedade civil) como o período de maior felicidade da humanidade pré-estatal.",
+        "Para Montesquieu, o \"amor à igualdade e à frugalidade\" representa a virtude motriz das democracias republicanas, embora pondere que o \"espírito de igualdade extrema\" acarrete inevitavelmente o despotismo.",
+        "Jean-Jacques Rousseau reconhece a representação política e parlamentar como o único instrumento legítimo capaz de exprimir com exatidão a Vontade Geral inalienável do povo."
+      ],
+      "ans": 3,
+      "exp": "Gabarito: D."
+    },
+    {
+      "q": "39. É correto afirmar que:",
+      "opts": [
+        "Giambattista Vico enaltece fervorosamente as teses contratualistas de sua época, posicionando a república livre como a forma mais primitiva, espontânea e imediata de associação dos povos rústicos.",
+        "O ensaísta David Hume aponta evidências documentais inquestionáveis de que um \"contrato original\" fundou as bases pacíficas da soberania territorial em quase todas as monarquias britânicas primit.",
+        "Adam Ferguson possui uma visão irrestritamente otimista e linear sobre as sociedades modernas, recusando-se a apontar a perda do espírito cívico e da coesão social decorrente do progresso econômico e mercantil.",
+        "David Hume investe contra os ideais jusracionalistas do consentimento originário, sinalizando pragmaticamente que a base formadora da imensa maioria dos governos repousou na usurpação do poder ou na conquista pela força."
+      ],
+      "ans": 3,
+      "exp": "Gabarito: D."
+    },
+    {
+      "q": "40. É errado afirmar que:",
+      "opts": [
+        "O ideário jusnaturalista, sob a ótica crítica de Hans Kelsen, revestiu-se historicamente de forte caráter conservador, prestando-se, majoritariamente, ao papel de justificar as estruturas do Estado e do direito positivo.",
+        "Hans Kelsen postula que a doutrina jusnaturalista carece das mais elementares contradições lógicas internas, conciliando metodologicamente de forma impecável a suposta bondade humana natural com a premente necessidade da coação do direito.",
+        "Kelsen expõe um flagrante erro epistemológico no direito natural: a dedução ilegítima do \"deve ser\" a partir do que \"é\" da natureza, ignorando que os juízos normativos e as leis causais operam em campos distintos.",
+        "Hobbes e Pufendorf transmutam o direito natural em mera legitimação do governante, afinal, em suas teses o próprio Estado é quem tem o arbítrio final para definir os contornos e o conteúdo da lei da natureza."
+      ],
+      "ans": 1,
+      "exp": "Gabarito: B."
+    },
+    {
+      "q": "41. É correto afirmar que:",
+      "opts": [
+        "Os teóricos fundadores norte-americanos, como John Adams, consideravam que o sucesso institucional no Novo Mundo demandava a adoção exata, não filtrada e literal do formato da democracia popular ateniense.",
+        "Para lidar com as dimensões sem precedentes da América, John Adams valeu-se da teoria do governo misto e da representação, demonstrando ceticismo com modelos antigos focados em assembleias de deliberação participativa direta e de pequena escala.",
+        "Diante do vocabulário importado dos gregos, a ideologia republicana na Revolução Americana rejeitou inteiramente o termo \"democracia\" nas deliberações parlamentares, apagando-o do discurso constitucional.",
+        "A leitura dominante dos revolucionários do século XVIII interpretava que confederações antigas resolveriam tranquilamente todos os desafios modernos ligados à centralização de decisões comerciais em amplos territórios."
+      ],
+      "ans": 1,
+      "exp": "Gabarito: B."
+    },
+    {
+      "q": "42. É errado afirmar que:",
+      "opts": [
+        "Durante os debates federalistas na América, Alexander Hamilton lançava uma interpretação negativa sobre o mundo clássico greco-romano, considerando suas democracias e repúblicas como modelos intrinsecamente voláteis e reféns da tirania.",
+        "James Madison teorizou que um arranjo republicano de larga escala espacial mitigaria o impacto das paixões facciosas e demagógicas locais, conferindo assim maior estabilidade do que a democracia pura clássica.",
+        "O autor associado à alcunha de 'Brutus' sustentava o ideário anti-federalista de que a concentração do poder sobre territórios gigantescos esmagaria os canais de controle popular, distanciando fatalmente governantes e governados.",
+        "Alexander Hamilton rejeitou categoricamente a doutrina constitucional de freios e contrapesos na confecção do governo norte-americano, defendendo a entrega do poder executivo ilimitado às assembleias dos estados."
+      ],
+      "ans": 3,
+      "exp": "Gabarito: D."
+    },
+    {
+      "q": "43. É correto afirmar que:",
+      "opts": [
+        "Thomas Paine recorreu, em \"Senso Comum\", a alicerces teológicos e bíblicos para evidenciar que o regime republicano seria uma abominação herética, enquanto a monarquia figurava como plano divino primitivo.",
+        "O ideólogo democrático Thomas Jefferson repulsou frontalmente o artifício da representação popular, defendendo o retalhamento do jovem país em minúsculas comunas autárquicas livres de parlamentos nacionais.",
+        "Thomas Jefferson abraça o princípio representativo da vontade majoritária classificando-o como \"o segundo grau de pureza\", um mecanismo moderno que permitiria concretizar ideais democráticos contornando o obstáculo físico das grandes extensões territoriais.",
+        "A formulação textual de Thomas Paine em suas obras de maturidade considerava impossível conceber a expansão republicana das colônias sem retornar às antigas monarquias greco-macedônicas."
+      ],
+      "ans": 2,
+      "exp": "Gabarito: C."
+    },
+    {
+      "q": "44. É errado afirmar que:",
+      "opts": [
+        "O célebre contraste estabelecido por Benjamin Constant separa a \"liberdade dos antigos\" — estruturada no gozo estrito da independência privada burguesa — da \"liberdade dos modernos\" — fulcrada na participação coletiva diária e subordinação integral ao corpo cívico soberano.",
+        "Na ótica formulada por Benjamin Constant, o equívoco metódico e histórico de intentar transpor à fórceps a antiquada modalidade de liberdade cívica greco-romana embasou a violência despótica exercida durante o Terror jacobino da Revolução Francesa.",
+        "Benjamin Constant opunha fortes restrições à tese fundamental contida no Contrato Social de Jean-Jacques Rousseau no tocante à entrega inalienável e absoluta de direitos individuais em prol da soberania coletiva ilimitada.",
+        "O arcabouço político descortinado por Constant reconhece na ascensão orgânica da mediação política via representantes eleitos a verdadeira e inovadora engrenagem vitalícia das sociedades comerciais modernas."
+      ],
+      "ans": 0,
+      "exp": "Gabarito: A."
+    },
+    {
+      "q": "45. É correto afirmar que:",
+      "opts": [
+        "A reflexão política final exposta por Immanuel Kant sanciona categoricamente o direito de sublevação violenta (revolução armada popular) face ao monarca quando este descumpre os pressupostos originais de seu mandato civilizador.",
+        "O filósofo Johann Gottlieb Fichte postula incisivamente que a consagração indiscriminada do sufrágio executivo às massas culmina em anarquia, propugnando destarte pelo instituto fiscalizador do \"eforato\" para aferir eventuais desvios ditatoriais por parte da burocracia governante.",
+        "Ao dissertar em seu opúsculo \"À Paz Perpétua\", Kant exalta superlativamente a estrutura político-normativa da \"democracia direta e ilimitada\" qualificando-a historicamente como a panaceia pacífica infalível face à moléstia da tirania autocrática.",
+        "O idealismo alemão capitaneado outrora por Kant advoga que os códigos e regimentos que erigiram primariamente a esfera contratual sociopolítica transcorreram não pela coerção e incivilidade brutais e sim pautados nas diretrizes iluministas espontâneas advindas do estado primieval pacífico dos selvagens."
+      ],
+      "ans": 1,
+      "exp": "Gabarito: B."
+    },
+    {
+      "q": "46. É errado afirmar que:",
+      "opts": [
+        "O expoente pragmático John Dewey investe criticamente contra os moldes cognitivos puramente dedutivo-silogísticos enraizados nas Cortes e alicerça uma metodologia que orienta o raciocínio prático perante a jurisprudência para a antecipação flexível dos desfechos e consequências de suas intervenções.",
+        "Consoante à doutrina norte-americana de Dewey, imperativos constitucionais pretéritos (v.g. livre-comércio de contrato) consubstanciam meros rudimentos transitórios e conceituais de adaptação ao labor judicante empírico em contraposição à ortodoxia atemporal.",
+        "John Dewey reverencia as teses liberais do alvorecer norte-americano a tal ponto de elevar a dita \"jurisprudência mecânica\" das altas Cortes — de rígida e estática abstração lógica — como a suprema consagração blindada da inteligência social e científica do século XX.",
+        "As balizas do pragmatismo filosófico deweyano prelecionam que tanto as velhas amarras reacionárias focadas no mercado quanto eventuais posturas engessadas em torno de preceitos coletivistas perdem seu condão construtivo se aplicadas às cegas sem a contínua revalidação pelo crivo das experimentações sociais fáticas."
+      ],
+      "ans": 2,
+      "exp": "Gabarito: C."
+    },
+    {
+      "q": "47. É correto afirmar que:",
+      "opts": [
+        "A empreitada científica da sociologia delineada em Weber e repisada no material do seminário prescreve taxativamente ao investigador (intérprete) um abandono compulsório da isenção metodológica e o assujeitamento à perspectiva axiológica inerente à comunidade analisada.",
+        "Na contraposição dogmática perpetrada por Ronald Dworkin contra o ceticismo epistemológico de origem positivista, emerge a exegese interna interpretativa a postular dos aplicadores jurídicos que rastreiem e perscrutem o real \"point\" (meta central) latente aos costumes do ordenamento para conferir a solução cabal.",
+        "A métrica avaliativa de Dworkin professa que eventuais arranjos normativos chancelados democraticamente pela regra majoritária comportam validade probante incólume, subtraindo-se irrevogavelmente de avaliações jurisdicionais baseadas em intencionalidades.",
+        "Expondo forte amálgama com a doutrina positivista exógena, a \"integridade do Direito\" de Ronald Dworkin defere primazia hermenêutica estrita aos costumes consolidados em detrimento da adequação normativa profunda baseada em juízos filosóficos preexistentes."
+      ],
+      "ans": 1,
+      "exp": "Gabarito: B."
+    },
+    {
+      "q": "48. É errado afirmar que:",
+      "opts": [
+        "Em contraposição às ideias de Filmer, os compêndios políticos subscritos pelo apologeta e iluminista James Tyrrell mobilizaram a antropologia referente às hostes primitivas na América para evidenciar o arranjo sociológico inato de belicosidade generalizada contínua a conclamar um líder soberano.",
+        "Os prismas intelectuais abertos com os contatos coloniais fomentaram vigorosamente na mentalidade europeia críticas acerbas e corrosivas ao monopólio estrutural hierárquico europeu, aventando paralelos inéditos e concretos da deliberação por persuasão nativa em detrimento das cadeias despóticas palacianas.",
+        "Para as teses de apropriação propugnadas na matriz do pensador John Locke, as delimitações originárias alusivas ao apoderamento não se lastrearam mediante desígnios preexistentes e mandatórios emanados de um rei todo-poderoso e sim decorreram das intervenções produtivas geradas individualmente pelos homens frente ao meio circundante.",
+        "Certos pensadores da antropologia de seu tempo traçavam associações empíricas com a remota história social formadora da Hélade (Grécia Antiga), admitindo a premissa de que os ilustres ancestrais dos sofistas laboraram mediante arranjos estruturais simétricos aos chamados rústicos e primitivos transatlânticos do \"Novo Mundo\"."
+      ],
+      "ans": 0,
+      "exp": "Gabarito: A."
+    },
+    {
+      "q": "49. É correto afirmar que:",
+      "opts": [
+        "No tocante aos princípios matemáticos da retribuição avaliados sob a ótica de Kelsen sobre a obra política de Aristóteles, o emprego conceitual atinente à geometria consubstancia a régua impoluta hábil a delimitar os desígnios morais sem ressalvas sociais.",
+        "Segundo o exame kelseniano atinente às virtudes gregas clássicas, aturar ou sofrer os revezes de iniquidades traduz invariavelmente perante o sujeito um ultraje volitivo capitulável nas hostes dos \"vícios por carência\" (extremo deficiente perante a mesótes moral).",
+        "Ponderando as abstrações contidas no tratado a Ética a Nicômaco (mesótes), a acepção consubstanciadora de Kelsen pontua categoricamente que fórmulas como o \"suum cuique tribuere\" atrelado à equidade esvaem-se materialmente em preceito inócuo acaso a respectiva sociedade, pautada em seus ditames positivos hegemônicos, evite apontar pragmaticamente qual é a cota distributiva pertencente a cada jurisdicionado.",
+        "A dinâmica comutativa/corretiva alicerçada no labor investigativo estagirita repele categoricamente as tratativas comutativas pactuadas nos mercados voluntários, reduzindo seus regramentos à mera equalização e repressão a contendas delitivas decorrentes de furtos e flagelos sociais."
+      ],
+      "ans": 2,
+      "exp": "Gabarito: C."
+    },
+    {
+      "q": "50. É errado afirmar que:",
+      "opts": [
+        "No curso das narrativas contemporâneas referentes ao decurso conceitual das eras clássicas, Paulo Butti de Lima vislumbrou como traço identitário definidor da \"res publica moderna\" a acoplagem do velho vocabulário outrora utilizado pelos teóricos das pólis às facetas instrumentais representativas paridas no rescaldo da modernidade institucional revolucionária.",
+        "Ao desqualificar os arranjos de mera correspondência linguística passiva (denominado \"aguilhão semântico\"), o corolário axiológico cunhado metodologicamente por Ronald Dworkin fustiga visceralmente os marcos de que o labor perante as contendas do Direito estaria aprisionado inteiramente no arcabouço referendado de convenções semânticas puramente atávicas e fáticas não sujeitas à reflexão principiológica intensa.",
+        "Distanciando suas proposituras da radical supressão prelecionada mais tarde por preceitos subscritos ao rousseaunianismo atinente ao acatamento submisso e alienante imposto frente à soberania uníssona e majoritária (Vontade Geral), as correntes doutrinárias pactuadas precedentemente por Locke franqueiam incisivamente as guardas atinentes ao usufruto e ao resguardo contra os abusos advindos da administração governativa no afã de blindar o núcleo do patrimônio moral/civil particular.",
+        "Ao estruturar as diretrizes fundamentais inerentes aos contornos de sua \"Teoria Pura\", Kelsen preceitua vigorosamente o ditame finalístico ao corpo de pesquisadores do direito consubstanciado na decantação apurada das regras supremas oriundas do \"Jus Naturale\", munindo as hostes jurisprudenciais positivadas para erradicar o vácuo temporal contido perante as arbitrariedades promulgadas pelas canetas monárquicas absolutas."
+      ],
+      "ans": 3,
+      "exp": "Gabarito: D."
+    },
+    {
+      "q": "51. No livro I de 'A República', como Céfalo define a justiça inicialmente?",
+      "opts": [
+        "A conveniência do mais forte.",
+        "Falar a verdade e devolver o que se tomou de empréstimo.",
+        "Fazer o bem aos amigos e o mal aos inimigos.",
+        "O equilíbrio entre as virtudes da alma."
+      ],
+      "ans": 1,
+      "exp": "Céfalo associa a justiça à honestidade nos negócios e ao pagamento de dívidas materiais."
+    },
+    {
+      "q": "52. Qual é a célebre objeção de Sócrates à definição de justiça proposta por Céfalo?",
+      "opts": [
+        "Devolver uma arma a um amigo que enlouqueceu não seria justo.",
+        "A justiça só se aplica aos cidadãos de Atenas.",
+        "Os deuses não se importam com dívidas financeiras.",
+        "A verdade é uma ilusão dos sentidos."
+      ],
+      "ans": 0,
+      "exp": "Sócrates usa o contraexemplo das armas devolvidas a alguém fora de si para mostrar que a rigidez literal da regra pode causar injustiça."
+    },
+    {
+      "q": "53. Como Polemarco reformula a definição de justiça após a refutação de Céfalo?",
+      "opts": [
+        "A justiça é a vontade dos deuses.",
+        "A justiça é dar a cada um o que lhe é devido: bem aos amigos e mal aos inimigos.",
+        "A justiça é o lucro do homem superior.",
+        "A justiça é a obediência cega às leis da cidade."
+      ],
+      "ans": 1,
+      "exp": "Polemarco herda o debate e conceitua a justiça como fazer o bem aos aliados e o mal aos adversários."
+    },
+    {
+      "q": "54. Qual argumento Sócrates usa para desconstruir a tese de Polemarco?",
+      "opts": [
+        "Os inimigos sempre se tornam amigos com o tempo.",
+        "É impossível distinguir quem são os verdadeiros amigos.",
+        "Aquele que é justo não deve causar danos a ninguém, pois prejudicar alguém a torna pior na sua própria virtude.",
+        "A guerra é o estado natural do homem."
+      ],
+      "ans": 2,
+      "exp": "Sócrates demonstra que a justiça, sendo uma virtude, não pode produzir o enfraquecimento moral de outrem (causar o mal)."
+    },
+    {
+      "q": "55. A famosa tese defendida pelo sofista Trasímaco no livro I afirma que:",
+      "opts": [
+        "A justiça é a conveniência do mais forte.",
+        "A justiça é uma virtude inata da alma.",
+        "A justiça é um pacto de não agressão entre os fracos.",
+        "A justiça é o respeito irrestrito às leis divinas."
+      ],
+      "ans": 0,
+      "exp": "Trasímaco defende um realismo político radical: a justiça é aquilo que beneficia quem detém o poder político e militar."
+    },
+    {
+      "q": "56. Segundo a ótica realista de Trasímaco, quem elabora as leis nas cidades e comunidades?",
+      "opts": [
+        "Os filósofos, buscando o bem comum.",
+        "Os deuses, inspirando os legisladores.",
+        "O grupo ou indivíduo governante, instituindo-as em benefício próprio.",
+        "A assembleia do povo, de forma democrática e igualitária."
+      ],
+      "ans": 2,
+      "exp": "Trasímaco alega que as leis são prescritas pelos detentores do poder para salvaguardar seus próprios interesses particulares."
+    },
+    {
+      "q": "57. Para Trasímaco, por que a vida do homem perfeitamente injusto seria preferível à do justo?",
+      "opts": [
+        "O injusto vive de forma mais moderada.",
+        "A suprema injustiça (como a tirania) confere felicidade, poder e imunidade, enquanto o justo é explorado.",
+        "Os deuses perdoam os injustos com mais facilidade.",
+        "O justo sofre de tédio e melancolia."
+      ],
+      "ans": 1,
+      "exp": "O sofista argumenta que a injustiça em larga escala liberta o indivíduo das amarras e o torna soberano sobre os justos."
+    },
+    {
+      "q": "58. Qual é a analogia técnica que Sócrates opõe a Trasímaco sobre a verdadeira função de uma arte (techne)?",
+      "opts": [
+        "Compara o governante ao médico ou piloto, cuja arte atende ao interesse do objeto governado (paciente/tripulação), não ao seu próprio.",
+        "Compara o governante a um pastor que engorda o rebanho estritamente para o abate.",
+        "Compara o governante a um guerreiro destrutivo.",
+        "Compara o governante a um mercador."
+      ],
+      "ans": 0,
+      "exp": "Sócrates afirma que toda arte autêntica visa o bem daquilo que ela cuida, logo, o verdadeiro governante governa para o bem dos súditos."
+    },
+    {
+      "q": "59. Como Sócrates encerra o debate do Livro I da República?",
+      "opts": [
+        "Encontra a definição perfeita.",
+        "A justiça é definida como a igualdade absoluta.",
+        "O diálogo termina em aporia, admitindo que ainda não conhecem a essência da justiça.",
+        "Sócrates capitula diante de Trasímaco."
+      ],
+      "ans": 2,
+      "exp": "O Livro I encerra-se de forma aporética: as falsas definições caíram, mas a essência do justo ainda precisa ser buscada nos livros seguintes."
+    },
+    {
+      "q": "60. Na alegoria platônica da Caverna, o retorno do filósofo libertado à caverna simboliza:",
+      "opts": [
+        "O dever político e pedagógico de orientar os cidadãos, mesmo sob risco de incompreensão e morte.",
+        "O arrependimento por ter abandonado as ilusões confortáveis.",
+        "A busca por riquezas escondidas no subterrâneo.",
+        "A submissão voluntária à tirania."
+      ],
+      "ans": 0,
+      "exp": "O filósofo tem o compromisso ético de descer novamente para tentar educar e libertar seus concidadãos da ilusão."
+    },
+    {
+      "q": "61. No livro V da 'Ética a Nicômaco', como Aristóteles define a justiça universal?",
+      "opts": [
+        "Como obediência irrestrita aos tiranos.",
+        "Como a virtude total ou perfeita exercida em relação ao próximo, manifestada no cumprimento das leis voltadas ao bem comum.",
+        "Como a punição pura dos criminosos.",
+        "Como a igualdade absoluta de posses."
+      ],
+      "ans": 1,
+      "exp": "A justiça universal é a conformidade com a lei moral e positiva que ordena comportamentos virtuosos voltados à comunidade."
+    },
+    {
+      "q": "62. Qual a característica basilar da justiça distributiva aristotélica?",
+      "opts": [
+        "Distribuição idêntica para todos, abolindo privilégios.",
+        "Repartição de bens coletivos, riquezas e honrarias de forma proporcional ao mérito de cada cidadão.",
+        "O perdão de dívidas financeiras em momentos de crise.",
+        "A imposição de penas idênticas para crimes de naturezas distintas."
+      ],
+      "ans": 1,
+      "exp": "A justiça distributiva rege-se pela meritocracia proporcional, tratando os iguais igualmente e os desiguais desigualmente."
+    },
+    {
+      "q": "63. A justiça distributiva em Aristóteles adota qual modelo de proporção matemática?",
+      "opts": [
+        "Proporção aritmética.",
+        "Proporção geométrica.",
+        "Proporção exponencial.",
+        "Proporção aleatória."
+      ],
+      "ans": 1,
+      "exp": "A proporção geométrica pondera a relação entre os bens distribuídos e o mérito individual dos sujeitos."
+    },
+    {
+      "q": "64. O que qualifica a chamada justiça corretiva (ou comutativa) para Aristóteles?",
+      "opts": [
+        "A avaliação do valor cívico dos soldados.",
+        "A retificação de desequilíbrios nas transações, aplicando uma igualdade estritamente aritmética para sanar perdas e ganhos.",
+        "A elaboração de constituições federais.",
+        "O banimento de estrangeiros."
+      ],
+      "ans": 1,
+      "exp": "A justiça corretiva busca o reequilíbrio nas relações de troca ou após ilícitos, sem considerar o status social das partes."
+    },
+    {
+      "q": "65. No âmbito da justiça corretiva, como Aristóteles subdivide as transações humanas?",
+      "opts": [
+        "Em transações divinas e profanas.",
+        "Em transações voluntárias (como os contratos civis) e involuntárias (como os delitos penais ocultos ou violentos).",
+        "Em nacionais e internacionais.",
+        "Em comerciais e agrárias."
+      ],
+      "ans": 1,
+      "exp": "As voluntárias nascem do acordo mútuo (comércio); as involuntárias decorrem de atos ilícitos (furtos, agressões)."
+    },
+    {
+      "q": "66. Quem Aristóteles aponta como a representação viva da justiça corretiva?",
+      "opts": [
+        "O legislador constituinte.",
+        "O general de exército.",
+        "O juiz, atuando como uma justiça animada capaz de restabelecer o ponto médio entre o ganho e a perda.",
+        "O monarca absolutista."
+      ],
+      "ans": 2,
+      "exp": "Recorrer ao juiz é recorrer à justiça personificada para repor a linha média rompida pela ofensa."
+    },
+    {
+      "q": "67. Como Aristóteles resolve o dilema gerado pela rigidez e generalidade abstrata da lei?",
+      "opts": [
+        "Sugerindo a desobediência civil generalizada.",
+        "Por meio da equidade, que funciona como a retificação da lei escrita quando esta se mostra lacunosa ou excessivamente genérica para o caso.",
+        "Recomendando a aplicação literal mesmo que injusta.",
+        "Transferindo a decisão aos sacerdotes."
+      ],
+      "ans": 1,
+      "exp": "A equidade adapta a norma genérica às peculiaridades concretas da realidade, evitando injustiças formais."
+    },
+    {
+      "q": "68. Qual metáfora prática Aristóteles emprega para esclarecer a maleabilidade da equidade?",
+      "opts": [
+        "A bússola de navegação do capitão.",
+        "A régua flexível de chumbo utilizada pelos construtores de Lesbos, que se amolda ao contorno das pedras.",
+        "O escudo rígido do soldado hoplita.",
+        "A balança comercial de precisão."
+      ],
+      "ans": 1,
+      "exp": "A régua de Lesbos se moldava à pedra irregular, assim como a decisão equitativa se molda ao caso concreto."
+    },
+    {
+      "q": "69. De que modo Aristóteles subdivide a justiça política?",
+      "opts": [
+        "Em justiça natural (válida universalmente) e justiça legal ou convencional (estatuída por convenção humana).",
+        "Em militar e parlamentar.",
+        "Em corporativa e sindical.",
+        "Em urbana e rústica."
+      ],
+      "ans": 0,
+      "exp": "A justiça política divide-se no componente natural (imutável) e no componente legal (determinado por convenção e arbítrio humano)."
+    },
+    {
+      "q": "70. A excelência moral ou virtude, segundo o pensamento aristotélico, situa-se sempre:",
+      "opts": [
+        "Na erradicação absoluta de todo e qualquer desejo.",
+        "No sacrifício pessoal levado às últimas consequências.",
+        "No meio-termo ou justa medida (mesótes) localizado entre dois extremos viciosos (o excesso e a escassez).",
+        "Na agressividade competitiva."
+      ],
+      "ans": 2,
+      "exp": "A virtude é o equilíbrio racional, como a coragem que se situa entre a covardia (falta) e a temeridade (excesso)."
+    },
+    {
+      "q": "71. Na obra 'Leviatã', como Thomas Hobbes caracteriza teoricamente o estado de natureza?",
+      "opts": [
+        "Um idílio de harmonia mútua e paz perpétua.",
+        "Um estado de beligerância generalizada ('guerra de todos contra todos'), sob o império do medo constante e da violência fatal.",
+        "Um arranjo econômico mercantil estruturado.",
+        "Uma teocracia pacífica."
+      ],
+      "ans": 1,
+      "exp": "Para Hobbes, a ausência de um poder coercitivo central lança a humanidade num caos de insegurança e desconfiança recíproca."
+    },
+    {
+      "q": "72. Quais os fatores desencadeadores da discórdia no estado de natureza para Hobbes?",
+      "opts": [
+        "A escassez de espaço geográfico e o ódio religioso.",
+        "A tríade baseada na competição, na desconfiança crônica e na busca pela glória, potencializadas pela igualdade de capacidades.",
+        "A herança genética e o pecado teológico.",
+        "A ausência de moeda de troca."
+      ],
+      "ans": 1,
+      "exp": "Sendo os indivíduos aproximadamente iguais em potência, disputam os mesmos fins e atacam preventivamente por desconfiança."
+    },
+    {
+      "q": "73. Como se conceitua o direito de natureza (jus naturale) em Thomas Hobbes?",
+      "opts": [
+        "A prerrogativa inata de exigir amparo assistencial do Estado.",
+        "A liberdade irrestrita de usar o próprio poder de acordo com o arbítrio individual para preservar a própria vida.",
+        "O direito sagrado de herança imobiliária.",
+        "A submissão integral às escrituras sagradas."
+      ],
+      "ans": 1,
+      "exp": "O direito natural hobbesiano resume-se à liberdade de autopreservação por todos os meios executáveis."
+    },
+    {
+      "q": "74. Qual a distinção analítica entre direito natural (jus) e lei natural (lex) na doutrina hobbesiana?",
+      "opts": [
+        "O direito é de origem divina; a lei é fruto da razão secular.",
+        "O direito traduz-se na liberdade de agir ou abster-se, ao passo que a lei determina e vincula a uma obrigação específica.",
+        "Não há qualquer distinção na obra.",
+        "O direito ampara os nobres; a lei obriga a plebe."
+      ],
+      "ans": 1,
+      "exp": "O direito denota liberdade de ação; a lei (lex) impõe uma obrigação ou restrição ditada pela razão para autopreservação."
+    },
+    {
+      "q": "75. A primeira e fundamental lei da natureza estipulada por Hobbes preconiza:",
+      "opts": [
+        "Buscar a paz e segui-la; mas, caso seja inalcançável, utilizar todas as vantagens e auxílios da guerra.",
+        "A proibição do comércio internacional.",
+        "A obrigatoriedade do culto religioso público.",
+        "O direito de insurreição periódica."
+      ],
+      "ans": 0,
+      "exp": "O primeiro ditame da razão manda tentar a paz; se inviável, resta o direito de defesa pela guerra."
+    },
+    {
+      "q": "76. A segunda lei da natureza de Thomas Hobbes impõe como imperativo racional:",
+      "opts": [
+        "A manutenção de armas pesadas em ambiente doméstico.",
+        "A renúncia recíproca ao direito sobre todas as coisas, na mesma medida em que os demais o façam, visando a paz.",
+        "A divisão igualitária da propriedade imobiliária.",
+        "A instituição do sufrágio universal direto."
+      ],
+      "ans": 1,
+      "exp": "Para sair do estado de guerra, a razão exige que os homens aceitem limitar mutuamente suas liberdades selvagens."
+    },
+    {
+      "q": "77. Por que Hobbes assevera que pactos desprovidos da espada (covenants without the sword) são ineficazes?",
+      "opts": [
+        "Porque a escrita em pergaminho se deteriora.",
+        "Porque palavras carecem de força física para constranger as paixões humanas sem o temor de uma punição estatal.",
+        "Porque os contratos exigem registro público cartorial.",
+        "Porque os homens são naturalmente mudos no estado selvagem."
+      ],
+      "ans": 1,
+      "exp": "Sem um poder visível e armado para impor sanções, as leis da natureza são violadas pelas paixões individuais."
+    },
+    {
+      "q": "78. Como se opera a instituição legítima do Estado Soberano na construção hobbesiana?",
+      "opts": [
+        "Por meio de uma unção mística e hereditária.",
+        "Pela convenção coletiva em que cada indivíduo autoriza e cede seu direito de autogoverno a um homem ou assembleia, sob condição idêntica dos demais.",
+        "Através de uma invasão estrangeira vitoriosa.",
+        "Por votação parlamentar de representantes eleitos."
+      ],
+      "ans": 1,
+      "exp": "O contrato hobbesiano é firmado entre os indivíduos (e não com o soberano), instituindo um terceiro com poder supremo absoluto."
+    },
+    {
+      "q": "79. Qual é o limite ou extensão do poder político concentrado pelo Leviatã de Hobbes?",
+      "opts": [
+        "É um poder limitado e fiscalizado pelo judiciário autônomo.",
+        "É soberano, absoluto e indivisível; o governante não está vinculado ao pacto e não pode sofrer punição dos súditos.",
+        "Trata-se de uma magistratura temporária renovável.",
+        "É subordinado à authority papal."
+      ],
+      "ans": 1,
+      "exp": "Para evitar o retorno à guerra civil, o poder soberano precisa ser concentrado, inquestionável e livre de amarras contratuais."
+    },
+    {
+      "q": "80. A situação jurídica da propriedade privada no estado de natureza descrito por Hobbes é de:",
+      "opts": [
+        "Absoluta intangibilidade assegurada por direitos humanos.",
+        "Inexistência de segurança jurídica; há apenas a posse precária mantida pela força física do detentor enquanto durar.",
+        "Proteção por tribunais arbitrais internacionais.",
+        "Origem comunista solidária."
+      ],
+      "ans": 1,
+      "exp": "Sem leis estatais e coerção, inexiste distinção estável entre o meu e o teu; vigora a usurpação contínua."
+    },
+    {
+      "q": "81. Em contraposição direta a Hobbes, como John Locke concebe originariamente o estado de natureza?",
+      "opts": [
+        "Como uma antecâmara inevitável do inferno civil.",
+        "Como uma situação de relativa paz, liberdade e igualdade, orientada pelos ditames da lei da razão natural.",
+        "Como uma monarquia patriarcal primitiva.",
+        "Como uma ficção lógica desprovida de relevância moral."
+      ],
+      "ans": 1,
+      "exp": "Para Locke, a ausência de governo não implica ausência de moralidade; os homens são livres sob o império da lei natural."
+    },
+    {
+      "q": "82. Conforme a matriz teórica de John Locke, o fundamento legitimador da propriedade privada reside:",
+      "opts": [
+        "Na chancela discricionária outorgada pelo Soberano absoluto.",
+        "Na incorporação do trabalho e do esforço individual sobre os bens originalmente dados em comum pela natureza.",
+        "No direito de conquista marcial.",
+        "No mero decurso do tempo possessório (usucapião primitivo)."
+      ],
+      "ans": 1,
+      "exp": "O trabalho do corpo e as obras das mãos do indivíduo são seus; logo, ao retirar algo do estado comum, acopla-se a propriedade."
+    },
+    {
+      "q": "83. Sendo o estado de natureza lockeano dotado de direitos e razão, o que motiva a criação do Estado Civil?",
+      "opts": [
+        "A necessidade de organizar exércitos de invasão ultramarina.",
+        "A carência de leis positivadas claras, de juízes imparciais e de uma força executiva estável para tutelar as propriedades.",
+        "A ordem expressa de autoridades clericais.",
+        "O tédio existencial decorrente da paz agrária."
+      ],
+      "ans": 1,
+      "exp": "A ausência de um terceiro neutro faz com que cada um seja juiz em causa própria, gerando riscos de vingança e desordem."
+    },
+    {
+      "q": "84. Se o magistrado supremo violar a confiança e agredir os direitos básicos dos cidadãos, Locke admite:",
+      "opts": [
+        "O dever de submissão passiva aguardando o julgamento divino.",
+        "O Direito de Resistência ou Rebelião cívica para destituir os governantes tiranos.",
+        "O suicídio coletivo ritual.",
+        "A dissolução definitiva de toda e qualquer sociedade humana."
+      ],
+      "ans": 2,
+      "exp": "O poder político é um depósito de confiança (trust); quebrado o pacto pelo governante, o poder retorna ao povo para se defender."
+    },
+    {
+      "q": "85. O vocábulo 'propriedade' (property), empregado por Locke em sua acepção ampla e sistêmica, compreende:",
+      "opts": [
+        "Apenas os latifúndios e imóveis rurais.",
+        "O estoque monetário de ouro e prata circulante.",
+        "A preservação recíproca da Vida, da Liberdade e dos Bens (patrimônio).",
+        "As patentes comerciais ultramarinas."
+      ],
+      "ans": 2,
+      "exp": "Locke sumariza sob a etiqueta de 'propriedade' o conjunto dos direitos fundamentais da personalidade e posses do ser humano."
+    },
+    {
+      "q": "86. Segundo os postulados éticos de Immanuel Kant, a pedra de toque da dignidade humana consiste em:",
+      "opts": [
+        "Agir sempre como instrumento utilitário para a estabilidade econômica.",
+        "Tratar a humanidade, seja na sua pessoa ou na de outrem, sempre como um fim em si mesma, nunca meramente como um meio.",
+        "Submeter os preceitos racionais aos desejos e paixões afetivas.",
+        "Acumular méritos civis por meio da obediência religiosa."
+      ],
+      "ans": 1,
+      "exp": "A dignidade impede a instrumentalização ou coisificação do ser humano para quaisquer propósitos utilitários de terceiros."
+    },
+    {
+      "q": "87. Em seu ensaio 'À Paz Perpétua', como Kant define e circunscreve o chamado Direito Cosmopolita?",
+      "opts": [
+        "O direito ilimitado de colonização global por nações ilustradas.",
+        "As condições de hospitalidade universal, garantindo ao estrangeiro o direito de não ser tratado com hostilidade ao ingressar em terras alheias.",
+        "A fusão de todos Estados sob um único governo mundial tirânico.",
+        "O dever de abolição imediata de todas as fronteiras alfandegárias."
+      ],
+      "ans": 1,
+      "exp": "O direito cosmopolita baseia-se na esfericidade da terra e na coexistência necessária, regulando o acolhimento digno do viajante."
+    },
+    {
+      "q": "88. Qual a linha divisória estrutural entre um Imperativo Hipotético e um Imperativo Categórico na filosofia kantiana?",
+      "opts": [
+        "O hipotético vincula-se à moralidade; o categórico à política partidária.",
+        "O hipotético dita uma ação necessária para alcançar um fim condicionado (prudência), enquanto o categórico ordena de forma absoluta e incondicional.",
+        "Inexiste distinção prática entre os dois.",
+        "O hipotético rege os animais; o categórico os seres humanos."
+      ],
+      "ans": 1,
+      "exp": "O imperativo categórico vale por si mesmo (dever moral puro); o hipotético depende do desejo do agente ('se queres X, faça Y')."
+    },
+    {
+      "q": "89. Kant desfere duras críticas morais e jurídicas às potências coloniais de sua época sob o fundamento de que:",
+      "opts": [
+        "Elas não foram eficientes na extração de riquezas minerais.",
+        "Elas violaram o direito cosmopolita da hospitalidade ao tratarem regiões habitadas como terras de ninguém (res nullius), escravizando e espoliando povos.",
+        "Elas não difundiram adequadamente o cristianismo dogmático.",
+        "Elas evitaram o livre comércio de manufaturados europeus."
+      ],
+      "ans": 1,
+      "exp": "Kant denunciou o expansionismo colonial violento e o tráfico de escravizados como graves rupturas do direito natural e cosmopolita."
+    },
+    {
+      "q": "90. Na dogmática de Kant, a sanção correlata à infração de um dever estritamente moral localiza-se:",
+      "opts": [
+        "Na punição física imposta pelo aparato carcerário do Estado.",
+        "No confisco de patrimônio e multas pecuniárias.",
+        "No foro interno, manifestada por meio do arrependimento e tribunal da própria consciência racional.",
+        "Na suspensão de direitos políticos pelo parlamento."
+      ],
+      "ans": 2,
+      "exp": "O Direito opera via coerção externa; a Moralidade exige autonomia e sua sanção é puramente íntima e consciencial."
+    },
+    {
+      "q": "91. O axioma central do Princípio da Utilidade formulado pelo jurista Jeremy Bentham preconiza:",
+      "opts": [
+        "A fidelidade imutável aos costumes medievais do direito consuetudinário.",
+        "A aprovação ou rejeição de qualquer conduta com base na sua aptidão demonstrada para maximizar o prazer ou mitigar a dor da parte afetada.",
+        "A concessão de privilégios hereditários.",
+        "A primazia dos deveres morais abstratos kantianos."
+      ],
+      "ans": 1,
+      "exp": "O utilitarismo benthamiano assenta-se na busca da maior felicidade/prazer e menor sofrimento para o maior número de indivíduos."
+    },
+    {
+      "q": "92. Conforme o empirismo de Bentham, a natureza governou soberanamente o homem sob dois mestres. Quais são?",
+      "opts": [
+        "A Razão Pura e a Razão Prática.",
+        "A Dor e o Prazer.",
+        "A Coroa e o Parlamento.",
+        "A Vida e a Transcendência."
+      ],
+      "ans": 1,
+      "exp": "Estes dois vetores (dor e prazer) determinam o que fazemos, o que dizemos e o que pensamos na existência concreta."
+    },
+    {
+      "q": "93. A corrente teórica do Utilitarismo capitaneada por Bentham assume uma postura classificada como:",
+      "opts": [
+        "Deontológica (pautada no dever intrínseco imune a resultados).",
+        "Consequencialista ou Teleológica (pautada no exame crítico dos efeitos e resultados práticos das ações).",
+        "Fideísta dogmática.",
+        "Solipsista niilista."
+      ],
+      "ans": 1,
+      "exp": "O consequencialismo afasta noções abstratas de pecado ou virtude em si, julgando o ato pelo saldo de bem-estar que ele gera."
+    },
+    {
+      "q": "94. Qual a principal divergência metodológica sobre a justificação da sanção penal entre Kant e Bentham?",
+      "opts": [
+        "Kant repudia as punições corporais; Bentham as defende integralmente.",
+        "Kant teoriza a pena como retribuição moral estrita ao crime cometido; Bentham defende a utilidade da pena focada na prevenção geral e dissuasão de delitos futuros.",
+        "Ambos rejeitam o poder de punir do Estado.",
+        "Kant foca na reparação civil financeira; Bentham na prisão perpétua universal."
+      ],
+      "ans": 1,
+      "exp": "Para o retributivista Kant, pune-se porque o crime foi praticado (olhar para o passado); para o utilitarista Bentham, pune-se para que não ocorram novos crimes (olhar para o futuro)."
+    },
+    {
+      "q": "95. A respeito do instituto jurídico da propriedade na modelagem utilitarista de Jeremy Bentham, é correto concluir:",
+      "opts": [
+        "É tida como um direito natural místico e inalienável intangível ao Estado.",
+        "É concebida como uma criação e garantia estatal legítima apenas na exata medida em que cumpre uma função de utilidade social e bem-estar comum.",
+        "Deve ser sumariamente extinta para dar lugar ao comunismo de bens.",
+        "Constitui uma extensão física indispensável do Imperativo Categórico."
+      ],
+      "ans": 1,
+      "exp": "Para Bentham, inexiste propriedade natural; ela é um artifício legal justificado pela segurança econômica e utilidade social que fomenta."
+    },
+    {
+      "q": "96. Na tradição republicana esposada por Nicolau Maquiavel e Jean-Jacques Rousseau, a liberdade define-se essencialmente como:",
+      "opts": [
+        "Ausência absoluta de regulamentações estatais sobre o mercado financeiro (não-interferência pura).",
+        "Condição de não-dominação, exigindo imunidade ao arbítrio de um senhor e certa independência civil e material do cidadão.",
+        "O poder selvagem do mais forte no estado anterior ao pacto.",
+        "A prerrogativa aristocrática de escravizar adversários derrotados."
+      ],
+      "ans": 1,
+      "exp": "Ser livre no republicanismo é não estar sob a dependência ou capricho de outrem, o que demanda instituições livres e autonomia cívica."
+    },
+    {
+      "q": "97. No arranjo constitucional proposto pelo 'Contrato Social' de Rousseau, a soberania legítima reside de forma inalienável:",
+      "opts": [
+        "Na figura sagrada e centralizada do monarca hereditário.",
+        "Na Vontade Geral do povo unificado em corpo político, voltada categoricamente ao interesse público comum.",
+        "No colégio ministerial dos juízes togados.",
+        "Nas forças armadas da nação."
+      ],
+      "ans": 1,
+      "exp": "O pacto rousseauista dá à luz um corpo moral coletivo dotado de soberania popular indivisível e inalienável."
+    },
+    {
+      "q": "98. Conforme discutido na apresentação do curso (Aula 01 de DFD0313), qual o papel atribuído por H.L.A. Hart à Filosofia do Direito?",
+      "opts": [
+        "Substituir os códigos normativos por manuais de lógica pura.",
+        "Auxiliar na clarificação e análise crítica dos conceitos jurídicos fundamentais, sobretudo nas denominadas 'zonas de penumbra' da linguagem.",
+        "Impor dogmas morais imutáveis aos magistrados de carreira.",
+        "Demonstrar a inutilidade prática das discussões teóricas nos tribunais."
+      ],
+      "ans": 1,
+      "exp": "Hart ressalta a importância da análise conceitual para desatar nós linguísticos e interpretar casos de alta complexidade hermenêutica."
+    },
+    {
+      "q": "99. Qual a leitura crítica formulada por Hans Kelsen a respeito do jusnaturalismo de cariz idealista platônico?",
+      "opts": [
+        "Elogia Platão por lançar as bases do relativismo axiológico democrático.",
+        "Aponta que o modelo de justiça metafísica absoluta em Platão opera ideologicamente para exigir obediência incondicional às normas vigentes impostas pelos 'sábios'.",
+        "Equipara a República platônica ao utilitarismo britânico moderno.",
+        "Considera que Platão defendia a revolução armada contínua contra as instituições sociais."
+      ],
+      "ans": 1,
+      "exp": "Kelsen sustenta que teorias de justiça absoluta frequentemente prestam-se a blindar regimes dogmáticos contra contestações racionais."
+    },
+    {
+      "q": "100. De acordo com o tratado 'À Paz Perpétua' de Kant, qual a estrutura político-institucional interna necessária para coibir a guerra estatal?",
+      "opts": [
+        "O despotismo esclarecido centralizador.",
+        "A democracia direta e demagógica de matiz helênico.",
+        "A Constituição Republicana, edificada sobre a divisão de poderes, representação, liberdade e igualdade formal.",
+        "O regime imperial absolutista unificado."
+      ],
+      "ans": 2,
+      "exp": "Em um regime republicano, os cidadãos que votam dividem os custos materiais e humanos da guerra, gerando um freio natural às aventuras belicistas."
+    }
+  ];
   
   let currentQ = 0;
   let userAnswers = new Array(rawQuestions.length).fill(null); 
