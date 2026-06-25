@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Simulado Avançado — Filosofia do Direito I (100 Questões)</title>
+<title>Simulado Avançado — Filosofia do Direito I (101 Etapas)</title>
 <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -21,19 +21,17 @@
   
   .container { max-width: 850px; margin: 0 auto; background: var(--bg-card); border: 1px solid var(--border); border-radius: 12px; box-shadow: 0 10px 30px rgba(0,0,0,0.7); overflow: hidden; display: flex; flex-direction: column; }
   
-  /* AJUSTE: Cabeçalho lado a lado e mais compacto */
   .header { padding: 25px 30px; background: #111114; border-bottom: 1px solid var(--border); display: flex; justify-content: space-between; align-items: center; gap: 15px; }
   .header h1 { font-size: 26px; color: #ffffff; margin: 0; font-weight: 700; letter-spacing: -0.5px; text-align: left; }
   .header-info { text-align: right; }
   .sub-header-text { color: var(--text-muted); font-size: 13px; margin-bottom: 4px; line-height: 1.3; }
   .added-info-text { color: var(--accent-blue); font-size: 12px; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; margin-top: 0; }
   
-  /* AJUSTE: Solução para não parecer "mapa de cinema" (Limitador interno para 3 linhas) */
   .nav-wrapper { padding: 12px 20px; background: #0d0d10; border-bottom: 1px solid var(--border); display: flex; justify-content: center; }
-  .nav-container { display: flex; flex-wrap: wrap; gap: 4px; justify-content: center; max-width: 680px; } /* 680px força a quebra exata em ~3 linhas proporcionais */
+  .nav-container { display: flex; flex-wrap: wrap; gap: 4px; justify-content: center; max-width: 680px; } 
   
   .nav-item { 
-    width: 26px; height: 26px; /* Levemente menor para caber melhor */
+    width: 26px; height: 26px; 
     display: inline-flex; align-items: center; justify-content: center; 
     cursor: pointer; font-size: 12px; font-weight: bold; transition: all 0.2s ease;
     border-radius: 4px; color: #fff; text-decoration: none;
@@ -48,14 +46,14 @@
   .nav-item.status-correct:hover { opacity: 1; }
   .nav-item.status-wrong { background: var(--color-wrong); border: none; opacity: 0.8; }
   .nav-item.status-wrong:hover { opacity: 1; }
+  .nav-item.challenge { background: #6b21a8; border: none; color: #fff; }
 
-  /* AJUSTE: Vãos e espaçamento entre linhas compactados */
   .content { padding: 25px 35px; flex-grow: 1; scroll-margin-top: 30px; }
   .q-meta { margin-bottom: 12px; color: var(--text-muted); font-size: 13px; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; display: flex; justify-content: space-between; align-items: center; }
-  .q-text { font-size: 18px; margin-bottom: 20px; line-height: 1.45; color: #ffffff; } /* Line-height reduzido */
+  .q-text { font-size: 18px; margin-bottom: 20px; line-height: 1.45; color: #ffffff; } 
   
-  .options { display: flex; flex-direction: column; gap: 8px; } /* Gap reduzido */
-  .option { display: flex; align-items: flex-start; padding: 12px 14px; background: var(--bg-opt); border: 1px solid var(--border); border-radius: 6px; cursor: pointer; transition: background 0.2s, border-color 0.2s; font-size: 16px; line-height: 1.4; } /* Padding e line-height reduzidos */
+  .options { display: flex; flex-direction: column; gap: 8px; } 
+  .option { display: flex; align-items: flex-start; padding: 12px 14px; background: var(--bg-opt); border: 1px solid var(--border); border-radius: 6px; cursor: pointer; transition: background 0.2s, border-color 0.2s; font-size: 16px; line-height: 1.4; } 
   .option:hover:not(.disabled) { border-color: var(--border-hover); background: #2b2b33; }
   .option input { margin-right: 12px; margin-top: 3px; accent-color: var(--accent-blue); cursor: pointer; width: 16px; height: 16px; }
   .option.disabled { cursor: default; opacity: 0.75; }
@@ -81,13 +79,12 @@
   .footer-disclaimer { padding: 20px 35px; background: #0c0c0e; border-top: 1px solid var(--border); font-size: 11.5px; color: #575766; text-align: justify; line-height: 1.5; font-family: system-ui, sans-serif; }
 
   /* =======================================================
-     ESTILOS DO ADD-ON (MINI-REDAÇÃO E JOGO) INTEGRADOS AQUI
+     ESTILOS DO ADD-ON (MINI-REDAÇÃO E JOGO)
      ======================================================= */
-  .interactive-addon { margin-top: 40px; border-top: 1px dashed var(--border); padding-top: 40px; text-align: left; }
-  
+  .interactive-addon { display: none; text-align: left; }
   .essay-section { background: #1a1a24; padding: 25px; border-radius: 8px; margin-bottom: 30px; border-left: 4px solid var(--accent-blue); }
   .essay-section h2 { color: #fff; margin-bottom: 15px; font-size: 22px; }
-  .essay-section p { margin-bottom: 12px; line-height: 1.45; color: #d1d1d6; } /* Line-height ajustado e legível */
+  .essay-section p { margin-bottom: 12px; line-height: 1.45; color: #d1d1d6; } 
   .essay-section p:last-child { margin-bottom: 0; }
 
   .match-game-title { color: #fff; text-align: center; margin-bottom: 10px; font-size: 22px; }
@@ -107,7 +104,6 @@
   }
   .match-card:hover:not(.matched) { background: #2a2a33; border-color: #555566; }
   
-  /* Cores ajustadas para perfeita leitura no modo escuro */
   .match-card.selected { border-color: var(--accent-blue); background: rgba(59, 130, 246, 0.15); box-shadow: 0 0 8px rgba(59, 130, 246, 0.4); transform: scale(1.01); }
   .match-card.matched { border-color: var(--color-correct); background: rgba(16, 185, 129, 0.1); color: #a1a1aa; cursor: default; opacity: 0.7; }
   .match-card.error { border-color: var(--color-wrong); background: rgba(239, 68, 68, 0.15); animation: shakeMatch 0.4s; }
@@ -134,13 +130,36 @@
   
   <div class="content" id="quiz-screen">
     <div class="q-meta">
-        <span id="q-counter">Questão 1 de 100</span>
+        <span id="q-counter">Questão 1 de 101</span>
         <span style="color: var(--accent-blue); cursor: pointer;" onclick="showResults(true)">Finalizar ➔</span>
     </div>
-    <div class="q-text" id="q-text">Carregando questão...</div>
-    <div class="options" id="opts"></div>
-    <div class="feedback-box" id="feedback"></div>
+
+    <!-- Container das questões tradicionais -->
+    <div id="standard-q-container">
+        <div class="q-text" id="q-text">Carregando questão...</div>
+        <div class="options" id="opts"></div>
+        <div class="feedback-box" id="feedback"></div>
+    </div>
     
+    <!-- Desafio 101 -->
+    <div class="interactive-addon" id="interactive-addon">
+      <div class="essay-section">
+        <h2>A democracia moderna, o pragmatismo e os críticos de Hobbes</h2>
+        <p>Para dominar os autores em exames de Filosofia do Direito, é fundamental entender qual "problema" ou "inimigo" cada um tentava enfrentar em sua época.</p>
+        <p><strong>1. O Paradigma Hobbesiano e seus críticos:</strong> <b>Thomas Hobbes</b> via o Estado de Natureza como guerra perpétua e considerava a democracia apenas um estágio temporário (uma perigosa "aristocracia de oradores") até a formação do soberano absoluto. Em resposta, <b>Baruch Espinosa</b> o contraria, afirmando que a democracia é a forma superior e definitiva, pois usa a razão coletiva para conter apetites. <b>Samuel Pufendorf</b> também rebate Hobbes, afirmando que o homem possui <i>sociabilidade natural</i> antes mesmo do contrato civil.</p>
+        <p><strong>2. O Combate ao patriarcalismo (resposta a Filmer):</strong> contra a ideia de Robert Filmer (de que o poder dos reis vinha da herança paterna de Adão), os teóricos do "Estado Livre" reagiram. <b>Algernon Sidney</b> e outros republicanos defenderam o consentimento popular. <b>James Harrington</b> tentou limpar o nome da democracia (separando-a da anarquia), embora preferisse que uma "boa aristocracia" administrasse o Estado. <b>James Tyrrell</b> usou os povos indígenas e Atenas para provar que a democracia era o regime original. E <b>John Locke</b> soterrou Filmer vinculando o pacto civil à proteção da propriedade (vida, liberdade e bens).</p>
+        <p><strong>3. A ressignificação da democracia (Butti):</strong> na modernidade, <b>Thomas Jefferson</b> argumenta que a representação política não é um defeito, mas o "segundo grau de pureza" da democracia, permitindo governar vastos territórios. Por outro lado, <b>Edmund Burke</b> olha aterrorizado para a Revolução Francesa e usa Aristóteles para dizer que a democracia pura resulta inevitavelmente na tirania da maioria.</p>
+        <p><strong>4. Pragmatismo e hermenêutica (Dewey, Weber e Dworkin):</strong> <b>John Dewey</b> ataca a "jurisprudência mecânica". Para ele, o método jurídico deve ser experimental e pragmático, focado nas consequências sociais. Na sociologia, <b>Max Weber</b> defende uma atitude de observador externo (apenas "relatar" as crenças sociais). Em oposição frontal, <b>Ronald Dworkin</b> exige a "atitude interpretativa interna",em que o jurista deve mergulhar na prática para encontrar a melhor justificativa moral e jurídica aplicável à comunidade.</p>
+      </div>
+
+      <h2 class="match-game-title">Desafio 101</h2>
+      <p class="match-game-subtitle">
+        Teste seus reflexos teóricos: <strong>Clique em uma ideia (à esquerda)</strong> e, em seguida, <strong>clique no autor correspondente (à direita)</strong>.
+      </p>
+
+      <div id="match-games-container"></div>
+    </div>
+
     <div class="control-panel">
       <button class="btn-nav" id="btn-prev" onclick="navigateQ(-1)" disabled>← Voltar</button>
       <button class="btn-primary" id="btn-action" onclick="handleAction()" disabled>Confirmar Resposta</button>
@@ -159,24 +178,6 @@
       Clique nos blocos vermelhos na barra de navegação superior para voltar diretamente à questão que você errou e ler o comentário explicativo.
     </p>
     <button class="btn-primary" onclick="location.reload()" style="max-width: 250px; margin-bottom: 20px;">Reiniciar</button>
-
-    <div class="interactive-addon">
-      <div class="essay-section">
-        <h2>A democracia moderna, o pragmatismo e os críticos de Hobbes</h2>
-        <p>Para dominar os autores em exames de Filosofia do Direito, é fundamental entender qual "problema" ou "inimigo" cada um tentava enfrentar em sua época.</p>
-        <p><strong>1. O Paradigma Hobbesiano e seus críticos:</strong> <b>Thomas Hobbes</b> via o Estado de Natureza como guerra perpétua e considerava a democracia apenas um estágio temporário (uma perigosa "aristocracia de oradores") até a formação do soberano absoluto. Em resposta, <b>Baruch Espinosa</b> o contraria, afirmando que a democracia é a forma superior e definitiva, pois usa a razão coletiva para conter apetites. <b>Samuel Pufendorf</b> também rebate Hobbes, afirmando que o homem possui <i>sociabilidade natural</i> antes mesmo do contrato civil.</p>
-        <p><strong>2. O Combate ao patriarcalismo (resposta a Filmer):</strong> contra a ideia de Robert Filmer (de que o poder dos reis vinha da herança paterna de Adão), os teóricos do "Estado Livre" reagiram. <b>Algernon Sidney</b> e outros republicanos defenderam o consentimento popular. <b>James Harrington</b> tentou limpar o nome da democracia (separando-a da anarquia), embora preferisse que uma "boa aristocracia" administrasse o Estado. <b>James Tyrrell</b> usou os povos indígenas e Atenas para provar que a democracia era o regime original. E <b>John Locke</b> soterrou Filmer vinculando o pacto civil à proteção da propriedade (vida, liberdade e bens).</p>
-        <p><strong>3. A ressignificação da democracia (Butti):</strong> na modernidade, <b>Thomas Jefferson</b> argumenta que a representação política não é um defeito, mas o "segundo grau de pureza" da democracia, permitindo governar vastos territórios. Por outro lado, <b>Edmund Burke</b> olha aterrorizado para a Revolução Francesa e usa Aristóteles para dizer que a democracia pura resulta inevitavelmente na tirania da maioria.</p>
-        <p><strong>4. Pragmatismo e hermenêutica (Dewey, Weber e Dworkin):</strong> <b>John Dewey</b> ataca a "jurisprudência mecânica". Para ele, o método jurídico deve ser experimental e pragmático, focado nas consequências sociais. Na sociologia, <b>Max Weber</b> defende uma atitude de observador externo (apenas "relatar" as crenças sociais). Em oposição frontal, <b>Ronald Dworkin</b> exige a "atitude interpretativa interna",em que o jurista deve mergulhar na prática para encontrar a melhor justificativa moral e jurídica aplicável à comunidade.</p>
-      </div>
-
-      <h2 class="match-game-title">Desafio 101</h2>
-      <p class="match-game-subtitle">
-        Teste seus reflexos teóricos: <strong>Clique em uma ideia (à esquerda)</strong> e, em seguida, <strong>clique no autor correspondente (à direita)</strong>.
-      </p>
-
-      <div id="match-games-container"></div>
-    </div>
   </div>
   
   <div class="footer-disclaimer">
@@ -198,7 +199,7 @@
         "Locke desconsiderou completamente a necessidade de deixar bens em volume e qualidade equivalentes para assegurar a subsistência dos demais membros da coletividade."
       ],
       "ans": 3,
-      "exp": " Locke formulou explicitamente a 'cláusula lockeana' (Lockean proviso), exigindo que a apropriação individual deixasse recursos suficientes e de igual qualidade para os outros."
+      "exp": "Locke formulou explicitamente a 'cláusula lockeana' (Lockean proviso), exigindo que a apropriação individual deixasse recursos suficientes e de igual qualidade para os outros."
     },
     {
       "q": "2. No campo das divisões fundamentais da filosofia, assinale a opção errada:",
@@ -1304,12 +1305,13 @@
 
   function init() {
     elNav.innerHTML = '';
-    for(let i=0; i < rawQuestions.length; i++) {
+    // Generate nav items for the 100 questions + 1 challenge
+    for(let i = 0; i <= rawQuestions.length; i++) {
       const a = document.createElement('a');
       a.id = 'nav-item-' + i;
       a.className = 'nav-item unanswered';
-      a.textContent = i + 1;
-      a.title = `Ir para Questão ${i + 1}`;
+      a.textContent = i === rawQuestions.length ? '101' : (i + 1);
+      a.title = i === rawQuestions.length ? `Ir para o Desafio 101` : `Ir para Questão ${i + 1}`;
       
       a.onclick = (e) => {
           e.preventDefault();
@@ -1321,7 +1323,7 @@
       elNav.appendChild(a);
     }
     loadQuestion();
-    renderMatchGames(); // Inicializa o mini-game
+    renderMatchGames();
   }
 
   function shuffleArray(array) {
@@ -1334,40 +1336,61 @@
   }
 
   function loadQuestion() {
-    elCounter.textContent = `Questão ${currentQ + 1} de ${rawQuestions.length}`;
-    elQText.textContent = rawQuestions[currentQ].q;
-    elFeedback.style.display = 'none';
-    elOpts.innerHTML = '';
-    
-    elPrev.disabled = (currentQ === 0);
-    elNext.textContent = (currentQ === rawQuestions.length - 1) ? "Finalizar 🏁" : "Avançar →";
-    
-    for(let i=0; i < rawQuestions.length; i++) {
+    // Nav bar state update
+    for(let i = 0; i <= rawQuestions.length; i++) {
       const item = document.getElementById('nav-item-' + i);
       item.className = 'nav-item';
-      if (userAnswers[i] !== null) {
-        item.classList.add(userAnswers[i].isCorrect ? 'status-correct' : 'status-wrong');
+      
+      if (i === rawQuestions.length) {
+        item.classList.add('challenge'); 
       } else {
-        item.classList.add('unanswered');
+        if (userAnswers[i] !== null) {
+          item.classList.add(userAnswers[i].isCorrect ? 'status-correct' : 'status-wrong');
+        } else {
+          item.classList.add('unanswered');
+        }
       }
+      item.style.boxShadow = "none";
     }
     
+    // Highlight current active tab
     const currentItem = document.getElementById('nav-item-' + currentQ);
-    if (userAnswers[currentQ] === null) {
+    if (currentQ < rawQuestions.length && userAnswers[currentQ] === null) {
       currentItem.classList.remove('unanswered');
       currentItem.classList.add('active-blue');
+    } else if (currentQ === rawQuestions.length) {
+      currentItem.style.boxShadow = "0 0 0 2px #fff"; 
     } else {
       currentItem.style.boxShadow = "0 0 0 2px #fff";
     }
 
-    for(let i=0; i < rawQuestions.length; i++) {
-        if (i !== currentQ) document.getElementById('nav-item-' + i).style.boxShadow = "none";
-    }
+    elPrev.disabled = (currentQ === 0);
 
-    if (userAnswers[currentQ] !== null) {
-      renderReviewMode();
+    // Is it the challenge step (index 100)?
+    if (currentQ === rawQuestions.length) {
+       document.getElementById('standard-q-container').style.display = 'none';
+       document.getElementById('interactive-addon').style.display = 'block';
+       elBtn.style.display = 'none';
+       elCounter.textContent = `Desafio 101`;
+       elNext.textContent = "Finalizar 🏁";
     } else {
-      renderAnsweringMode();
+       // Standard Multiple Choice
+       document.getElementById('standard-q-container').style.display = 'block';
+       document.getElementById('interactive-addon').style.display = 'none';
+       elBtn.style.display = 'block';
+       
+       elCounter.textContent = `Questão ${currentQ + 1} de ${rawQuestions.length}`;
+       elQText.textContent = rawQuestions[currentQ].q;
+       elFeedback.style.display = 'none';
+       elOpts.innerHTML = '';
+       
+       elNext.textContent = "Avançar →";
+       
+       if (userAnswers[currentQ] !== null) {
+         renderReviewMode();
+       } else {
+         renderAnsweringMode();
+       }
     }
   }
 
@@ -1452,13 +1475,13 @@
   }
 
   function navigateQ(step) {
-    if (step === 1 && currentQ === rawQuestions.length - 1) {
+    if (step === 1 && currentQ === rawQuestions.length) {
       showResults();
       return;
     }
     currentQ += step;
     if (currentQ < 0) currentQ = 0;
-    if (currentQ >= rawQuestions.length) currentQ = rawQuestions.length - 1;
+    if (currentQ > rawQuestions.length) currentQ = rawQuestions.length;
     loadQuestion();
   }
 
@@ -1471,7 +1494,7 @@
     document.getElementById('quiz-screen').style.display = 'none';
     document.getElementById('result-screen').style.display = 'block';
     
-    for(let i=0; i < rawQuestions.length; i++) {
+    for(let i=0; i <= rawQuestions.length; i++) {
         document.getElementById('nav-item-' + i).style.boxShadow = "none";
     }
     
@@ -1643,4 +1666,5 @@
 
   document.addEventListener("DOMContentLoaded", init);
 </script>
-</body></html>
+</body>
+</html>
